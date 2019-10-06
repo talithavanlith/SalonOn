@@ -4,21 +4,14 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import org.json.JSONObject;
-import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import org.json.JSONArray;
-
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
-public class API {
-    private final String TAG = API.class.getSimpleName();
+public class APIExample {
+    private final String TAG = APIExample.class.getSimpleName();
 
     public void testGet() {
         try {
