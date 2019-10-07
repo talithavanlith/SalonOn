@@ -17,9 +17,10 @@ public class Profile {
     String phoneNumber; // Contact Phone Number
     String creditCardNumber; // Payment Info
     String bio; // Bio
+    Booking [] arrayOfBookings;
     // -----
     // Client Profile will need:
-    // Information about their hair types.
+
     // Answers to the sign up questions provided by Ms. Kee.
     // Current/Previous Booking info, including:
         // The name of the Stylist
@@ -105,7 +106,7 @@ public class Profile {
         // Service of appointment being reviewed
 
 
-    public Profile(String typeOfProfile, String emailAddress, String password, String firstName, String lastName, Image profilePicture, Boolean shareContactInfoWhenBookingIsRequested, Boolean useMobileData, Boolean allowNotifications, String phoneNumber, String creditCardNumber, String bio) {
+    public Profile(String typeOfProfile, String emailAddress, String password, String firstName, String lastName, Image profilePicture, Boolean shareContactInfoWhenBookingIsRequested, Boolean useMobileData, Boolean allowNotifications, String phoneNumber, String creditCardNumber, String bio, Booking[] arrayOfBookings) {
         this.typeOfProfile = typeOfProfile;
         this.emailAddress = emailAddress;
         this.password = password;
@@ -118,6 +119,7 @@ public class Profile {
         this.phoneNumber = phoneNumber;
         this.creditCardNumber = creditCardNumber;
         this.bio = bio;
+        this.arrayOfBookings = arrayOfBookings;
 
     }
 
