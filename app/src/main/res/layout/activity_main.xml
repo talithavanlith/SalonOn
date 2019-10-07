@@ -1,33 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#F4FBD5">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/block"/>
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <Button
+        android:id="@+id/accelerometerButton"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@id/block"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="15dp"
+        app:backgroundTint = "#81CF4D"
+        android:text="Client"
+        android:textColor="@android:color/white"
+        android:textSize="21sp"
+        />
 
-    </com.google.android.material.appbar.AppBarLayout>
+    <TextView
+        android:id="@+id/accelerometerTextView"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/accelerometerButton"
+        android:layout_marginBottom="-70dp"
+        android:layout_marginLeft="10dp"
+        android:background="@android:color/white"
+        android:text="I am a Client! Click to sign in."
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
 
-    <include layout="@layout/content_main" />
+    <Button
+        android:id="@+id/lightSensorButton"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_alignBottom="@+id/accelerometerTextView"
+        android:layout_marginBottom="-140dp"
+        android:layout_marginLeft="80dp"
+        app:backgroundTint = "#81CF4D"
+        android:text="Stylist"
+        android:textColor="@android:color/white"
+        android:textSize="21sp"
+        />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+    <TextView
+        android:id="@+id/lightSensorTextView"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/lightSensorButton"
+        android:layout_marginBottom="-70dp"
+        android:layout_marginLeft="10dp"
+        android:background="@android:color/white"
+        android:text="I am a Stylist! Click to sign in."
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <Button
+        android:id="@+id/temperatureSensorButton"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_alignBottom="@+id/lightSensorTextView"
+        android:layout_marginBottom="-140dp"
+        android:layout_marginLeft="80dp"
+        app:backgroundTint = "#81CF4D"
+        android:text="Salon Owner"
+        android:textColor="@android:color/white"
+        android:textSize="21sp"
+        />
+
+    <TextView
+        android:id="@+id/temperatureSensorTextView"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/temperatureSensorButton"
+        android:layout_marginBottom="-70dp"
+        android:layout_marginLeft="10dp"
+        android:background="@android:color/white"
+        android:text="I am a Salon Owner! Click to sign in."
+        android:textColor="@android:color/black"
+        android:textSize="14sp"/>
+
+</RelativeLayout>
