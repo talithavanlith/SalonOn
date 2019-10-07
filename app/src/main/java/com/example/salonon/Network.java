@@ -38,7 +38,7 @@ public class Network {
 
     // Network code must be run asynchronously.  This AsyncTask technique might have bugs
     // For example, rotating the phone might crash it.  We can adjust this later
-    class NetworkGet extends AsyncTask<String, Void, String> {
+    private class NetworkGet extends AsyncTask<String, Void, String> {
 
         private Exception exception;
 
