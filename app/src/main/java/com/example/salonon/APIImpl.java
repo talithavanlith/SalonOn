@@ -99,12 +99,10 @@ public class APIImpl implements API {
             }
         }
 
-        // TODO this might be useful, but so far I'm not using it.
-        protected void onPostExecute(String string) {
-            // TODO: check this.exception
-            // TODO: do something with the feed
-//            print(string);
-        }
+//        // TODO this might be useful, but so far I'm not using it.
+//        protected void onPostExecute(String string) {
+////            print(string);
+//        }
 
     }
 
@@ -120,10 +118,6 @@ public class APIImpl implements API {
                 URL url = new URL(urls[0]);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod("POST");
-//                con.setRequestProperty("Content-Type", "application/json");
-
-//                Map<String, String> parameters = new HashMap<>();
-//                parameters.put("param1", "val");
 
                 con.setDoOutput(true);
                 DataOutputStream out = new DataOutputStream(con.getOutputStream());
@@ -148,16 +142,9 @@ public class APIImpl implements API {
                 return null;
             }
         }
-
-        // TODO this might be useful, but so far I'm not using it.
-        protected void onPostExecute(String string) {
-            // TODO: check this.exception
-            // TODO: do something with the feed
-//            print(string);
-        }
-
     }
 
+    // Takes the Network's parameters and converts them to something that the server is able to parse via JSON.
     public static class ParameterStringBuilder {
         public static String getParamsString(Map<String, String> params)
                 throws UnsupportedEncodingException {
