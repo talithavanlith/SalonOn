@@ -1,5 +1,6 @@
 package com.example.salonon;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,6 +37,17 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     public void newUserOnClick(View view) {
-        Toast.makeText(this, "Intent not implemented yet. Will take you to sign up later.", Toast.LENGTH_LONG).show();
+        Intent currentIntent = getIntent();
+        Bundle bundle = currentIntent.getExtras();
+        String userType;
+        if(bundle != null) {
+            userType = bundle.getString("userType");
+        } else {
+            userType = null;
+        }
+        // Now I can pass userType to sign in if we need it.
+        Intent signUpIntent = new Intent(SignInActivity.this, SignUpActivity.class);
+        signUpIntent.putExtra("userType", userType);
+        startActivity(signUpIntent);
     }
 }

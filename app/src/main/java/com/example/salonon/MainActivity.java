@@ -28,6 +28,24 @@ public class MainActivity extends AppCompatActivity {
     public void clientButtonOnClick(View view) {
         Log.v("SalonOn", "I am a Client");
         Intent signInIntent = new Intent(MainActivity.this, SignInActivity.class);
+        String userType = "Client";
+        signInIntent.putExtra("userType", userType);
+        startActivity(signInIntent);
+    }
+
+    public void stylistButtonOnClick(View view) {
+        Log.v("SalonOn", "I am a Stylist");
+        Intent signInIntent = new Intent(MainActivity.this, SignInActivity.class);
+        String userType = "Stylist";
+        signInIntent.putExtra("userType", userType);
+        startActivity(signInIntent);
+    }
+
+    public void salonOwnerButtonOnClick(View view) {
+        Log.v("SalonOn", "I am a Salon Owner");
+        Intent signInIntent = new Intent(MainActivity.this, SignInActivity.class);
+        String userType = "Salon Owner";
+        signInIntent.putExtra("userType", userType);
         startActivity(signInIntent);
     }
 
