@@ -23,6 +23,7 @@
         android:text="Client"
         android:textColor="@android:color/white"
         android:textSize="21sp"
+        android:onClick="clientButtonOnClick"
         />
 
     <TextView

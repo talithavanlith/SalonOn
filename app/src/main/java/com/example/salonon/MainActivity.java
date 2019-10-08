@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void clientButtonOnClick(View view) {
         Log.v("SalonOn", "I am a Client");
-        Intent signInIntent = new Intent();
+        Intent signInIntent = new Intent(MainActivity.this, SignInActivity.class);
+        startActivity(signInIntent);
     }
 
 
