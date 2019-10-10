@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#F4FBD5">
+
+
+    <Button
+        android:id="@+id/btnFindStylist"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="#81CF4D"
+        android:text="FIND STYLIST"
+        android:textColor="#F7F7F2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+
+    <View
+        android:id="@+id/txtStylistInfo"
+        android:layout_width="414dp"
+        android:layout_height="560dp"
+        android:layout_marginTop="1dp"
+        android:background="#171515"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuickFind"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/txtLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:lineSpacingExtra="10sp"
+        android:text="SalonOn"
+        android:textColor="#71C93C"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnFindStylist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnMenu"
+        android:layout_width="43dp"
+        android:layout_height="36dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+
+    <TextView
+        android:id="@+id/txtInfo"
+        android:layout_width="230dp"
+        android:layout_height="43dp"
+        android:gravity="center"
+        android:text="Select the area you want to book your appointment in:"
+        android:textColor="#1E1B1B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.161" />
+
+<!--    <SeekBar-->
+<!--        android:id="@+id/seekBar"-->
+<!--        android:layout_width="242dp"-->
+<!--        android:layout_height="76dp"-->
+<!--        android:maxHeight="10dp"-->
+<!--        android:minHeight="10dp"-->
+<!--        android:progressTint="#1E1B1B"-->
+<!--        android:thumbTint="#1E1B1B"-->
+<!--        tools:layout_editor_absoluteX="84dp"-->
+<!--        tools:layout_editor_absoluteY="-10dp" />-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
