@@ -24,8 +24,8 @@
 
     <View
         android:id="@+id/txtStylistInfo"
-        android:layout_width="414dp"
-        android:layout_height="560dp"
+        android:layout_width="413dp"
+        android:layout_height="566dp"
         android:layout_marginTop="1dp"
         android:background="#171515"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -77,16 +77,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.161" />
 
-<!--    <SeekBar-->
-<!--        android:id="@+id/seekBar"-->
-<!--        android:layout_width="242dp"-->
-<!--        android:layout_height="76dp"-->
-<!--        android:maxHeight="10dp"-->
-<!--        android:minHeight="10dp"-->
-<!--        android:progressTint="#1E1B1B"-->
-<!--        android:thumbTint="#1E1B1B"-->
-<!--        tools:layout_editor_absoluteX="84dp"-->
-<!--        tools:layout_editor_absoluteY="-10dp" />-->
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:maxHeight="8dp"
+        android:minHeight="8dp"
+        android:progress="30"
+        android:progressDrawable="@drawable/seek_bar_ruler"
+        android:thumb="@drawable/seek_bar_slider"
+        app:layout_constraintBottom_toBottomOf="@+id/btnFindStylist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInfo"
+        app:layout_constraintVertical_bias="0.052" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
