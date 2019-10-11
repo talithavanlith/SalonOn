@@ -271,7 +271,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
             <TextView
-                android:id="@+id/txtReviews2"
+                android:id="@+id/txtCommentsLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
@@ -374,7 +374,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtProfessionalism" />
 
             <TextView
-                android:id="@+id/txtAccessibility2"
+                android:id="@+id/txtComment"
                 android:layout_width="338dp"
                 android:layout_height="72dp"
                 android:layout_marginStart="44dp"
@@ -389,15 +389,15 @@
                 android:textSize="15sp"
                 android:visibility="visible"
                 app:fontFamily="sans-serif-condensed"
-                app:layout_constraintBottom_toTopOf="@+id/txtAccessibility3"
+                app:layout_constraintBottom_toTopOf="@+id/txtComment2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtReviews2"
+                app:layout_constraintTop_toBottomOf="@+id/txtCommentsLabel"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/txtAccessibility3"
+                android:id="@+id/txtComment2"
                 android:layout_width="334dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="44dp"
@@ -415,10 +415,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.16"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtAccessibility2" />
+                app:layout_constraintTop_toBottomOf="@+id/txtComment" />
 
             <RatingBar
-                android:id="@+id/ratingBar"
+                android:id="@+id/rateClean"
                 style="@android:style/Widget.Holo.Light.RatingBar.Indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -429,14 +429,14 @@
                 android:layout_marginRight="56dp"
                 android:background="#00313131"
                 android:rating="3.5"
-                app:layout_constraintBottom_toTopOf="@+id/ratingBar2"
+                app:layout_constraintBottom_toTopOf="@+id/rateFriend"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/txtCleanliness"
                 app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
             <RatingBar
-                android:id="@+id/ratingBar2"
+                android:id="@+id/rateFriend"
                 style="@android:style/Widget.Holo.Light.RatingBar.Indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -448,14 +448,14 @@
                 android:layout_marginBottom="5dp"
                 android:background="#00313131"
                 android:rating="5"
-                app:layout_constraintBottom_toTopOf="@+id/ratingBar3"
+                app:layout_constraintBottom_toTopOf="@+id/rateProfes"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/txtFriendliness"
-                app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+                app:layout_constraintTop_toBottomOf="@+id/rateClean" />
 
             <RatingBar
-                android:id="@+id/ratingBar3"
+                android:id="@+id/rateProfes"
                 style="@android:style/Widget.Holo.Light.RatingBar.Indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -467,13 +467,13 @@
                 android:layout_marginBottom="5dp"
                 android:background="#00313131"
                 android:rating="2"
-                app:layout_constraintBottom_toTopOf="@+id/ratingBar4"
+                app:layout_constraintBottom_toTopOf="@+id/rateAccess"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/txtProfessionalism"
-                app:layout_constraintTop_toBottomOf="@+id/ratingBar2" />
+                app:layout_constraintTop_toBottomOf="@+id/rateFriend" />
 
             <RatingBar
-                android:id="@+id/ratingBar4"
+                android:id="@+id/rateAccess"
                 style="@android:style/Widget.Holo.Light.RatingBar.Indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -486,7 +486,7 @@
                 android:rating="4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/txtAccessibility"
-                app:layout_constraintTop_toBottomOf="@+id/ratingBar3" />
+                app:layout_constraintTop_toBottomOf="@+id/rateProfes" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
