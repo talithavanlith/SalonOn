@@ -49,7 +49,7 @@ public class SignUpActivityOne extends AppCompatActivity {
 
         // Do I pass this account info to Talitha's activity_search intent or login to the profile here?
         // For now, don't sign up here.
-        Toast.makeText(this, "Screen Not Implemented Yet", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Account Creation Successful!", Toast.LENGTH_LONG).show();
 
         // create account
         API api = new APIImpl();
