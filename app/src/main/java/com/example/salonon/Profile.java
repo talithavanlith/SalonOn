@@ -2,6 +2,8 @@ package com.example.salonon;
 
 import android.media.Image;
 
+import androidx.annotation.Nullable;
+
 public class Profile {
     // Encapsulated the data a Profile should hold, including:
     String typeOfProfile; // Whether the profile is for a Client, Stylist, or Salon Owner
@@ -9,7 +11,7 @@ public class Profile {
     String password; // password
     String firstName; // First Name
     String lastName; // Last Name
-    Image profilePicture; // Profile Picture
+    @Nullable Image profilePicture; // Profile Picture
     // In app settings. Including:
         Boolean shareContactInfoWhenBookingIsRequested; // Share Contact Info when booking is requested Y/N
         Boolean useMobileData; // Use Mobile Data Y/N
@@ -112,7 +114,9 @@ public class Profile {
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.profilePicture = profilePicture;
+        if (profilePicture != null) {
+            this.profilePicture = profilePicture;
+        }
         this.shareContactInfoWhenBookingIsRequested = shareContactInfoWhenBookingIsRequested;
         this.useMobileData = useMobileData;
         this.allowNotifications = allowNotifications;

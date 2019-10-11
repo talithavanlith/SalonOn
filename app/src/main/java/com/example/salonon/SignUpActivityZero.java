@@ -54,7 +54,7 @@ public class SignUpActivityZero extends AppCompatActivity {
         signUpContinueIntent.putExtra("userType", userType);
         signUpContinueIntent.putExtra("name", name);
         signUpContinueIntent.putExtra("email", email);
-        // signUpContinueIntent.putExtra("password", password); // TODO Hash Password before I send it through to another Intent.
+        signUpContinueIntent.putExtra("password", password); // TODO Hash Password before I send it through to another Intent.
         startActivity(signUpContinueIntent);
         Toast.makeText(this, "Intent Not Implemented Yet", Toast.LENGTH_LONG).show(); // TODO Remove this Toast when intent has content.
     }
