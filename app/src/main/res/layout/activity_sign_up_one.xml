@@ -1,5 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-</RelativeLayout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="#F4FBD5">
+
+        <TextView
+            android:id="@+id/logo"
+            android:layout_width="400dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@android:color/white"
+            android:text="Logo Image!!!"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="36sp" />
+
+        <EditText
+            android:id="@+id/phoneNumberEditText"
+            android:layout_width="400dp"
+            android:layout_height="60dp"
+            android:layout_alignTop="@+id/logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:background="@android:color/white"
+            android:hint="Please enter your phone number"
+            android:inputType="phone"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
+
+
+        <EditText
+            android:id="@+id/cityEditText"
+            android:layout_width="400dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@+id/phoneNumberEditText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:background="@android:color/white"
+            android:hint="Please enter your city"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/stateEditText"
+            android:layout_width="400dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@+id/cityEditText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:background="@android:color/white"
+            android:hint="Please enter your State"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/zipEditText"
+            android:layout_width="400dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@+id/stateEditText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:background="@android:color/white"
+            android:hint="Please enter your zip code"
+            android:inputType="number"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/imageButton"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_alignTop="@+id/zipEditText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:onClick="imageButtonOnClick"
+            android:text="Select Profile Image"
+            android:textColor="@android:color/white"
+            android:textSize="21sp"
+            app:backgroundTint="#81CF4D" />
+
+        <Button
+            android:id="@+id/signUpButton"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_alignTop="@+id/imageButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="120dp"
+            android:onClick="signUpButtonOnClick"
+            android:text="Sign Up"
+            android:textColor="@android:color/white"
+            android:textSize="21sp"
+            app:backgroundTint="#81CF4D" />
+
+        <TextView
+            android:id="@+id/haveAccountTextView"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_alignTop="@+id/signUpButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="120dp"
+            android:background="#F4FBD5"
+            android:onClick="haveAccountTextViewOnClick"
+            android:text="Already Have an account?"
+            android:textAlignment="center"
+            android:textColor="#828282"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+</ScrollView>
