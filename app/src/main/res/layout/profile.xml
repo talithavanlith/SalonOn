@@ -7,51 +7,18 @@
     tools:context=".MainActivity"
     android:background="#F4FBD5">
 
-    <ImageView
-        android:id="@+id/imgProfile"
-        android:layout_width="92dp"
-        android:layout_height="84dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="160dp"
-        android:layout_marginRight="160dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtStylistName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.903"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/txtStylistName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
-        android:lineSpacingExtra="10sp"
-        android:text="Stylist Name"
-        android:textColor="#1E1B1B"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/imgProfile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnMenu"
         android:layout_width="42dp"
         android:layout_height="31dp"
         android:background="#1E1B1B"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/txtDetails"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.035" />
-
+        app:layout_constraintVertical_bias="0.096" />
 
     <TextView
         android:id="@+id/txtDetails"
@@ -62,17 +29,46 @@
         android:text="x years experience - x miles away"
         android:textColor="#171515"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.222" />
+        app:layout_constraintTop_toBottomOf="@+id/txtStylistName" />
 
+    <ImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="92dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginRight="160dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtStylistName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/txtStylistName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="10sp"
+        android:text="Stylist Name"
+        android:textColor="#1E1B1B"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgProfile" />
 
     <ScrollView
-        android:layout_width="515dp"
-        android:layout_height="596dp"
+        android:id="@+id/scrollView"
+        android:layout_width="422dp"
+        android:layout_height="587dp"
         android:background="#171515"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +91,6 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="151dp"
                 android:layout_marginRight="151dp"
-                android:layout_marginBottom="1dp"
                 android:text="I specialize in:"
                 android:textColor="#f7f7f4"
                 android:textSize="22sp"
@@ -103,7 +98,6 @@
                 app:fontFamily="sans-serif-black"
                 app:layout_constraintBottom_toTopOf="@+id/txtStyle1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -122,7 +116,6 @@
                 app:fontFamily="sans-serif-black"
                 app:layout_constraintBottom_toTopOf="@+id/txtStyle2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtSpecialize" />
 
@@ -141,7 +134,6 @@
                 app:fontFamily="sans-serif-black"
                 app:layout_constraintBottom_toTopOf="@+id/txtStyle3"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtStyle1" />
 
@@ -149,17 +141,15 @@
                 android:id="@+id/txtStyle3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="189dp"
-                android:layout_marginLeft="189dp"
-                android:layout_marginEnd="258dp"
-                android:layout_marginRight="258dp"
-                android:layout_marginBottom="49dp"
+                android:layout_marginStart="176dp"
+                android:layout_marginLeft="176dp"
+                android:layout_marginEnd="176dp"
+                android:layout_marginRight="176dp"
                 android:text="Style 3"
                 android:textColor="#f7f7f4"
                 android:textSize="22sp"
                 android:visibility="visible"
                 app:fontFamily="sans-serif-black"
-                app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtStyle2" />
@@ -168,12 +158,12 @@
                 android:id="@+id/txtAvailableStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="165dp"
-                android:layout_marginEnd="389dp"
-                android:layout_marginRight="389dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="177dp"
+                android:layout_marginEnd="295dp"
+                android:layout_marginRight="295dp"
+                android:layout_marginBottom="11dp"
                 android:text="Available styles:"
                 android:textColor="#f7f7f4"
                 android:textSize="15sp"
@@ -186,11 +176,11 @@
 
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollView"
-                android:layout_width="450dp"
+                android:layout_width="422dp"
                 android:layout_height="264dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="67dp"
-                android:layout_marginRight="67dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginBottom="11dp"
+                app:layout_constraintBottom_toTopOf="@+id/txtReviews"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtAvailableStyle">
@@ -212,8 +202,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/btnStyle2"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
-
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <Button
                         android:id="@+id/btnStyle2"
@@ -267,10 +256,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="14dp"
                 android:layout_marginLeft="14dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="358dp"
-                android:layout_marginRight="358dp"
-                android:layout_marginBottom="9dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="317dp"
+                android:layout_marginRight="317dp"
+                android:layout_marginBottom="12dp"
                 android:text="Reviews:"
                 android:textColor="#f7f7f4"
                 android:textSize="22sp"
@@ -278,7 +267,6 @@
                 app:fontFamily="sans-serif-black"
                 app:layout_constraintBottom_toTopOf="@+id/txtCleanliness"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.425"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
@@ -286,11 +274,12 @@
                 android:id="@+id/txtCleanliness"
                 android:layout_width="130dp"
                 android:layout_height="35dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginEnd="268dp"
-                android:layout_marginRight="268dp"
-                android:layout_marginBottom="9dp"
+                android:layout_marginStart="29dp"
+                android:layout_marginLeft="29dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="263dp"
+                android:layout_marginRight="263dp"
+                android:layout_marginBottom="5dp"
                 android:gravity="right"
                 android:text="Cleanliness:"
                 android:textColor="#f7f7f4"
@@ -299,7 +288,6 @@
                 app:fontFamily="sans-serif-black"
                 app:layout_constraintBottom_toTopOf="@+id/txtFriendliness"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.179"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtReviews" />
 
@@ -312,12 +300,14 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="268dp"
                 android:layout_marginRight="268dp"
+                android:layout_marginBottom="5dp"
                 android:gravity="end"
                 android:text="Friendliness:"
                 android:textColor="#f7f7f4"
                 android:textSize="15sp"
                 android:visibility="visible"
                 app:fontFamily="sans-serif-black"
+                app:layout_constraintBottom_toTopOf="@+id/txtProfessionalism"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.177"
                 app:layout_constraintStart_toStartOf="parent"
@@ -332,12 +322,14 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="268dp"
                 android:layout_marginRight="268dp"
+                android:layout_marginBottom="5dp"
                 android:gravity="right"
                 android:text="Professionalism:"
                 android:textColor="#f7f7f4"
                 android:textSize="15sp"
                 android:visibility="visible"
                 app:fontFamily="sans-serif-black"
+                app:layout_constraintBottom_toTopOf="@+id/txtAccessibility"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.179"
                 app:layout_constraintStart_toStartOf="parent"
@@ -358,13 +350,21 @@
                 android:textSize="15sp"
                 android:visibility="visible"
                 app:fontFamily="sans-serif-black"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.179"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtProfessionalism" />
 
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00313131"
+                android:rating="3"
+                tools:layout_editor_absoluteX="171dp"
+                tools:layout_editor_absoluteY="555dp" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
