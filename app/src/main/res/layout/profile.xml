@@ -271,6 +271,24 @@
                 app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
             <TextView
+                android:id="@+id/txtReviews2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginEnd="319dp"
+                android:layout_marginRight="319dp"
+                android:text="Comments:"
+                android:textColor="#f7f7f4"
+                android:textSize="19sp"
+                android:visibility="visible"
+                app:fontFamily="sans-serif-black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtAccessibility" />
+
+            <TextView
                 android:id="@+id/txtCleanliness"
                 android:layout_width="130dp"
                 android:layout_height="35dp"
@@ -350,20 +368,125 @@
                 android:textSize="15sp"
                 android:visibility="visible"
                 app:fontFamily="sans-serif-black"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.179"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtProfessionalism" />
 
+            <TextView
+                android:id="@+id/txtAccessibility2"
+                android:layout_width="338dp"
+                android:layout_height="72dp"
+                android:layout_marginStart="44dp"
+                android:layout_marginLeft="44dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="59dp"
+                android:layout_marginRight="59dp"
+                android:layout_marginBottom="9dp"
+                android:gravity="start"
+                android:text="Very friendly staff, easy to access with mobility parking and ramp. Would be nice to have a stall that allows for a wheelchair to be parked at though.                                                                                   - Jenna Love"
+                android:textColor="#f7f7f4"
+                android:textSize="15sp"
+                android:visibility="visible"
+                app:fontFamily="sans-serif-condensed"
+                app:layout_constraintBottom_toTopOf="@+id/txtAccessibility3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtReviews2"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/txtAccessibility3"
+                android:layout_width="334dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="44dp"
+                android:layout_marginLeft="44dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="59dp"
+                android:layout_marginRight="59dp"
+                android:gravity="start"
+                android:text="The sinks were in need of a clean but the rest of the salon was in a very nice condition. - Max Connington"
+                android:textColor="#f7f7f4"
+                android:textSize="15sp"
+                android:visibility="visible"
+                app:fontFamily="sans-serif-condensed"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.16"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtAccessibility2" />
+
             <RatingBar
                 android:id="@+id/ratingBar"
+                style="@android:style/Widget.Holo.Light.RatingBar.Indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginLeft="34dp"
+                android:layout_marginTop="75dp"
+                android:layout_marginEnd="56dp"
+                android:layout_marginRight="56dp"
                 android:background="#00313131"
-                android:rating="3"
-                tools:layout_editor_absoluteX="171dp"
-                tools:layout_editor_absoluteY="555dp" />
+                android:rating="3.5"
+                app:layout_constraintBottom_toTopOf="@+id/ratingBar2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/txtCleanliness"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+            <RatingBar
+                android:id="@+id/ratingBar2"
+                style="@android:style/Widget.Holo.Light.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginLeft="34dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="56dp"
+                android:layout_marginRight="56dp"
+                android:layout_marginBottom="5dp"
+                android:background="#00313131"
+                android:rating="5"
+                app:layout_constraintBottom_toTopOf="@+id/ratingBar3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/txtFriendliness"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+            <RatingBar
+                android:id="@+id/ratingBar3"
+                style="@android:style/Widget.Holo.Light.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginLeft="34dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="56dp"
+                android:layout_marginRight="56dp"
+                android:layout_marginBottom="5dp"
+                android:background="#00313131"
+                android:rating="2"
+                app:layout_constraintBottom_toTopOf="@+id/ratingBar4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtProfessionalism"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar2" />
+
+            <RatingBar
+                android:id="@+id/ratingBar4"
+                style="@android:style/Widget.Holo.Light.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginLeft="34dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="56dp"
+                android:layout_marginRight="56dp"
+                android:background="#00313131"
+                android:rating="4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtAccessibility"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar3" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
