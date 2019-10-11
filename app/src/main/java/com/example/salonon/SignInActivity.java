@@ -27,9 +27,19 @@ public class SignInActivity extends AppCompatActivity {
         API api = new APIImpl();
         Profile userProfile = api.loginToProfile(email, password);
         if (userProfile != null) {
-            // Now Open up the home screen intent and pass the user activity_profile.
+            // Now Open up the home screen intent and pass the user profile.
+            // I can't pass the user profile unless I make it serializable/ parsable. For now, just pass the username and password and login again on the other side.
+            // TODO make Profile Serializable or Parsable
             Toast.makeText(this, "Login Successful.", Toast.LENGTH_LONG).show();
             Log.v("SalonOn", "Opening home screen of user");
+
+            Intent searchIntent = new Intent(SignInActivity.this, SearchActivity.class);
+            searchIntent.putExtra("email", email);
+            searchIntent.putExtra("password", password);
+
+            startActivity(searchIntent);
+
+
         } else {
             Toast.makeText(this, "Sorry, this email or password is invalid. Please try again.", Toast.LENGTH_LONG).show();
         }
@@ -46,7 +56,7 @@ public class SignInActivity extends AppCompatActivity {
             userType = null;
         }
         // Now I can pass userType to sign in if we need it.
-        Intent signUpIntent = new Intent(SignInActivity.this, SignUpActivity.class);
+        Intent signUpIntent = new Intent(SignInActivity.this, SignUpActivityZero.class);
         signUpIntent.putExtra("userType", userType);
         startActivity(signUpIntent);
     }
