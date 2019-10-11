@@ -46,7 +46,7 @@ public class SignInActivity extends AppCompatActivity {
             userType = null;
         }
         // Now I can pass userType to sign in if we need it.
-        Intent signUpIntent = new Intent(SignInActivity.this, SignUpActivity.class);
+        Intent signUpIntent = new Intent(SignInActivity.this, SignUpActivityZero.class);
         signUpIntent.putExtra("userType", userType);
         startActivity(signUpIntent);
     }
