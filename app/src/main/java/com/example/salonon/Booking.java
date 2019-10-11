@@ -17,7 +17,7 @@ public class Booking {
         Profile clientProfile; // Pointer to the Client's Profile
         String salonName; // The name of the Salon
         String salonAddress; // The address of the Salon
-        Image salonProfilePicture; // Salon profile Picture.
+        Image salonProfilePicture; // Salon activity_profile Picture.
         Profile salonProfile; // Pointer to the Salon's Profile
         String dateOfAppointment; // The date of the appointment
         String timeOfAppointment; // The time of the appointment

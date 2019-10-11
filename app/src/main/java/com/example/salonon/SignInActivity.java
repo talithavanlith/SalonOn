@@ -27,7 +27,7 @@ public class SignInActivity extends AppCompatActivity {
         API api = new APIImpl();
         Profile userProfile = api.loginToProfile(email, password);
         if (userProfile != null) {
-            // Now Open up the home screen intent and pass the user profile.
+            // Now Open up the home screen intent and pass the user activity_profile.
             Toast.makeText(this, "Login Successful.", Toast.LENGTH_LONG).show();
             Log.v("SalonOn", "Opening home screen of user");
         } else {

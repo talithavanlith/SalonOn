@@ -4,7 +4,7 @@ import android.media.Image;
 
 public class Profile {
     // Encapsulated the data a Profile should hold, including:
-    String typeOfProfile; // Whether the profile is for a Client, Stylist, or Salon Owner
+    String typeOfProfile; // Whether the activity_profile is for a Client, Stylist, or Salon Owner
     String emailAddress; // Email address
     String password; // password
     String firstName; // First Name
