@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#F4FBD5">
+
+
+    <Button
+        android:id="@+id/btnMenu"
+        android:layout_width="42dp"
+        android:layout_height="31dp"
+        android:background="#1E1B1B"
+        app:layout_constraintBottom_toBottomOf="@+id/txtDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096" />
+
+    <TextView
+        android:id="@+id/txtDetails"
+        android:layout_width="428dp"
+        android:layout_height="43dp"
+        android:background="#001E1B1B"
+        android:gravity="center"
+        android:text="x years experience - x miles away"
+        android:textColor="#171515"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtStylistName" />
+
+    <ImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="92dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginRight="160dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtStylistName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/txtStylistName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="10sp"
+        android:text="Stylist Name"
+        android:textColor="#1E1B1B"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgProfile" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="422dp"
+        android:layout_height="587dp"
+        android:background="#171515"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDetails"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtSpecialize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="152dp"
+                android:layout_marginLeft="152dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="151dp"
+                android:layout_marginRight="151dp"
+                android:text="I specialize in:"
+                android:textColor="#f7f7f4"
+                android:textSize="22sp"
+                android:visibility="visible"
+                app:fontFamily="sans-serif-black"
+                app:layout_constraintBottom_toTopOf="@+id/txtStyle1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtStyle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="189dp"
+                android:layout_marginLeft="189dp"
+                android:layout_marginEnd="189dp"
+                android:layout_marginRight="189dp"
+                android:text="Style 1"
+                android:textColor="#f7f7f4"
+                android:textSize="22sp"
+                android:visibility="visible"
+                app:fontFamily="sans-serif-black"
+                app:layout_constraintBottom_toTopOf="@+id/txtStyle2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtSpecialize" />
+
+            <TextView
+                android:id="@+id/txtStyle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="189dp"
+                android:layout_marginLeft="189dp"
+                android:layout_marginEnd="189dp"
+                android:layout_marginRight="189dp"
+                android:text="Style 2"
+                android:textColor="#f7f7f4"
+                android:textSize="22sp"
+                android:visibility="visible"
+                app:fontFamily="sans-serif-black"
+                app:layout_constraintBottom_toTopOf="@+id/txtStyle3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtStyle1" />
+
+            <TextView
+                android:id="@+id/txtStyle3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="176dp"
+                android:layout_marginLeft="176dp"
+                android:layout_marginEnd="176dp"
+                android:layout_marginRight="176dp"
+                android:text="Style 3"
+                android:textColor="#f7f7f4"
+                android:textSize="22sp"
+                android:visibility="visible"
+                app:fontFamily="sans-serif-black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtStyle2" />
+
+            <TextView
+                android:id="@+id/txtAvailableStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="177dp"
+                android:layout_marginEnd="295dp"
+                android:layout_marginRight="295dp"
+                android:layout_marginBottom="11dp"
+                android:text="Available styles:"
+                android:textColor="#f7f7f4"
+                android:textSize="15sp"
+                android:visibility="visible"
+                app:fontFamily="sans-serif-black"
+                app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView"
+                android:layout_width="422dp"
+                android:layout_height="264dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginBottom="11dp"
+                app:layout_constraintBottom_toTopOf="@+id/txtReviews"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtAvailableStyle">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/btnStyle1"
+                        android:layout_width="190dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_weight="1"
+                        android:background="#322E2D"
+                        android:text="Style 1"
+                        android:textColor="#f7f7f4"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btnStyle2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btnStyle2"
+                        android:layout_width="190dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_weight="1"
+                        android:background="#322E2D"
+                        android:text="Style 2"
+                        android:textColor="#f7f7f4"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btnStyle3"
+                        app:layout_constraintStart_toEndOf="@+id/btnStyle1"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btnStyle3"
+                        android:layout_width="190dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_weight="1"
+                        android:background="#322E2D"
+                        android:text="Style 3"
+                        android:textColor="#f7f7f4"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btnStyle4"
+                        app:layout_constraintStart_toEndOf="@+id/btnStyle2"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btnStyle4"
+                        android:layout_width="190dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#322E2D"
+                        android:text="Style 4"
+                        android:textColor="#f7f7f4"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/btnStyle3"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/txtReviews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="317dp"
+                android:layout_marginRight="317dp"
+                android:layout_marginBottom="12dp"
+                android:text="Reviews:"
+                android:textColor="#f7f7f4"
+                android:textSize="22sp"
+                android:visibility="visible"
+                app:fontFamily="sans-serif-black"
+                app:layout_constraintBottom_toTopOf="@+id/txtCleanliness"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+            <TextView
+                android:id="@+id/txtCommentsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginEnd="319dp"
+                android:layout_marginRight="319dp"
+                android:text="Comments:"
+                android:textColor="#f7f7f4"
+                android:textSize="19sp"
+                android:visibility="visible"
+                app:fontFamily="sans-serif-black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtAccessibility" />
+
+            <TextView
+                android:id="@+id/txtCleanliness"
+                android:layout_width="130dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="29dp"
+                android:layout_marginLeft="29dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="263dp"
+                android:layout_marginRight="263dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="right"
+                android:text="Cleanliness:"
+                android:textColor="#f7f7f4"
+                android:textSize="15sp"
+                android:visibility="visible"
+                app:fontFamily="sans-serif-black"
+                app:layout_constraintBottom_toTopOf="@+id/txtFriendliness"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtReviews" />
+
+            <TextView
+                android:id="@+id/txtFriendliness"
+                android:layout_width="130dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="268dp"
+                android:layout_marginRight="268dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="end"
+                android:text="Friendliness:"
+                android:textColor="#f7f7f4"
+                android:textSize="15sp"
+                android:visibility="visible"
+                app:fontFamily="sans-serif-black"
+                app:layout_constraintBottom_toTopOf="@+id/txtProfessionalism"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.177"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtCleanliness" />
+
+            <TextView
+                android:id="@+id/txtProfessionalism"
+                android:layout_width="130dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="268dp"
+                android:layout_marginRight="268dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="right"
+                android:text="Professionalism:"
+                android:textColor="#f7f7f4"
+                android:textSize="15sp"
+                android:visibility="visible"
+                app:fontFamily="sans-serif-black"
+                app:layout_constraintBottom_toTopOf="@+id/txtAccessibility"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.179"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtFriendliness" />
+
+            <TextView
+                android:id="@+id/txtAccessibility"
+                android:layout_width="130dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="268dp"
+                android:layout_marginRight="268dp"
+                android:gravity="right"
+                android:text="Accessibility:"
+                android:textColor="#f7f7f4"
+                android:textSize="15sp"
+                android:visibility="visible"
+                app:fontFamily="sans-serif-black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.179"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtProfessionalism" />
+
+            <TextView
+                android:id="@+id/txtComment"
+                android:layout_width="338dp"
+                android:layout_height="72dp"
+                android:layout_marginStart="44dp"
+                android:layout_marginLeft="44dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="59dp"
+                android:layout_marginRight="59dp"
+                android:layout_marginBottom="9dp"
+                android:gravity="start"
+                android:text="Very friendly staff, easy to access with mobility parking and ramp. Would be nice to have a stall that allows for a wheelchair to be parked at though.                                                                                   - Jenna Love"
+                android:textColor="#f7f7f4"
+                android:textSize="15sp"
+                android:visibility="visible"
+                app:fontFamily="sans-serif-condensed"
+                app:layout_constraintBottom_toTopOf="@+id/txtComment2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtCommentsLabel"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/txtComment2"
+                android:layout_width="334dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="44dp"
+                android:layout_marginLeft="44dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="59dp"
+                android:layout_marginRight="59dp"
+                android:gravity="start"
+                android:text="The sinks were in need of a clean but the rest of the salon was in a very nice condition. - Max Connington"
+                android:textColor="#f7f7f4"
+                android:textSize="15sp"
+                android:visibility="visible"
+                app:fontFamily="sans-serif-condensed"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.16"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtComment" />
+
+            <RatingBar
+                android:id="@+id/rateClean"
+                style="@android:style/Widget.Holo.Light.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginLeft="34dp"
+                android:layout_marginTop="75dp"
+                android:layout_marginEnd="56dp"
+                android:layout_marginRight="56dp"
+                android:background="#00313131"
+                android:rating="3.5"
+                app:layout_constraintBottom_toTopOf="@+id/rateFriend"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/txtCleanliness"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+            <RatingBar
+                android:id="@+id/rateFriend"
+                style="@android:style/Widget.Holo.Light.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginLeft="34dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="56dp"
+                android:layout_marginRight="56dp"
+                android:layout_marginBottom="5dp"
+                android:background="#00313131"
+                android:rating="5"
+                app:layout_constraintBottom_toTopOf="@+id/rateProfes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/txtFriendliness"
+                app:layout_constraintTop_toBottomOf="@+id/rateClean" />
+
+            <RatingBar
+                android:id="@+id/rateProfes"
+                style="@android:style/Widget.Holo.Light.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginLeft="34dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="56dp"
+                android:layout_marginRight="56dp"
+                android:layout_marginBottom="5dp"
+                android:background="#00313131"
+                android:rating="2"
+                app:layout_constraintBottom_toTopOf="@+id/rateAccess"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtProfessionalism"
+                app:layout_constraintTop_toBottomOf="@+id/rateFriend" />
+
+            <RatingBar
+                android:id="@+id/rateAccess"
+                style="@android:style/Widget.Holo.Light.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginLeft="34dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="56dp"
+                android:layout_marginRight="56dp"
+                android:background="#00313131"
+                android:rating="4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtAccessibility"
+                app:layout_constraintTop_toBottomOf="@+id/rateProfes" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
