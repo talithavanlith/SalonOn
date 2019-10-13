@@ -12,9 +12,11 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
+// TODO Consider rxjava and retrofit
+
 public class Network {
     public String herokuURL = "https://salon-on-backend.herokuapp.com/";
-    public String herokuTestURL = "https://salon-on.herokuapp.com/";
+    public String herokuTestURL = "https://salon-on-backend-test-thomas.herokuapp.com/";
 
     public String get(String url) {
         try {

@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         APIImpl api = new APIImpl();
-        api.getClientProfile(1);
+//        api.getClientProfile(1);
+//        String s = api.getAmenityByID(1);
         setContentView(R.layout.activity_main);
 
     }

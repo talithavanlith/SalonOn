@@ -45,11 +45,24 @@ public class APIImpl implements API {
 
     }
 
+    public String getAmenityByID(int id) {
+        try {
+            Map<String, String> parameters = new HashMap<>();
+            parameters.put("id", String.valueOf(id));
+            String response = network.post(network.herokuURL + "amenity-by-id", parameters);
+            JSONObject jsonAmenity = new JSONObject(response);
+            String name = (String) jsonAmenity.get("name");
+            return name;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     public Profile getClientProfile(int clientID) {
         try {
             Map<String, String> parameters = new HashMap<>();
             parameters.put("clientID", String.valueOf(clientID));
-            String response = network.post(network.herokuTestURL + "test", parameters);
+            String response = network.post(network.herokuURL + "client-by-id", parameters);
             JSONObject jsonProfile = new JSONObject(response);
             String firstName = (String) jsonProfile.get("firstName");
             // TODO Get all of the values and create a activity_profile from them.
