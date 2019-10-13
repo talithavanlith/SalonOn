@@ -74,7 +74,7 @@
             android:id="@+id/txtStylistInfo"
             android:layout_width="414dp"
             android:layout_height="496dp"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="0dp"
             android:background="#171515"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
