@@ -22,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
         APIImpl api = new APIImpl();
 //        api.getClientProfile(1);
 //        String s = api.getAmenityByID(1);
+//        Profile p = new Profile("Salon","testemail6@gmail.com","testPassword","firstname","lastname",null,null,null,null,null,null,"I'm good",null);
+//        api.createNewProfile(p);
+        api.loginToProfile("testemail6@gmail.com", "testPassword");
         setContentView(R.layout.activity_main);
 
     }
