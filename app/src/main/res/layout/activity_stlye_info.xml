@@ -83,24 +83,22 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView10"
+                android:id="@+id/imgTimeLogo"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:layout_marginStart="13dp"
                 android:layout_marginLeft="13dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginRight="9dp"
                 android:layout_marginBottom="32dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView2"
+                app:layout_constraintEnd_toStartOf="@+id/txtTime"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2"
-                app:layout_constraintVertical_bias="1.0"
+                app:layout_constraintTop_toBottomOf="@+id/scrollImages"
+                app:layout_constraintVertical_bias="0.125"
                 app:srcCompat="@android:drawable/ic_menu_recent_history" />
 
             <HorizontalScrollView
-                android:id="@+id/horizontalScrollView2"
+                android:id="@+id/scrollImages"
                 android:layout_width="412dp"
                 android:layout_height="232dp"
                 android:layout_marginTop="16dp"
@@ -108,7 +106,7 @@
                 android:layout_marginRight="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtSpecialize">
+                app:layout_constraintTop_toBottomOf="@+id/txtImagesOfWork2">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -147,7 +145,7 @@
             </HorizontalScrollView>
 
             <TextView
-                android:id="@+id/txtSpecialize"
+                android:id="@+id/txtImagesOfWork"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -155,17 +153,19 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginBottom="16dp"
                 android:text="Images of my work - "
                 android:textColor="#f7f7f4"
                 android:textSize="18sp"
                 android:visibility="visible"
                 app:fontFamily="sans-serif-black"
-                app:layout_constraintEnd_toStartOf="@+id/txtSpecialize2"
+                app:layout_constraintBottom_toTopOf="@+id/scrollImages"
+                app:layout_constraintEnd_toStartOf="@+id/txtImagesOfWork2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/txtSpecialize2"
+                android:id="@+id/txtImagesOfWork2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -173,39 +173,39 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="139dp"
                 android:layout_marginRight="139dp"
+                android:layout_marginBottom="16dp"
                 android:text="Mid-Length"
                 android:textColor="#f7f7f4"
                 android:textSize="18sp"
                 android:visibility="visible"
                 app:fontFamily="sans-serif-condensed"
+                app:layout_constraintBottom_toTopOf="@+id/scrollImages"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txtSpecialize"
+                app:layout_constraintStart_toEndOf="@+id/txtImagesOfWork"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView11"
+                android:id="@+id/imgPriceLogo"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginEnd="6dp"
-                android:layout_marginRight="6dp"
                 android:layout_marginBottom="22dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView"
-                app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2"
+                app:layout_constraintEnd_toStartOf="@+id/txtPrice"
+                app:layout_constraintStart_toEndOf="@+id/txtTime"
+                app:layout_constraintTop_toBottomOf="@+id/scrollImages"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@android:drawable/ic_input_delete" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/txtPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="44dp"
-                android:layout_marginEnd="45dp"
-                android:layout_marginRight="45dp"
+                android:layout_marginEnd="55dp"
+                android:layout_marginRight="55dp"
                 android:layout_marginBottom="53dp"
                 android:text="$X"
                 android:textColor="#F5F5F1"
@@ -213,28 +213,45 @@
                 app:fontFamily="sans-serif-black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView11"
-                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintStart_toEndOf="@+id/imgPriceLogo"
+                app:layout_constraintTop_toBottomOf="@+id/scrollImages"
+                app:layout_constraintVertical_bias="0.049" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/txtTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="9dp"
                 android:layout_marginLeft="9dp"
                 android:layout_marginTop="46dp"
-                android:layout_marginEnd="28dp"
-                android:layout_marginRight="28dp"
                 android:layout_marginBottom="51dp"
                 android:text="X.X hr"
                 android:textColor="#F5F5F1"
                 android:textSize="30dp"
                 app:fontFamily="sans-serif-black"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView11"
-                app:layout_constraintStart_toEndOf="@+id/imageView10"
-                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2" />
+                app:layout_constraintEnd_toStartOf="@+id/imgPriceLogo"
+                app:layout_constraintStart_toEndOf="@+id/imgTimeLogo"
+                app:layout_constraintTop_toBottomOf="@+id/scrollImages"
+                app:layout_constraintVertical_bias="0.01999998" />
+
+            <Button
+                android:id="@+id/btnBookNow"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="58dp"
+                android:layout_marginLeft="58dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="58dp"
+                android:layout_marginRight="58dp"
+                android:layout_marginBottom="20dp"
+                android:background="#81CF4D"
+                android:text="BOOK NOW"
+                android:textColor="#F7F7F2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgPriceLogo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
