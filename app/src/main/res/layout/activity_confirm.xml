@@ -86,7 +86,7 @@
         app:srcCompat="@android:drawable/ic_menu_recent_history" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtDate"
         android:layout_width="299dp"
         android:layout_height="31dp"
         android:gravity="center"
@@ -175,11 +175,20 @@
         app:layout_constraintVertical_bias="0.186" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtNotesInput"
         android:layout_width="342dp"
         android:layout_height="73dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="50dp"
         app:boxBackgroundColor="#FFFFFF"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="480dp">
+        app:layout_constraintBottom_toTopOf="@+id/btnConfirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInfo">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
