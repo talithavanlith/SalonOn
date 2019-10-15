@@ -28,6 +28,11 @@ public class SearchActivity extends AppCompatActivity {
 
         API api = new APIImpl();
         Profile userProfile = api.loginToProfile(email, password);
+        if(userProfile != null) {
+            Toast.makeText(this, "User Login Successful!", Toast.LENGTH_LONG).show();
+        } else {
+            //Toast.makeText(this, "Error, login unsuccessful", Toast.LENGTH_SHORT).show();
+        }
         // add latitude and longitude of UNC CH. These values will eventually come from userProfile
         String latitude = "35.9049° N" ;
         String longitude = "79.0469° W";
@@ -41,7 +46,7 @@ public class SearchActivity extends AppCompatActivity {
         } else {
             // test
             // Test data
-            Toast.makeText(this, "Unable to get profile data from the server. Displaying local test data.", Toast.LENGTH_LONG).show();
+//            Toast.makeText(this, "Unable to get profile data from the server. Displaying local test data.", Toast.LENGTH_LONG).show();
             Image image = null;
             String creditCardNumber = "00000002";
             String bio = "I am a " + "stylist";

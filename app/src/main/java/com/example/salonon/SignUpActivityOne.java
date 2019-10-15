@@ -7,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -60,7 +61,14 @@ public class SignUpActivityOne extends AppCompatActivity {
         Booking[] bookings = new Booking[1];
         Profile userProfile = makeProfile(userType, email, password, name, image,true, true, true, phoneNumber, creditCardNumber, bio, bookings);
 
-        api.createNewProfile(userProfile);
+        if(api.createNewProfile(userProfile) != null) {
+            // Account Creation Successful
+            Toast.makeText(this, "New Account Created", Toast.LENGTH_LONG).show();
+            Log.v("Profile", "User Profile Created!!!");
+        } else {
+            Toast.makeText(this, "Error, new account not created.", Toast.LENGTH_LONG).show();
+            Log.v("Profile", "Failed to Create User Profile!!!");
+        }
 
         // Now that profile is created, go to search intent:
         Intent searchIntent = new Intent(SignUpActivityOne.this, SearchActivity.class);
