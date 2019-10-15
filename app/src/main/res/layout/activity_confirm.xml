@@ -1,6 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#F4FBD5">
 
-</LinearLayout>
+
+    <Button
+        android:id="@+id/btnMenu"
+        android:layout_width="42dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="16dp"
+        android:background="#1E1B1B"
+        app:layout_constraintBottom_toBottomOf="@+id/txtDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096" />
+
+
+    <ImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="92dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtInfo"
+        app:layout_constraintEnd_toStartOf="@+id/txtStylistName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.85"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/txtStylistName"
+        android:layout_width="111dp"
+        android:layout_height="86dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="115dp"
+        android:layout_marginEnd="95dp"
+        android:layout_marginRight="95dp"
+        android:layout_marginBottom="10dp"
+        android:lineSpacingExtra="10sp"
+        android:text="Stylist Name"
+        android:textColor="#1E1B1B"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgProfile"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtInfo"
+        android:layout_width="358dp"
+        android:layout_height="230dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="27dp"
+        android:background="#FFFFFF"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtStylistName" />
+
+    <ImageView
+        android:id="@+id/imgTimeLogo"
+        android:layout_width="59dp"
+        android:layout_height="58dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
+        app:layout_constraintEnd_toStartOf="@+id/txtTime"
+        app:layout_constraintTop_toTopOf="@+id/txtInfo"
+        app:layout_constraintVertical_bias="0.191"
+        app:srcCompat="@android:drawable/ic_menu_recent_history" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="299dp"
+        android:layout_height="31dp"
+        android:gravity="center"
+        android:text="Monday 21st September"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:fontFamily="sans-serif-black"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="@+id/txtInfo"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="@+id/txtInfo"
+        app:layout_constraintTop_toBottomOf="@+id/imgTimeLogo"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="299dp"
+        android:layout_height="31dp"
+        android:gravity="center"
+        android:text="11:00 am - 12:30 pm"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:fontFamily="sans-serif-condensed"
+        app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
+        app:layout_constraintEnd_toEndOf="@+id/txtInfo"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="@+id/txtInfo"
+        app:layout_constraintTop_toBottomOf="@+id/imgTimeLogo"
+        app:layout_constraintVertical_bias="0.74" />
+
+    <TextView
+        android:id="@+id/txtTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:text="X.X hr"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:fontFamily="sans-serif-black"
+        app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
+        app:layout_constraintEnd_toStartOf="@+id/imgPriceLogo"
+        app:layout_constraintTop_toTopOf="@+id/txtInfo"
+        app:layout_constraintVertical_bias="0.236" />
+
+    <ImageView
+        android:id="@+id/imgPriceLogo"
+        android:layout_width="65dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
+        app:layout_constraintEnd_toStartOf="@+id/txtPrice"
+        app:layout_constraintTop_toTopOf="@+id/txtInfo"
+        app:layout_constraintVertical_bias="0.194"
+        app:srcCompat="@android:drawable/ic_notification_clear_all" />
+
+    <TextView
+        android:id="@+id/txtPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:text="$X"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:fontFamily="sans-serif-black"
+        app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
+        app:layout_constraintEnd_toEndOf="@+id/txtInfo"
+        app:layout_constraintTop_toTopOf="@+id/txtInfo"
+        app:layout_constraintVertical_bias="0.236" />
+
+    <TextView
+        android:id="@+id/txtStyle"
+        android:layout_width="93dp"
+        android:layout_height="53dp"
+        android:text="Mid Length Style"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        app:fontFamily="sans-serif-black"
+        app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
+        app:layout_constraintEnd_toStartOf="@+id/imgTimeLogo"
+        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintStart_toStartOf="@+id/txtInfo"
+        app:layout_constraintTop_toTopOf="@+id/txtInfo"
+        app:layout_constraintVertical_bias="0.186" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="342dp"
+        android:layout_height="73dp"
+        app:boxBackgroundColor="#FFFFFF"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="480dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:hint="Any notes for the stylist?" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="310dp"
+        android:layout_height="61dp"
+        android:background="#81CF4D"
+        android:text="REQUEST BOOOKING!"
+        android:textColor="#F7F7F2"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+</androidx.constraintlayout.widget.ConstraintLayout>
