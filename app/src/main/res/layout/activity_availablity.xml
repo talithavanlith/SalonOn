@@ -12,6 +12,7 @@
         android:id="@+id/btnMenu"
         android:layout_width="42dp"
         android:layout_height="31dp"
+        android:layout_marginTop="16dp"
         android:background="#1E1B1B"
         app:layout_constraintBottom_toBottomOf="@+id/txtDetails"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,36 +25,42 @@
         android:id="@+id/imgProfile"
         android:layout_width="92dp"
         android:layout_height="84dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="160dp"
-        android:layout_marginRight="160dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtStylistName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_marginStart="92dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginRight="21dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtInfo"
+        app:layout_constraintEnd_toStartOf="@+id/txtStylistName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/txtStylistName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="111dp"
+        android:layout_height="86dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="95dp"
+        android:layout_marginRight="95dp"
+        android:layout_marginBottom="10dp"
         android:lineSpacingExtra="10sp"
         android:text="Stylist Name"
         android:textColor="#1E1B1B"
         android:textSize="28sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/txtDetails"
+        app:layout_constraintBottom_toTopOf="@+id/txtInfo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgProfile" />
+        app:layout_constraintStart_toEndOf="@+id/imgProfile"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="416dp"
-        android:layout_height="533dp"
+        android:layout_width="425dp"
+        android:layout_height="466dp"
         android:background="#171515"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="16dp"
@@ -88,7 +95,100 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/viewCalendar"
+                android:layout_width="320dp"
+                android:layout_height="375dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginLeft="52dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="52dp"
+                android:layout_marginRight="52dp"
+                android:background="#FFFFFF"
+                android:text="CALENDLY"
+                android:textColor="#121111"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/txtInfo"
+        android:layout_width="366dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="27dp"
+        android:background="#FFFFFF"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtStylistName" />
+
+    <ImageView
+        android:id="@+id/imgTimeLogo"
+        android:layout_width="59dp"
+        android:layout_height="58dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
+        app:layout_constraintEnd_toStartOf="@+id/txtTime"
+        app:layout_constraintTop_toTopOf="@+id/txtInfo"
+        app:srcCompat="@android:drawable/ic_menu_recent_history" />
+
+    <TextView
+        android:id="@+id/txtTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
+        android:text="X.X hr"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:fontFamily="sans-serif-black"
+        app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
+        app:layout_constraintEnd_toStartOf="@+id/imgPriceLogo"
+        app:layout_constraintTop_toTopOf="@+id/txtInfo" />
+
+    <ImageView
+        android:id="@+id/imgPriceLogo"
+        android:layout_width="65dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
+        app:layout_constraintEnd_toStartOf="@+id/txtPrice"
+        app:layout_constraintTop_toTopOf="@+id/txtInfo"
+        app:srcCompat="@android:drawable/ic_notification_clear_all" />
+
+    <TextView
+        android:id="@+id/txtPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="$X"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:fontFamily="sans-serif-black"
+        app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
+        app:layout_constraintEnd_toEndOf="@+id/txtInfo"
+        app:layout_constraintTop_toTopOf="@+id/txtInfo" />
+
+    <TextView
+        android:id="@+id/txtStyle"
+        android:layout_width="93dp"
+        android:layout_height="53dp"
+        android:text="Mid Length Style"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        app:fontFamily="sans-serif-black"
+        app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
+        app:layout_constraintEnd_toStartOf="@+id/imgTimeLogo"
+        app:layout_constraintStart_toStartOf="@+id/txtInfo"
+        app:layout_constraintTop_toTopOf="@+id/txtInfo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
