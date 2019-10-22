@@ -24,7 +24,7 @@ public class ClientProfile extends Profile {
         // Time to complete the service of the booking
 
 
-    public ClientProfile (String typeOfProfile, String emailAddress, String password, String firstName, String lastName, Image profilePicture, Boolean shareContactInfoWhenBookingIsRequested, Boolean useMobileData, Boolean allowNotifications, String phoneNumber, String creditCardNumber, String bio, Booking[] arrayOfBookings) {
-        super(typeOfProfile, emailAddress, password, firstName, lastName, profilePicture, shareContactInfoWhenBookingIsRequested, useMobileData, allowNotifications, phoneNumber, creditCardNumber, bio, arrayOfBookings);
+    public ClientProfile (String typeOfProfile, String emailAddress, String password, String firstName, String lastName, Image profilePicture, Boolean shareContactInfoWhenBookingIsRequested, Boolean useMobileData, Boolean allowNotifications, String phoneNumber, String creditCardNumber, String bio, Booking[] arrayOfBookings, String zipCode) {
+        super(typeOfProfile, emailAddress, password, firstName, lastName, profilePicture, shareContactInfoWhenBookingIsRequested, useMobileData, allowNotifications, phoneNumber, creditCardNumber, bio, arrayOfBookings, zipCode);
     }
 }

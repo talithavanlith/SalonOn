@@ -3,6 +3,7 @@ package com.example.salonon;
 import android.media.Image;
 import android.os.AsyncTask;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -17,6 +18,20 @@ import java.util.Map;
 
 public class APIImpl implements API {
     Network network = new Network();
+
+    public Profile jsonToProfile(JSONObject profile) {
+        try {
+            String typeOfProfile = (int) profile.get("isStylist") == 0 ? (int) profile.get("isSalon") == 0 ? "Client" : "Salon" : "Stylist";
+            String email = (String) profile.get("email");
+            String firstName = (String) profile.get("first");
+            String lastName = (String) profile.get("last");
+            String bio = profile.get("stylistBio") == "null" ? (String) profile.get("salonBio") : (String) profile.get("stylistBio");
+            Profile newProfile = new Profile(typeOfProfile, email, null, firstName, lastName, null, null, null, null, null, null, bio, null, null);
+            return newProfile;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
     public String createNewProfile(Profile profileToAddToDatabase) {
         try {
@@ -38,9 +53,10 @@ public class APIImpl implements API {
 //                TODO salon rate
             } else {
                 parameters.put("isSalon", "FALSE");
-                parameters.put("salonBio", "NONE");
+                parameters.put("isStylist", "FALSE");
+                parameters.put("salonBio", "NULL");
             }
-            String response = network.post(network.herokuTestURL + "createuser", parameters);
+            String response = network.post(network.herokuURL + "createuser", parameters);
             JSONObject jsonStatus = new JSONObject(response);
             String status = (String) jsonStatus.get("status");
             return status;
@@ -60,16 +76,17 @@ public class APIImpl implements API {
             Map<String, String> parameters = new HashMap<>();
             parameters.put("user", emailAddress);
             parameters.put("pass", password);
-            String response = network.post(network.herokuTestURL + "login", parameters);
+            String response = network.post(network.herokuURL + "login", parameters);
             JSONObject json = new JSONObject(response);
             // TODO This isn't quite right yet
-            String typeOfProfile = json.getString("isStylist") == "0" ? (int) json.get("isSalon") == 0 ? "Client" : "Salon" : "Stylist";
-            String email = (String) json.get("email");
-            String firstName = (String) json.get("first");
-            String lastName = (String) json.get("last");
-            String bio = json.get("stylistBio") == "null" ? (String) json.get("salonBio") : (String) json.get("stylistBio");
-            Profile profile = new Profile(typeOfProfile, email, null, firstName, lastName, null, null, null, null, null, null, bio, null);
-            return profile;
+            JSONObject profile = json.getJSONObject("profile");
+            String typeOfProfile = (int) profile.get("isStylist") == 0 ? (int) profile.get("isSalon") == 0 ? "Client" : "Salon" : "Stylist";
+            String email = (String) profile.get("email");
+            String firstName = (String) profile.get("first");
+            String lastName = (String) profile.get("last");
+            String bio = profile.get("stylistBio") == "null" ? (String) profile.get("salonBio") : (String) profile.get("stylistBio");
+            Profile newProfile = new Profile(typeOfProfile, email, null, firstName, lastName, null, null, null, null, null, null, bio, null, null);
+            return newProfile;
         } catch (Exception e) {
             return null;
         }
@@ -77,10 +94,24 @@ public class APIImpl implements API {
     }
 
     /* Given an email and password, returns the Profile information for a given account. */
-
-    public Profile[] stylistSearchForProfilesByLocation(String latitude, String longitude, int radius) {
-        return null;
-
+//todo profiles don't have zipcodes.  use mock data? pass the email to the server and have the server query the database?
+    public Profile[] stylistSearchForProfilesByLocation(Profile profile) {
+        try {
+            Map<String, String> parameters = new HashMap<>();
+            parameters.put("zip", "27514");
+            parameters.put("radius", "10");
+            String response = network.post(network.herokuURL + "searchstylistslocation", parameters);
+            JSONObject json = new JSONObject(response);
+            JSONArray array = json.getJSONArray("profiles");
+            Profile[] objects = new Profile[array.length()];
+            for(int i=0;i<array.length();i++)
+            {
+                objects[i] = jsonToProfile(array.getJSONObject(i));
+            }
+            return objects;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public Profile[] salonSearchForProfilesByLocation(String latitude, String longitude, int radius) {
@@ -88,11 +119,12 @@ public class APIImpl implements API {
 
     }
 
+    // TODO Delete?
     public String getAmenityByID(int id) {
         try {
             Map<String, String> parameters = new HashMap<>();
             parameters.put("id", String.valueOf(id));
-            String response = network.post(network.herokuTestURL + "amenity-by-id", parameters);
+            String response = network.post(network.herokuURL + "amenity-by-id", parameters);
             JSONObject jsonAmenity = new JSONObject(response);
             String name = (String) jsonAmenity.get("name");
             return name;
@@ -104,7 +136,7 @@ public class APIImpl implements API {
     public Profile getClientProfile(int clientID) {
         try {
             Map<String, String> parameters = new HashMap<>();
-            parameters.put("clientID", String.valueOf(clientID));
+            parameters.put("id", String.valueOf(clientID));
             String response = network.post(network.herokuURL + "client-by-id", parameters);
             JSONObject jsonProfile = new JSONObject(response);
             String firstName = (String) jsonProfile.get("firstName");

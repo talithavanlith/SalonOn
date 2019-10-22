@@ -40,7 +40,7 @@ public class SearchActivity extends AppCompatActivity {
 
         // Display stylists in activity_search
 
-        Profile[] arrayOfStylists = api.stylistSearchForProfilesByLocation(latitude, longitude, radius);
+        Profile[] arrayOfStylists = api.stylistSearchForProfilesByLocation(userProfile);
         if (arrayOfStylists != null) {
             fillSearchActivityWithData(arrayOfStylists);
         } else {
@@ -53,7 +53,8 @@ public class SearchActivity extends AppCompatActivity {
             Booking[] bookings = new Booking[1];
             String name = "test!!!";
             String phoneNumber = "999";
-            Profile testProfile = makeProfile("Stylist", email, password, name, image,true,true, true, phoneNumber, creditCardNumber, bio, bookings);
+            String zipCode = "27599";
+            Profile testProfile = makeProfile("Stylist", email, password, name, image,true,true, true, phoneNumber, creditCardNumber, bio, bookings, zipCode);
             Profile[] testProfiles = new Profile[1];
             testProfiles[0] = testProfile;
             fillSearchActivityWithData(testProfiles);
@@ -65,11 +66,11 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
-    private Profile makeProfile(String userType, String email, String password, String name, @Nullable Image image, Boolean shareContactInfoWhenBookingIsRequested, Boolean useMobileData, Boolean allowNotifications, String phoneNumber, String creditCardNumber, String bio, Booking[] arrayOfBookings) {
+    private Profile makeProfile(String userType, String email, String password, String name, @Nullable Image image, Boolean shareContactInfoWhenBookingIsRequested, Boolean useMobileData, Boolean allowNotifications, String phoneNumber, String creditCardNumber, String bio, Booking[] arrayOfBookings, String zip) {
         String firstName = name.split(" ")[0];
         // String lastName = name.split(" ")[1];
         String lastName = firstName;
-        Profile userProfile = new Profile(userType, email, password, firstName, lastName, image, shareContactInfoWhenBookingIsRequested, useMobileData, allowNotifications, phoneNumber, creditCardNumber, bio, arrayOfBookings);
+        Profile userProfile = new Profile(userType, email, password, firstName, lastName, image, shareContactInfoWhenBookingIsRequested, useMobileData, allowNotifications, phoneNumber, creditCardNumber, bio, arrayOfBookings, zip);
         return userProfile;
     }
 
@@ -107,5 +108,11 @@ public class SearchActivity extends AppCompatActivity {
         Intent mapIntent = new Intent(SearchActivity.this, MapActivity.class);
 
         startActivity(mapIntent);
+    }
+
+    public void stylistProfileOnClick(View v) {
+        // Create activity_profile Intent;
+        Intent stylistProfileIntent = new Intent(SearchActivity.this, ProfileActivity.class);
+        startActivity(stylistProfileIntent);
     }
 }

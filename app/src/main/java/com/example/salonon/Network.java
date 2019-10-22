@@ -87,13 +87,14 @@ public class Network {
         protected String doInBackground(String... urls) {
             try {
                 // Create a connection to the "test" endpoint on our server.
-                URL url = new URL(urls[0]);
+                String queryParameters = getParametersString(parameters);
+                URL url = new URL(urls[0] + queryParameters);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod("POST");
 
                 con.setDoOutput(true);
                 DataOutputStream out = new DataOutputStream(con.getOutputStream());
-                out.writeBytes(getParametersString(parameters));
+//                out.writeBytes(getParametersString(parameters));
                 out.flush();
                 out.close();
 
@@ -121,21 +122,17 @@ public class Network {
             throws UnsupportedEncodingException {
         StringBuilder result = new StringBuilder();
 
-        result.append("{");
+        result.append("?");
         for (Map.Entry<String, String> entry : parameters.entrySet()) {
-            result.append("\"");
             result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
-            result.append("\"");
-            result.append(":");
-            result.append("\"");
+            result.append("=");
             result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
-            result.append("\"");
-            result.append(",");
+            result.append("&");
         }
 
         String resultString = result.toString();
         return resultString.length() > 0
-                ? resultString.substring(0, resultString.length() - 1) + "}"
-                : resultString + "}";
+                ? resultString.substring(0, resultString.length() - 1)
+                : resultString;
     }
 }

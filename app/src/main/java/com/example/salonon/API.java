@@ -14,7 +14,7 @@ public interface API {
 
     /* Given an email and password, returns the Profile information for a given account. */
 
-    Profile[] stylistSearchForProfilesByLocation(String latitude, String longitude, int radius);
+    Profile[] stylistSearchForProfilesByLocation(Profile profile);
 
     Profile[] salonSearchForProfilesByLocation(String latitude, String longitude, int radius);
 
