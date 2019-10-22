@@ -81,8 +81,12 @@ public class SignUpActivityOne extends AppCompatActivity {
 
     private Profile makeProfile(String userType, String email, String password, String name, @Nullable Image image, Boolean shareContactInfoWhenBookingIsRequested, Boolean useMobileData, Boolean allowNotifications, String phoneNumber, String creditCardNumber, String bio, Booking[] arrayOfBookings, String zip) {
         String firstName = name.split(" ")[0];
-         String lastName = name.split(" ")[1];
-//        String lastName = firstName;
+        String lastName;
+        try {
+            lastName = name.split(" ")[1];
+        } catch (Exception e) {
+            lastName = "lastName";
+        }
         Profile userProfile = new Profile(userType, email, password, firstName, lastName, image, shareContactInfoWhenBookingIsRequested, useMobileData, allowNotifications, phoneNumber, creditCardNumber, bio, arrayOfBookings, zip);
         return userProfile;
     }
