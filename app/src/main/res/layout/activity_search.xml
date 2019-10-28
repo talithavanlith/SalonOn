@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
-
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#F4FBD5"
-        tools:context=".MainActivity">
-
+    tools:context=".MainActivity"
+    android:background="#F4FBD5">
 
         <Button
             android:id="@+id/btnSelectLocation"
@@ -44,12 +38,12 @@
 
         <Button
             android:id="@+id/btnMenu"
-            android:layout_width="65dp"
-            android:layout_height="56dp"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
             android:background="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintHorizontal_bias="0.067"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.023" />
@@ -70,7 +64,7 @@
             app:layout_constraintVertical_bias="0.286" />
 
 
-        <View
+        <ScrollView
             android:id="@+id/txtStylistInfo"
             android:layout_width="414dp"
             android:layout_height="496dp"
@@ -81,181 +75,185 @@
             app:layout_constraintHorizontal_bias="0.666"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtQuickFind"
-            app:layout_constraintVertical_bias="0.166" />
+            app:layout_constraintVertical_bias="0.166" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtName1"
+                    android:onClick="stylistProfileOnClick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="Stylist Name 1"
+                    android:textColor="#f7f7f4"
+                    android:textSize="30sp"
+                    android:visibility="visible"
+                    app:fontFamily="sans-serif-black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.867"
+                    app:layout_constraintStart_toEndOf="@+id/imageView1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.04" />
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="92dp"
+                    android:layout_height="84dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/imageView2"
+                    app:layout_constraintEnd_toStartOf="@+id/txtName1"
+                    app:layout_constraintHorizontal_bias="0.439"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.377"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/txtInfo1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stylist info 1"
+                    android:textColor="#F5F5F1"
+                    app:layout_constraintTop_toBottomOf="@+id/txtName1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.546"
+                    app:layout_constraintStart_toEndOf="@+id/imageView1"
+                    app:layout_constraintBottom_toTopOf="@+id/txtName2"
+                    app:layout_constraintVertical_bias="0.134" />
+
+                <TextView
+                    android:id="@+id/txtName2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stylist Name 2"
+                    android:textColor="#f7f7f4"
+                    android:textSize="30sp"
+                    android:visibility="visible"
+                    app:fontFamily="sans-serif-black"
+                    app:layout_constraintBottom_toTopOf="@+id/txtInfo2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.872"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/txtInfo1"
+                    app:layout_constraintVertical_bias="0.51" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="92dp"
+                    android:layout_height="84dp"
+                    android:layout_marginTop="13dp"
+                    app:layout_constraintBottom_toTopOf="@+id/imageView3"
+                    app:layout_constraintEnd_toStartOf="@+id/txtName2"
+                    app:layout_constraintHorizontal_bias="0.439"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView1"
+                    app:layout_constraintVertical_bias="0.114"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/txtInfo2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stylist info 2"
+                    android:textColor="#F5F5F1"
+                    app:layout_constraintBottom_toTopOf="@+id/txtName3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.546"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/txtName2"
+                    app:layout_constraintVertical_bias="0.163" />
+
+                <TextView
+                    android:id="@+id/txtName3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:text="Stylist Name 3"
+                    android:textColor="#f7f7f4"
+                    android:textSize="30sp"
+                    android:visibility="visible"
+                    app:fontFamily="sans-serif-black"
+                    app:layout_constraintBottom_toTopOf="@+id/txtName4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.867"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtStylistInfo"
+                    app:layout_constraintVertical_bias="0.764" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="92dp"
+                    android:layout_height="84dp"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintBottom_toTopOf="@+id/imageView4"
+                    app:layout_constraintEnd_toStartOf="@+id/txtName1"
+                    app:layout_constraintHorizontal_bias="0.439"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/txtInfo3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stylist info 3"
+                    android:textColor="#F5F5F1"
+                    app:layout_constraintBottom_toTopOf="@+id/txtName4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.567"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtName3"
+                    app:layout_constraintVertical_bias="0.148" />
 
 
-        <TextView
-            android:id="@+id/txtName4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="Stylist Name 4"
-            android:textColor="#f7f7f4"
-            android:textSize="30sp"
-            android:visibility="visible"
-            app:fontFamily="sans-serif-black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.867"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/txtStylistInfo"
-            app:layout_constraintVertical_bias="0.812" />
+                <TextView
+                    android:id="@+id/txtName4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:text="Stylist Name 4"
+                    android:textColor="#f7f7f4"
+                    android:textSize="30sp"
+                    android:visibility="visible"
+                    app:fontFamily="sans-serif-black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.867"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtStylistInfo"
+                    app:layout_constraintVertical_bias="0.812" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="92dp"
-            android:layout_height="84dp"
-            android:layout_marginTop="132dp"
-            app:layout_constraintBottom_toTopOf="@+id/imageView4"
-            app:layout_constraintEnd_toStartOf="@+id/txtName1"
-            app:layout_constraintHorizontal_bias="0.439"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtQuickFind"
-            app:layout_constraintVertical_bias="0.114"
-            tools:srcCompat="@tools:sample/avatars" />
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="92dp"
+                    android:layout_height="84dp"
+                    android:layout_marginTop="348dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/txtName1"
+                    app:layout_constraintHorizontal_bias="0.439"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtQuickFind"
+                    app:layout_constraintVertical_bias="0.288"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="92dp"
-            android:layout_height="84dp"
-            android:layout_marginTop="348dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/txtName1"
-            app:layout_constraintHorizontal_bias="0.439"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtQuickFind"
-            app:layout_constraintVertical_bias="0.288"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="92dp"
-            android:layout_height="84dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/imageView4"
-            app:layout_constraintEnd_toStartOf="@+id/txtName1"
-            app:layout_constraintHorizontal_bias="0.439"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2"
-            app:layout_constraintVertical_bias="0.0"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="92dp"
-            android:layout_height="84dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/imageView2"
-            app:layout_constraintEnd_toStartOf="@+id/txtName1"
-            app:layout_constraintHorizontal_bias="0.439"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtQuickFind"
-            app:layout_constraintVertical_bias="0.377"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/txtName1"
-            android:onClick="stylistProfileOnClick"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="Stylist Name 1"
-            android:textColor="#f7f7f4"
-            android:textSize="30sp"
-            android:visibility="visible"
-            app:fontFamily="sans-serif-black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.867"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/txtStylistInfo"
-            app:layout_constraintVertical_bias="0.04" />
-
-        <TextView
-            android:id="@+id/txtInfo1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Stylist info 1"
-            android:textColor="#F5F5F1"
-            app:layout_constraintBottom_toTopOf="@+id/txtName2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.546"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtName1"
-            app:layout_constraintVertical_bias="0.134" />
-
-        <TextView
-            android:id="@+id/txtName2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Stylist Name 2"
-            android:textColor="#f7f7f4"
-            android:textSize="30sp"
-            android:visibility="visible"
-            app:fontFamily="sans-serif-black"
-            app:layout_constraintBottom_toTopOf="@+id/txtName3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.872"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtName1"
-            app:layout_constraintVertical_bias="0.51" />
-
-        <TextView
-            android:id="@+id/txtInfo2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Stylist info 2"
-            android:textColor="#F5F5F1"
-            app:layout_constraintBottom_toTopOf="@+id/txtName3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.546"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtName2"
-            app:layout_constraintVertical_bias="0.163" />
-
-        <TextView
-            android:id="@+id/txtName3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="Stylist Name 3"
-            android:textColor="#f7f7f4"
-            android:textSize="30sp"
-            android:visibility="visible"
-            app:fontFamily="sans-serif-black"
-            app:layout_constraintBottom_toTopOf="@+id/txtName4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.867"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/txtStylistInfo"
-            app:layout_constraintVertical_bias="0.764" />
-
-        <TextView
-            android:id="@+id/txtInfo3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Stylist info 3"
-            android:textColor="#F5F5F1"
-            app:layout_constraintBottom_toTopOf="@+id/txtName4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.567"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtName3"
-            app:layout_constraintVertical_bias="0.148" />
-
-        <TextView
-            android:id="@+id/txtInfo4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Stylist info 4"
-            android:textColor="#F5F5F1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.555"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtName4"
-            app:layout_constraintVertical_bias="0.142" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+                <TextView
+                    android:id="@+id/txtInfo4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stylist info 4"
+                    android:textColor="#F5F5F1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.555"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtName4"
+                    app:layout_constraintVertical_bias="0.142" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
