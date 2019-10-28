@@ -145,7 +145,7 @@
             </HorizontalScrollView>
 
             <TextView
-                android:id="@+id/txtImagesOfWork"
+                android:id="@+id/txtInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -181,7 +181,7 @@
                 app:fontFamily="sans-serif-condensed"
                 app:layout_constraintBottom_toTopOf="@+id/scrollImages"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txtImagesOfWork"
+                app:layout_constraintStart_toEndOf="@+id/txtInfo"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView

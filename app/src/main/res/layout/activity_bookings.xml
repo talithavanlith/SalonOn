@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#F4FBD5">
+
+
+    <Button
+        android:id="@+id/btnMenu"
+        android:layout_width="42dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="16dp"
+        android:background="#1E1B1B"
+        app:layout_constraintBottom_toBottomOf="@+id/txtDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096" />
+
+    <ImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="92dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginRight="160dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtBookings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/txtBookings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="10sp"
+        android:text="Your bookings:"
+        android:textColor="#1E1B1B"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgProfile" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="416dp"
+        android:layout_height="533dp"
+        android:background="#171515"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDetails"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="24dp"
+                android:text="Click for more info:"
+                android:textColor="#f7f7f4"
+                android:textSize="18sp"
+                android:visibility="visible"
+                app:fontFamily="sans-serif-black"
+                app:layout_constraintBottom_toTopOf="@+id/crdBooking1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/crdBooking1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
+                app:cardBackgroundColor="#322E2D"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtInfo">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#322E2D">
+
+                    <TextView
+                        android:id="@+id/txtStylistName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="107dp"
+                        android:layout_marginLeft="107dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="114dp"
+                        android:layout_marginRight="114dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#322E2D"
+                        android:text="Stylist Name"
+                        android:textColor="#f7f7f4"
+                        android:textSize="24sp"
+                        app:fontFamily="sans-serif-black"
+                        app:layout_constraintBottom_toTopOf="@+id/txtDate"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.409"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="107dp"
+                        android:layout_marginLeft="107dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="114dp"
+                        android:layout_marginRight="114dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#322E2D"
+                        android:text="Date"
+                        android:textColor="#f7f7f4"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-black"
+                        app:layout_constraintBottom_toTopOf="@+id/btnPending"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.553"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtStylistName" />
+
+                    <Button
+                        android:id="@+id/btnPending"
+                        android:layout_width="165dp"
+                        android:layout_height="54dp"
+                        android:layout_marginStart="107dp"
+                        android:layout_marginLeft="107dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="114dp"
+                        android:layout_marginRight="114dp"
+                        android:layout_marginBottom="13dp"
+                        android:background="#ECDD59"
+                        android:text="pending"
+                        android:textAllCaps="false"
+                        android:textColor="#322E2D"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.442"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDate" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/crdBooking2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
+                app:cardBackgroundColor="#322E2D"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/crdBooking1">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#322E2D">
+
+                    <TextView
+                        android:id="@+id/txtStylistName2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="107dp"
+                        android:layout_marginLeft="107dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="114dp"
+                        android:layout_marginRight="114dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="#322E2D"
+                        android:text="Stylist 2 Name"
+                        android:textColor="#f7f7f4"
+                        android:textSize="24sp"
+                        app:fontFamily="sans-serif-black"
+                        app:layout_constraintBottom_toTopOf="@+id/txtDate2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.409"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtDate2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="107dp"
+                        android:layout_marginLeft="107dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="114dp"
+                        android:layout_marginRight="114dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#322E2D"
+                        android:text="Date"
+                        android:textColor="#f7f7f4"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-black"
+                        app:layout_constraintBottom_toTopOf="@+id/btnCompleted"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.553"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtStylistName2" />
+
+                    <Button
+                        android:id="@+id/btnCompleted"
+                        android:layout_width="206dp"
+                        android:layout_height="58dp"
+                        android:layout_marginStart="107dp"
+                        android:layout_marginLeft="107dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="114dp"
+                        android:layout_marginRight="114dp"
+                        android:background="#81CF4D"
+                        android:text="completed: \nclick here to leave a review"
+                        android:textAllCaps="false"
+                        android:textColor="#322E2D"
+                        app:layout_constraintBottom_toTopOf="@+id/txtLocation"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.442"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDate2" />
+
+                    <TextView
+                        android:id="@+id/txtLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="249dp"
+                        android:layout_marginRight="249dp"
+                        android:background="#322E2D"
+                        android:text="Location:"
+                        android:textColor="#f7f7f4"
+                        android:textSize="12sp"
+                        app:fontFamily="sans-serif-black"
+                        app:layout_constraintBottom_toTopOf="@+id/txtAddress"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btnCompleted" />
+
+                    <TextView
+                        android:id="@+id/txtAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginEnd="68dp"
+                        android:layout_marginRight="68dp"
+                        android:layout_marginBottom="13dp"
+                        android:background="#322E2D"
+                        android:text="Salon Name, 1892 Street Name "
+                        android:textColor="#f7f7f4"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtLocation" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
