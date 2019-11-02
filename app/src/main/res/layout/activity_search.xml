@@ -26,21 +26,20 @@
             app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.183" />
+            app:layout_constraintVertical_bias=".17" />
 
-        <TextView
+        <ImageView
             android:id="@+id/txtLogo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="10sp"
-            android:text="SalonOn"
-            android:textColor="#71C93C"
-            android:textSize="50sp"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/logolong"
             app:layout_constraintBottom_toTopOf="@+id/btnSelectLocation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.788" />
+            app:layout_constraintVertical_bias="0"
+             />
 
         <Button
             android:id="@+id/btnMenu"
@@ -56,8 +55,8 @@
 
         <TextView
             android:id="@+id/txtQuickFind"
-            android:layout_width="428dp"
-            android:layout_height="43dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
             android:background="#1E1B1B"
             android:gravity="center"
             android:text="Quick find on your location"

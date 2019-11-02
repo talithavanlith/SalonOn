@@ -14,4 +14,12 @@ public class ExampleUnitTest {
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }
+
+    @Test
+    public void GetCorrectProfile() {
+        API api =new API();
+        String name = api.getClientProfile("dylan@mail.com").first;
+        assertEquals("dylan",name);
+    }
+
 }

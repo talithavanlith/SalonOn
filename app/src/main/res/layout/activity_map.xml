@@ -35,15 +35,12 @@
         app:layout_constraintTop_toBottomOf="@+id/txtQuickFind"
         app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
+    <ImageView
+        android:src="@drawable/logolong"
         android:id="@+id/txtLogo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:lineSpacingExtra="10sp"
-        android:text="SalonOn"
-        android:textColor="#71C93C"
-        android:textSize="50sp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintBottom_toTopOf="@+id/btnFindStylist"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -2,56 +2,47 @@ package com.example.salonon;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.util.Log;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        APIImpl api = new APIImpl();
-//        api.getClientProfile(1);
-//        String s = api.getAmenityByID(1);
-//        Profile p = new Profile("Salon","testemail6@gmail.com","testPassword","firstname","lastname",null,null,null,null,null,null,"I'm good",null);
-//        api.createNewProfile(p);
-//        api.loginToProfile("testemail6@gmail.com", "testPassword");
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_sign_in);
     }
 
-    public void clientButtonOnClick(View view) {
-        Log.v("SalonOn", "I am a Client");
-        Intent signInIntent = new Intent(MainActivity.this, SignInActivity.class);
-        String userType = "Client";
-        signInIntent.putExtra("userType", userType);
-        startActivity(signInIntent);
+    public void submitButtonOnClick(View view) {
+        // get email and password from edit text. Call Login with that.
+        EditText emailEditText = findViewById(R.id.emailEditText);
+        EditText passwordEditText = findViewById(R.id.passwordEditText);
+        String email = emailEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+
+        API api = new API();
+        Profile userProfile = api.login(email, password);
+        if (userProfile != null) {
+            Toast.makeText(this, "Login Successful.", Toast.LENGTH_LONG).show();
+            Log.v("SalonOn", "Login successful");
+
+            // TODO make Profile Serializable or Parsable
+            //for now, passing account id (email)
+            Intent searchIntent = new Intent(MainActivity.this, SearchActivity.class);
+            searchIntent.putExtra("email", email);
+            startActivity(searchIntent);
+            finish();
+        } else {
+            Toast.makeText(this, "Sorry, this email or password is invalid. Please try again.", Toast.LENGTH_LONG).show();
+        }
     }
 
-    public void stylistButtonOnClick(View view) {
-        Log.v("SalonOn", "I am a Stylist");
-        Intent signInIntent = new Intent(MainActivity.this, SignInActivity.class);
-        String userType = "Stylist";
-        signInIntent.putExtra("userType", userType);
-        startActivity(signInIntent);
+    public void newUserOnClick(View view) {
+        Intent signUpIntent = new Intent(MainActivity.this, SignUpActivityZero.class);
+        startActivity(signUpIntent);
     }
-
-    public void salonOwnerButtonOnClick(View view) {
-        Log.v("SalonOn", "I am a Salon Owner");
-        Intent signInIntent = new Intent(MainActivity.this, SignInActivity.class);
-        String userType = "Salon Owner";
-        signInIntent.putExtra("userType", userType);
-        startActivity(signInIntent);
-    }
-
-
 }

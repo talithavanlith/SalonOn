@@ -1,10 +1,6 @@
 package com.example.salonon;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,7 +8,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SignUpActivityOne extends AppCompatActivity {
@@ -20,8 +15,6 @@ public class SignUpActivityOne extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_one);
-
-
     }
 
     public void imageButtonOnClick(View v) {
@@ -32,80 +25,48 @@ public class SignUpActivityOne extends AppCompatActivity {
         // get extras from passed intent:
         Intent currentIntent = getIntent();
         Bundle bundle = currentIntent.getExtras();
-        String userType = bundle.getString("userType");
-        String name = bundle.getString("name");
+        String first = bundle.getString("first");
+        String last = bundle.getString("last");
         String email = bundle.getString("email");
         String password = bundle.getString("password");
 
         // get data from edit texts:
-        EditText phoneNumberEditText = findViewById(R.id.phoneNumberEditText);
+        EditText addressEditText = findViewById(R.id.addressEditText);
         EditText cityEditText = findViewById(R.id.cityEditText);
         EditText stateEditText = findViewById(R.id.stateEditText);
         EditText zipEditText = findViewById(R.id.zipEditText);
 
-        String phoneNumber = phoneNumberEditText.getText().toString();
+        //currently doing nothing with this info
+        String address = addressEditText.getText().toString();
         String city = cityEditText.getText().toString();
         String state = stateEditText.getText().toString();
         String zip = zipEditText.getText().toString();
 
-        // Do I pass this account info to Talitha's activity_search intent or login to the profile here?
-        // For now, don't sign up here.
-        Toast.makeText(this, "Account Creation Successful!", Toast.LENGTH_LONG).show();
-
         // create account
-        API api = new APIImpl();
-
+        API api = new API();
         Image image = null;
-        String creditCardNumber = "00000002";
-        String bio = "I am a " + userType;
-        Booking[] bookings = new Booking[1];
-        Profile userProfile = makeProfile(userType, email, password, name, image,true, true, true, phoneNumber, creditCardNumber, bio, bookings, zip);
+        Profile userProfile = new Profile(email, first,last, image,false, false, "none", "none", 0);
 
-        if(api.createNewProfile(userProfile) != null) {
-            // Account Creation Successful
-            Toast.makeText(this, "New Account Created", Toast.LENGTH_LONG).show();
-            Log.v("Profile", "User Profile Created!!!");
+        if(api.createNewProfile(userProfile, password)) {
+            Toast.makeText(this, "Account created successfully", Toast.LENGTH_LONG).show();
+            Log.v("success", "Account created successfully");
+
+            //start search intent
+            Intent searchIntent = new Intent(SignUpActivityOne.this, SearchActivity.class);
+            searchIntent.putExtra("email", email);
+            startActivity(searchIntent);
+            finish();
         } else {
-            Toast.makeText(this, "Error, new account not created.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Error, account not created.", Toast.LENGTH_LONG).show();
             Log.v("Profile", "Failed to Create User Profile!!!");
         }
 
-        // Now that profile is created, go to search intent:
-        Intent searchIntent = new Intent(SignUpActivityOne.this, SearchActivity.class);
-        searchIntent.putExtra("email", email);
-        searchIntent.putExtra("password", password);
-
-        startActivity(searchIntent);
-
-    }
-
-    private Profile makeProfile(String userType, String email, String password, String name, @Nullable Image image, Boolean shareContactInfoWhenBookingIsRequested, Boolean useMobileData, Boolean allowNotifications, String phoneNumber, String creditCardNumber, String bio, Booking[] arrayOfBookings, String zip) {
-        String firstName = name.split(" ")[0];
-        String lastName;
-        try {
-            lastName = name.split(" ")[1];
-        } catch (Exception e) {
-            lastName = "lastName";
-        }
-        Profile userProfile = new Profile(userType, email, password, firstName, lastName, image, shareContactInfoWhenBookingIsRequested, useMobileData, allowNotifications, phoneNumber, creditCardNumber, bio, arrayOfBookings, zip);
-        return userProfile;
     }
 
     public void haveAccountTextViewOnClick(View view) {
         // Takes you back to sign in activity.
-
-        // Get userType from Intent;
-        Intent currentIntent = getIntent();
-        Bundle bundle = currentIntent.getExtras();
-        String userType;
-        if(bundle != null) {
-            userType = bundle.getString("userType");
-        } else {
-            userType = null;
-        }
-
-        Intent signInIntent = new Intent(SignUpActivityOne.this, SignInActivity.class);
-        signInIntent.putExtra("userType", userType);
+        Intent signInIntent = new Intent(SignUpActivityOne.this, MainActivity.class);
         startActivity(signInIntent);
+        finish();
     }
 }

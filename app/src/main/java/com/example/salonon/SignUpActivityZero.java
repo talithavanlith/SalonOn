@@ -14,65 +14,43 @@ public class SignUpActivityZero extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_zero);
-
-
     }
 
     public void continueButtonOnClick(View view) {
-        // Get userType from Intent;
-        Intent currentIntent = getIntent();
-        Bundle bundle = currentIntent.getExtras();
-        String userType;
-        if(bundle != null) {
-            userType = bundle.getString("userType");
-        } else {
-            userType = null;
-        }
-
         // Get Strings from edit texts:
-        EditText nameEditText = findViewById(R.id.nameEditText);
+        EditText nameEditText = findViewById(R.id.firstNameEditText);
+        EditText lastNameEditText = findViewById(R.id.lastNameEditText);
         EditText emailEditText = findViewById(R.id.emailEditText);
         EditText passwordEditText = findViewById(R.id.passwordEditText);
         EditText confirmPasswordEditText = findViewById(R.id.confirmPasswordEditText);
 
-        String name = nameEditText.getText().toString();
+        String first = nameEditText.getText().toString();
+        String last = lastNameEditText.getText().toString();
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         String confirmPassword = confirmPasswordEditText.getText().toString();
 
-        // Make sure passwords are not different from password and confirmPassword Strings
+        // Check matching passwords
         if (password.compareTo(confirmPassword) != 0) {
-            // passwords do not match!
-            Toast.makeText(this, "Passwords Do Not Match! Please confirm your password.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Passwords Do Not Match!", Toast.LENGTH_LONG).show();
             return;
         }
 
-        // else:
         // Go to next screen:
         Intent signUpContinueIntent = new Intent(SignUpActivityZero.this, SignUpActivityOne.class);
-        // Add profile fields to intent:
-        signUpContinueIntent.putExtra("userType", userType);
-        signUpContinueIntent.putExtra("name", name);
+        // Add profile fields to next intent:
+        signUpContinueIntent.putExtra("first", first);
+        signUpContinueIntent.putExtra("last", last);
         signUpContinueIntent.putExtra("email", email);
-        signUpContinueIntent.putExtra("password", password); // TODO Hash Password before I send it through to another Intent.
+        signUpContinueIntent.putExtra("password", password);
         startActivity(signUpContinueIntent);
+        finish();
     }
 
     public void haveAccountTextViewOnClick(View view) {
         // Takes you back to sign in activity.
-
-        // Get userType from Intent;
-        Intent currentIntent = getIntent();
-        Bundle bundle = currentIntent.getExtras();
-        String userType;
-        if(bundle != null) {
-            userType = bundle.getString("userType");
-        } else {
-            userType = null;
-        }
-
-        Intent signInIntent = new Intent(SignUpActivityZero.this, SignInActivity.class);
-        signInIntent.putExtra("userType", userType);
+        Intent signInIntent = new Intent(SignUpActivityZero.this, MainActivity.class);
         startActivity(signInIntent);
+        finish();
     }
 }

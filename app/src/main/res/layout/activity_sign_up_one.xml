@@ -11,28 +11,24 @@
 
         android:background="#F4FBD5">
 
-        <TextView
+        <ImageView
             android:id="@+id/logo"
-            android:layout_width="400dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
+            android:layout_width="match_parent"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:background="@android:color/white"
-            android:text="Logo Image!!!"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="36sp" />
+            android:src="@drawable/logolong"/>
 
         <EditText
-            android:id="@+id/phoneNumberEditText"
-            android:layout_width="400dp"
-            android:layout_height="60dp"
+            android:id="@+id/addressEditText"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
             android:layout_alignTop="@+id/logo"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="80dp"
             android:background="@android:color/white"
-            android:hint="Please enter your phone number"
+            android:hint="Address"
             android:inputType="phone"
             android:textAlignment="center"
             android:textColor="@android:color/black"
@@ -41,39 +37,39 @@
 
         <EditText
             android:id="@+id/cityEditText"
-            android:layout_width="400dp"
+            android:layout_width="300dp"
             android:layout_height="50dp"
-            android:layout_alignTop="@+id/phoneNumberEditText"
+            android:layout_alignTop="@+id/addressEditText"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="80dp"
             android:background="@android:color/white"
-            android:hint="Please enter your city"
+            android:hint="City"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="24sp" />
 
         <EditText
             android:id="@+id/stateEditText"
-            android:layout_width="400dp"
+            android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_alignTop="@+id/cityEditText"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="80dp"
             android:background="@android:color/white"
-            android:hint="Please enter your State"
+            android:hint="State"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="24sp" />
 
         <EditText
             android:id="@+id/zipEditText"
-            android:layout_width="400dp"
+            android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_alignTop="@+id/stateEditText"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="80dp"
             android:background="@android:color/white"
-            android:hint="Please enter your zip code"
+            android:hint="Zip"
             android:inputType="number"
             android:textAlignment="center"
             android:textColor="@android:color/black"
@@ -81,8 +77,8 @@
 
         <Button
             android:id="@+id/imageButton"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
             android:layout_alignTop="@+id/zipEditText"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="80dp"
@@ -98,7 +94,7 @@
             android:layout_height="100dp"
             android:layout_alignTop="@+id/imageButton"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="80dp"
             android:onClick="signUpButtonOnClick"
             android:text="Sign Up"
             android:textColor="@android:color/white"
