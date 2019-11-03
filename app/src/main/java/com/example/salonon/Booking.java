@@ -26,7 +26,7 @@ public class Booking {
         String stylistComment;
         String salonComment;
 
-    public Booking(Profile client, offer offer, @Nullable Profile salon, String date, String time) {
+    public Booking(Profile client, Offer offer, @Nullable Profile salon, String date, String time) {
         // set stylist information
         this.client = client;
         this.stylist = new API().getClientProfile(offer.stylistEmail);

@@ -14,7 +14,7 @@ public class Profile {
     Image image;
     String[] addresses;
     int[] zips; //indexes match address
-    offer[] offers; //null if not a stylist
+    Offer[] offers; //null if not a stylist
 
     public Profile(String email, String first, String last, Image image, boolean isStylist, boolean isSalon,
                    String salonBio, String stylistBio, double salonRate){

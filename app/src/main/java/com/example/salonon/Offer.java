@@ -1,6 +1,6 @@
 package com.example.salonon;
 
-public class offer {
+public class Offer {
     int offerID;
     String style;
     String category;
@@ -9,7 +9,7 @@ public class offer {
     double duration;
     String stylistEmail;
 
-    public offer(int offerID, String stylistEmail, String style, String category, double price, double deposit, double duration){
+    public Offer(int offerID, String stylistEmail, String style, String category, double price, double deposit, double duration){
         this.offerID = offerID;
         this.style =style;
         this.category = category;

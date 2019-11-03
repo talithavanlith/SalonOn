@@ -47,7 +47,7 @@ public class SignUpActivityOne extends AppCompatActivity {
         Image image = null;
         Profile userProfile = new Profile(email, first,last, image,false, false, "none", "none", 0);
 
-        if(api.createNewProfile(userProfile, password)) {
+        if(api.createNewProfile(userProfile, password)) { // This is returning false for me everytime. Why> - David
             Toast.makeText(this, "Account created successfully", Toast.LENGTH_LONG).show();
             Log.v("success", "Account created successfully");
 

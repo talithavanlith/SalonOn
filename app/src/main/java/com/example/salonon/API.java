@@ -71,6 +71,7 @@ public class API {
 
             //request code
             String response = network.post(network.herokuURL + "createuser", parameters);
+            Log.v("createNewProfile", "response from server is: " + response);
             JSONObject jsonStatus = new JSONObject(response);
             boolean status = (boolean) jsonStatus.get("status");
             return status;
@@ -149,7 +150,7 @@ public class API {
         return null;
     }
 
-    public offer[] getStylistOffers(Profile profile){
+    public Offer[] getStylistOffers(Profile profile){
         return null;
     }
     public boolean createBooking(Booking booking){
