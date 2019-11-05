@@ -68,7 +68,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void btnSelectLocationOnClick(View v) {
-        Intent mapIntent = new Intent(SearchActivity.this, MapActivity.class);
+        Intent mapIntent = new Intent(SearchActivity.this, MapsActivity.class);
         startActivity(mapIntent);
     }
 
