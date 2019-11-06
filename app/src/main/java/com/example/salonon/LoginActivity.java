@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
             // TODO make Profile Serializable or Parsable
             //for now, passing account id (email)
-            Intent searchIntent = new Intent(MainActivity.this, SearchActivity.class);
+            Intent searchIntent = new Intent(LoginActivity.this, SearchActivity.class);
             searchIntent.putExtra("email", email);
             startActivity(searchIntent);
             finish();
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void newUserOnClick(View view) {
-        Intent signUpIntent = new Intent(MainActivity.this, SignUpActivityZero.class);
+        Intent signUpIntent = new Intent(LoginActivity.this, CreateAccountActivity.class);
         startActivity(signUpIntent);
     }
 }

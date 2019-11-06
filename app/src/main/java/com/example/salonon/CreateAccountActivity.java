@@ -8,12 +8,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SignUpActivityZero extends AppCompatActivity {
+public class CreateAccountActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up_zero);
+        setContentView(R.layout.create_account);
     }
 
     public void continueButtonOnClick(View view) {
@@ -37,8 +37,7 @@ public class SignUpActivityZero extends AppCompatActivity {
         }
 
         // Go to next screen:
-        Intent signUpContinueIntent = new Intent(SignUpActivityZero.this, SignUpActivityOne.class);
-        // Add profile fields to next intent:
+        Intent signUpContinueIntent = new Intent(CreateAccountActivity.this, CreateAccountSelectType.class);
         signUpContinueIntent.putExtra("first", first);
         signUpContinueIntent.putExtra("last", last);
         signUpContinueIntent.putExtra("email", email);
@@ -49,7 +48,7 @@ public class SignUpActivityZero extends AppCompatActivity {
 
     public void haveAccountTextViewOnClick(View view) {
         // Takes you back to sign in activity.
-        Intent signInIntent = new Intent(SignUpActivityZero.this, MainActivity.class);
+        Intent signInIntent = new Intent(CreateAccountActivity.this, LoginActivity.class);
         startActivity(signInIntent);
         finish();
     }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4FBD5"
+    android:theme="@android:style/Theme.NoTitleBar"
+    tools:context=".CreateAccountSelectType">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/logolong"/>
+    <LinearLayout
+        android:layout_alignTop="@id/logo"
+        android:layout_margin="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="SELECT YOUR ACCOUNT TYPE:"
+            android:textAlignment="center"
+            android:textSize="15dp"
+            android:textColor="#81CF4D">
+
+        </TextView>
+
+        <ImageButton
+            android:id="@+id/client"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:onClick="accountTypeButton"
+            android:scaleType="fitCenter"
+            android:src="@drawable/hairstyling">
+
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/stylist"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:onClick="accountTypeButton"
+            android:scaleType="fitCenter"
+            android:src="@drawable/scissors">
+
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/salon"
+            android:scaleType="fitCenter"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/barberpole">
+
+        </ImageButton>
+    </LinearLayout>
+
+
+</RelativeLayout>
