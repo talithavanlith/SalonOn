@@ -10,11 +10,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SignUpActivityOne extends AppCompatActivity {
+public class CreateAccountAddress extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up_one);
+        setContentView(R.layout.create_account_address);
     }
 
     public void imageButtonOnClick(View v) {
@@ -45,14 +45,14 @@ public class SignUpActivityOne extends AppCompatActivity {
         // create account
         API api = new API();
         Image image = null;
-        Profile userProfile = new Profile(email, first,last, image,false, false, "none", "none", 0);
+        Profile userProfile = new Profile(email, first,last, image,true, false, "none", "none", 0);
 
-        if(api.createNewProfile(userProfile, password)) { // This is returning false for me everytime. Why> - David
+        if(api.createNewProfile(userProfile, password)) {
             Toast.makeText(this, "Account created successfully", Toast.LENGTH_LONG).show();
             Log.v("success", "Account created successfully");
 
             //start search intent
-            Intent searchIntent = new Intent(SignUpActivityOne.this, SearchActivity.class);
+            Intent searchIntent = new Intent(CreateAccountAddress.this, SearchActivity.class);
             searchIntent.putExtra("email", email);
             startActivity(searchIntent);
             finish();
@@ -65,7 +65,7 @@ public class SignUpActivityOne extends AppCompatActivity {
 
     public void haveAccountTextViewOnClick(View view) {
         // Takes you back to sign in activity.
-        Intent signInIntent = new Intent(SignUpActivityOne.this, MainActivity.class);
+        Intent signInIntent = new Intent(CreateAccountAddress.this, LoginActivity.class);
         startActivity(signInIntent);
         finish();
     }
