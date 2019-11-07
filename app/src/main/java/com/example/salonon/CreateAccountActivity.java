@@ -81,8 +81,75 @@ public class CreateAccountActivity extends AppCompatActivity {
             return "Your email extension is incorrect";
         }
 
+        //check if the mailbox is correct
+        if(checkMailbox(email) != "") {
+            return checkMailbox(email);
+        }
+
+        // check if the domain name is correct
+        if(checkDomain(email) != "") {
+            return checkDomain(email);
+        }
+
         return "";
     }
+
+
+    public static String checkMailbox(String e) {
+        int i = e.indexOf("@");
+        String mailBox = e.substring(0,i);
+        int lastChar = mailBox.length() -1;
+
+        if(mailBox.matches("[A-Za-z0-9\\.\\-\\_]*")){
+
+            //check that first value isn't .-_
+            if(mailBox.charAt(0) == '.' || mailBox.charAt(0) == '-' || mailBox.charAt(0) == '_'){
+                return "Mailbox cannot start with a symbol";
+            }
+
+            //check that last value isn't .-_
+            if(mailBox.charAt(lastChar) == '.' || mailBox.charAt(lastChar) == '-' || mailBox.charAt(lastChar) == '_'){
+                return "Mailbox cannot end with a symbol";
+            }
+
+            //check for double ._- in a row
+            for(int j =0; j <= lastChar; j++){
+                char ch = mailBox.charAt(j);
+                if( ch == '.' || ch == '-' || ch == '_'){
+                    char nextCh = mailBox.charAt(j+1);
+                    if(nextCh == '.' || nextCh == '-' || nextCh == '_'){
+                        return "Mailbox cannot have more than one symbol in a row";
+                    }
+                }
+            }
+
+            return "";
+        }
+
+        return "Mailbox contains invalid symbols";
+    }
+
+    public static String checkDomain(String e) {
+        int i = e.indexOf("@");
+        String domain = e.substring(i+1);
+
+        if(domain.startsWith("[")&& e.endsWith("]")){
+            return "";
+        }
+
+        if(domain.matches("[A-Za-z0-9\\.]*")){
+
+            //check for .. or first char being a dot
+            if(domain.contains("..") || domain.charAt(0) == '.'){
+                return "Domain cannot start with a . or have ..";
+            }
+
+            return "";
+        }
+
+        return "Domain contains invalid symbols";
+    }
+
 
     public void haveAccountTextViewOnClick(View view) {
         // Takes you back to sign in activity.
