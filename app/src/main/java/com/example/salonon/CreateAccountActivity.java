@@ -30,6 +30,12 @@ public class CreateAccountActivity extends AppCompatActivity {
         String password = passwordEditText.getText().toString();
         String confirmPassword = confirmPasswordEditText.getText().toString();
 
+        if(checkEmail(email) != ""){
+            //checkEmail will return a string explaining why the email is incorrect if it is
+            Toast.makeText(this, checkEmail(email), Toast.LENGTH_LONG).show();
+            return;
+        }
+
         // Check matching passwords
         if (password.compareTo(confirmPassword) != 0) {
             Toast.makeText(this, "Passwords Do Not Match!", Toast.LENGTH_LONG).show();
@@ -44,6 +50,38 @@ public class CreateAccountActivity extends AppCompatActivity {
         signUpContinueIntent.putExtra("password", password);
         startActivity(signUpContinueIntent);
         finish();
+    }
+
+    public String checkEmail(String email){
+
+        //check to see if it contains an @ symbol
+        if(!email.contains("@")){
+            return "Your email address needs an @ symbol";
+        }
+
+        //check to see if the extension is right (might want to add some more extensions or take this out idk)
+        String[] extensions = {".co.nz", ".com.au", ".co.ca", ".com", ".co.us", ".co.uk", ".net", ".unc.edu"};
+        Boolean extenRight = false;
+        for(String ex: extensions){
+            if(email.endsWith(ex)){
+                extenRight = true;
+            }
+        }
+
+        //check if the extension is an IP address
+        if(email.contains("@[") && email.endsWith("]")){
+            int i = email.indexOf("[");
+            String ip = email.substring(i+1, email.length()-1);
+            //regex from mdma at StackOverflow
+            if(!(ip.matches("(([0-1]?[0-9]{1,2}\\.)|(2[0-4][0-9]\\.)|(25[0-5]\\.)){3}(([0-1]?[0-9]{1,2})|(2[0-4][0-9])|(25[0-5]))"))){
+
+                return "Your email extension is incorrect";
+            }
+        }else if(!extenRight){
+            return "Your email extension is incorrect";
+        }
+
+        return "";
     }
 
     public void haveAccountTextViewOnClick(View view) {
