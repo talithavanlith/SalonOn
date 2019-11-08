@@ -27,6 +27,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         String first = nameEditText.getText().toString();
         String last = lastNameEditText.getText().toString();
         String email = emailEditText.getText().toString();
+        email = email.toLowerCase();
         String password = passwordEditText.getText().toString();
         String confirmPassword = confirmPasswordEditText.getText().toString();
 
@@ -34,6 +35,13 @@ public class CreateAccountActivity extends AppCompatActivity {
             //checkEmail will return a string explaining why the email is incorrect if it is
             Toast.makeText(this, checkEmail(email), Toast.LENGTH_LONG).show();
             return;
+        }
+
+        //checks to see if the email already exists in the database
+        if (new API().getClientProfile(email) != null){
+            Toast.makeText(this, "Email already exists", Toast.LENGTH_LONG).show();
+            return;
+
         }
 
         // Check matching passwords
