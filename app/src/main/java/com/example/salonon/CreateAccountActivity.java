@@ -27,8 +27,22 @@ public class CreateAccountActivity extends AppCompatActivity {
         String first = nameEditText.getText().toString();
         String last = lastNameEditText.getText().toString();
         String email = emailEditText.getText().toString();
+        email = email.toLowerCase();
         String password = passwordEditText.getText().toString();
         String confirmPassword = confirmPasswordEditText.getText().toString();
+
+        if(checkEmail(email) != ""){
+            //checkEmail will return a string explaining why the email is incorrect if it is
+            Toast.makeText(this, checkEmail(email), Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        //checks to see if the email already exists in the database
+        if (new API().getClientProfile(email) != null){
+            Toast.makeText(this, "Email already exists", Toast.LENGTH_LONG).show();
+            return;
+
+        }
 
         // Check matching passwords
         if (password.compareTo(confirmPassword) != 0) {
@@ -45,6 +59,105 @@ public class CreateAccountActivity extends AppCompatActivity {
         startActivity(signUpContinueIntent);
         finish();
     }
+
+    public String checkEmail(String email){
+
+        //check to see if it contains an @ symbol
+        if(!email.contains("@")){
+            return "Your email address needs an @ symbol";
+        }
+
+        //check to see if the extension is right (might want to add some more extensions or take this out idk)
+        String[] extensions = {".co.nz", ".com.au", ".co.ca", ".com", ".co.us", ".co.uk", ".net", ".unc.edu"};
+        Boolean extenRight = false;
+        for(String ex: extensions){
+            if(email.endsWith(ex)){
+                extenRight = true;
+            }
+        }
+
+        //check if the extension is an IP address
+        if(email.contains("@[") && email.endsWith("]")){
+            int i = email.indexOf("[");
+            String ip = email.substring(i+1, email.length()-1);
+            //regex from mdma at StackOverflow
+            if(!(ip.matches("(([0-1]?[0-9]{1,2}\\.)|(2[0-4][0-9]\\.)|(25[0-5]\\.)){3}(([0-1]?[0-9]{1,2})|(2[0-4][0-9])|(25[0-5]))"))){
+
+                return "Your email extension is incorrect";
+            }
+        }else if(!extenRight){
+            return "Your email extension is incorrect";
+        }
+
+        //check if the mailbox is correct
+        if(checkMailbox(email) != "") {
+            return checkMailbox(email);
+        }
+
+        // check if the domain name is correct
+        if(checkDomain(email) != "") {
+            return checkDomain(email);
+        }
+
+        return "";
+    }
+
+
+    public static String checkMailbox(String e) {
+        int i = e.indexOf("@");
+        String mailBox = e.substring(0,i);
+        int lastChar = mailBox.length() -1;
+
+        if(mailBox.matches("[A-Za-z0-9\\.\\-\\_]*")){
+
+            //check that first value isn't .-_
+            if(mailBox.charAt(0) == '.' || mailBox.charAt(0) == '-' || mailBox.charAt(0) == '_'){
+                return "Mailbox cannot start with a symbol";
+            }
+
+            //check that last value isn't .-_
+            if(mailBox.charAt(lastChar) == '.' || mailBox.charAt(lastChar) == '-' || mailBox.charAt(lastChar) == '_'){
+                return "Mailbox cannot end with a symbol";
+            }
+
+            //check for double ._- in a row
+            for(int j =0; j <= lastChar; j++){
+                char ch = mailBox.charAt(j);
+                if( ch == '.' || ch == '-' || ch == '_'){
+                    char nextCh = mailBox.charAt(j+1);
+                    if(nextCh == '.' || nextCh == '-' || nextCh == '_'){
+                        return "Mailbox cannot have more than one symbol in a row";
+                    }
+                }
+            }
+
+            return "";
+        }
+
+        return "Mailbox contains invalid symbols";
+    }
+
+    public static String checkDomain(String e) {
+        int i = e.indexOf("@");
+        String domain = e.substring(i+1);
+
+        if(domain.startsWith("[")&& e.endsWith("]")){
+            return "";
+        }
+
+        if(domain.matches("[A-Za-z0-9\\.]*")){
+
+            //check for .. or first char being a dot
+            if(domain.contains("..") || domain.charAt(0) == '.'){
+                return "Domain cannot start with a . or have ..";
+            }
+
+            return "";
+        }
+
+        return "Domain contains invalid symbols";
+    }
+
 
     public void haveAccountTextViewOnClick(View view) {
         // Takes you back to sign in activity.
