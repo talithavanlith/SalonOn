@@ -4,7 +4,7 @@
 
 This project serves as the android app prototype for the stylist booking platform SalonOn. The project is developed for the COMP523 Software Engineering course at the University of North Carolina at Chapel Hill. This repository contains the frontend android source code. For the server side repo, see https://github.com/tmam101/salon-on-backend/branches
 
-**Summary:_
+**Summary:**
 
 SalonON is a stylist booking platform designed with convenience in mind. The app aims to be a 3 tiered solution for clients, stylist, and salons, allowing Customers to be able to create profiles detailing their hair type, style interests, and location preferences. All of which is then used to match them with the perfect stylist in their area. The stylist, with a profile of their own, can specify their experience, showcase their work via a photo album, and contact salons with space available to set the appointment, all from within the app. 
 
