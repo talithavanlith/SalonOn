@@ -1,7 +1,9 @@
 package com.example.salonon;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -37,29 +39,46 @@ public class CreateAccountActivity extends AppCompatActivity {
             return;
         }
 
-        //checks to see if the email already exists in the database
+        //CHECK IS USER ALREADY EXISTS
         if (new API().getClientProfile(email) != null){
             Toast.makeText(this, "Email already exists", Toast.LENGTH_LONG).show();
             return;
 
         }
 
-        // Check matching passwords
+        // CHECK MATCHING PASSWORDS
         if (password.compareTo(confirmPassword) != 0) {
             Toast.makeText(this, "Passwords Do Not Match!", Toast.LENGTH_LONG).show();
             return;
         }
 
-        // Go to next screen:
-        Intent signUpContinueIntent = new Intent(CreateAccountActivity.this, CreateAccountSelectType.class);
-        signUpContinueIntent.putExtra("first", first);
-        signUpContinueIntent.putExtra("last", last);
-        signUpContinueIntent.putExtra("email", email);
-        signUpContinueIntent.putExtra("password", password);
-        startActivity(signUpContinueIntent);
+        //ATTEMPT CREATE ACCOUNT
+        Image image = null;
+        Profile userProfile = new Profile(email, first,last, image,false, false, "none", "none", 0);
+        if(new API().createNewProfile(userProfile, password)) {
+            Toast.makeText(this, "Account created successfully", Toast.LENGTH_LONG).show();
+            Log.v("success", "Account created successfully");
+
+            //start account type intent
+            Intent accountTypeIntent = new Intent(CreateAccountActivity.this, CreateAccountSelectType.class);
+            accountTypeIntent.putExtra("email", email);
+            startActivity(accountTypeIntent);
+            finish();
+        } else {
+            Toast.makeText(this, "Error, account not created.", Toast.LENGTH_LONG).show();
+            Log.v("Profile", "Failed to Create User Profile!!!");
+        }
+    }
+
+    //ALREADY HAVE ACCOUNT
+    public void haveAccountTextViewOnClick(View view) {
+        // Takes you back to sign in activity.
+        Intent signInIntent = new Intent(CreateAccountActivity.this, LoginActivity.class);
+        startActivity(signInIntent);
         finish();
     }
 
+    //HELPER EMAIL FUNCTIONS
     public String checkEmail(String email){
 
         //check to see if it contains an @ symbol
@@ -88,17 +107,14 @@ public class CreateAccountActivity extends AppCompatActivity {
         }else if(!extenRight){
             return "Your email extension is incorrect";
         }
-
         //check if the mailbox is correct
         if(checkMailbox(email) != "") {
             return checkMailbox(email);
         }
-
         // check if the domain name is correct
         if(checkDomain(email) != "") {
             return checkDomain(email);
         }
-
         return "";
     }
 
@@ -130,39 +146,24 @@ public class CreateAccountActivity extends AppCompatActivity {
                     }
                 }
             }
-
             return "";
         }
-
         return "Mailbox contains invalid symbols";
     }
 
     public static String checkDomain(String e) {
         int i = e.indexOf("@");
         String domain = e.substring(i+1);
-
         if(domain.startsWith("[")&& e.endsWith("]")){
             return "";
         }
-
         if(domain.matches("[A-Za-z0-9\\.]*")){
-
             //check for .. or first char being a dot
             if(domain.contains("..") || domain.charAt(0) == '.'){
                 return "Domain cannot start with a . or have ..";
             }
-
             return "";
         }
-
         return "Domain contains invalid symbols";
-    }
-
-
-    public void haveAccountTextViewOnClick(View view) {
-        // Takes you back to sign in activity.
-        Intent signInIntent = new Intent(CreateAccountActivity.this, LoginActivity.class);
-        startActivity(signInIntent);
-        finish();
     }
 }

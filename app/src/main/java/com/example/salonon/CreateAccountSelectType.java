@@ -19,36 +19,28 @@ public class CreateAccountSelectType extends AppCompatActivity {
     public void accountTypeButton(View v){
         Intent currentIntent = getIntent();
         Bundle bundle = currentIntent.getExtras();
-        String first = bundle.getString("first");
-        String last = bundle.getString("last");
         String email = bundle.getString("email");
-        String password = bundle.getString("password");
 
+        //USER IS CLIENT
         if (v == findViewById(R.id.client)){
-            Image image = null;
-            Profile userProfile = new Profile(email, first,last, image,false, false, "none", "none", 0);
-            if(new API().createNewProfile(userProfile, password)) {
-                Toast.makeText(this, "Account created successfully", Toast.LENGTH_LONG).show();
-                Log.v("success", "Account created successfully");
-
-                //start search intent
-                Intent searchIntent = new Intent(CreateAccountSelectType.this, SearchActivity.class);
-                searchIntent.putExtra("email", email);
-                startActivity(searchIntent);
-                finish();
-            } else {
-                Toast.makeText(this, "Error, account not created.", Toast.LENGTH_LONG).show();
-                Log.v("Profile", "Failed to Create User Profile!!!");
-            }
-        } else if (v== findViewById(R.id.stylist)){
-            Intent addressIntent = new Intent(CreateAccountSelectType.this, CreateAccountAddress.class);
-            addressIntent.putExtra("first", first);
-            addressIntent.putExtra("last", last);
+            Intent addressIntent = new Intent(CreateAccountSelectType.this, SearchActivity.class);
             addressIntent.putExtra("email", email);
-            addressIntent.putExtra("password", password);
+            addressIntent.putExtra("accountType", "stylist");
             startActivity(addressIntent);
+            //USER IS STYLIST
+        } else if (v== findViewById(R.id.stylist)){
+            new API().addStylist(email, "bio", "none");
+            Intent addressIntent = new Intent(CreateAccountSelectType.this, CreateAccountAddress.class);
+            addressIntent.putExtra("email", email);
+            addressIntent.putExtra("accountType", "stylist");
+            startActivity(addressIntent);
+
+            //USER IS SALON
         } else {
-            //salon
+            Intent addressIntent = new Intent(CreateAccountSelectType.this, CreateAccountAddress.class);
+            addressIntent.putExtra("email", email);
+            addressIntent.putExtra("accountType", "salon");
+            startActivity(addressIntent);
         }
     }
 

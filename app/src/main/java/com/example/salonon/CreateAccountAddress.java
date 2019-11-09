@@ -29,6 +29,7 @@ public class CreateAccountAddress extends AppCompatActivity {
         String last = bundle.getString("last");
         String email = bundle.getString("email");
         String password = bundle.getString("password");
+        String accountType = bundle.getString("accountType");
 
         // get data from edit texts:
         EditText addressEditText = findViewById(R.id.addressEditText);

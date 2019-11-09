@@ -146,6 +146,24 @@ public class API {
             return null;
         }
     }
+    //todo This method needs to take an array of offers, as the last argument, but we can only send strings!!
+    //ADD STYLIST TO ACCOUNT
+    public boolean addStylist(String clientID, String bio, String placeholder){
+        try{
+            Map<String, String> parameters = new HashMap<>();
+            parameters.put("id", clientID);
+            parameters.put("bio", bio);
+            parameters.put("styles", "none");
+            String response = network.post(network.herokuURL + "add-stylist", parameters);
+            JSONObject result = new JSONObject(response);
+            boolean status = (boolean) result.get("status");
+            return status;
+        } catch (Exception e){
+            Log.v("API error", "Failed to get profile from id "+e);
+            return false;
+        }
+
+    }
     public Booking getClientBookings(Profile profile){
         return null;
     }
