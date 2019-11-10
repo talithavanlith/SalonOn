@@ -35,15 +35,18 @@ Aside from GitHub, the team utilizes a Trello board for project management as we
 
 **Authors:**
 
-Ethan Bateman - ethanB@unc.edu - Backend Developer and Database Admin. 
+Ethan Bateman - ethanB@unc.edu - Backend Developer and Database Admin   
 Key responsibilities have included designing the schema for the SQL database, implementing the database communication with 
 the Node.js server, and structuring the android classes for storing data locally.
 
-David Moore - d42n81@live.unc.edu - Frontend Developer and Communications Head
+David Moore - d42n81@live.unc.edu - Frontend Developer and Communications Head  
 Responsible for integrating Android UI components, specifying the API interface requirements from the backend, and  coordinating schedules between the team, client, and team mentor.
 
-Talitha Van Lith - talitha@live.unc.edu - Frontend Developer, Webmaster and Lead Designer
+Talitha Van Lith - talitha@live.unc.edu - Frontend Developer, Webmaster and Lead Designer  
 Tasked with producing a clickable prototype, designing Android UI elements, integrating google maps functionality, and managing the project website.
+
+Thomas Goss - tpgoss@live.unc.edu - Backend Developer and Network Admin  
+Responsible for implementing the network communications between node.js webserver and the android API, as well as managing the deployment of the backend onto heroku and its associated automated test suites. 
 
 **License:**
 TBD
