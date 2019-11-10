@@ -5,43 +5,13 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class API {
     Network network = new Network();
 
-
-//HELPER FUNCTION TO GET PROFILE FROM JSON
-    public Profile jsonToProfile(JSONObject profile) {
-        try {
-            String email = (String) profile.get("email");
-            String first = (String) profile.get("first");
-            String last = (String) profile.get("last");
-            String stylistBio = (String) profile.get("stylistBio");
-            String salonBio = (String) profile.get("salonBio");
-            //not sure if this works
-            double salonRate = Double.parseDouble((String) profile.get("salonRate"));
-
-            //get booleans from strings
-            boolean isStylist = false;
-            boolean isSalon = false;
-            int resultStylist = (int) profile.get("isStylist");
-            if (resultStylist == 1){
-                isStylist = true;
-            }
-            int resultSalon = (int) profile.get("isStylist");
-            if (resultSalon == 1){
-                isSalon = true;
-            }
-
-            Profile newProfile = new Profile(email, first, last, null, isStylist, isSalon, stylistBio, salonBio, salonRate);
-            return newProfile;
-        } catch (Exception e) {
-            Log.v("API error", "Failed to convert json to profile " + e);
-            return null;
-        }
-    }
     public String test(){
         return "test";
     }
@@ -139,27 +109,26 @@ public class API {
             parameters.put("id", clientID);
             String response = network.post(network.herokuURL + "client-by-id", parameters);
             JSONObject profile = new JSONObject(response);
-
             return jsonToProfile(profile);
         } catch (Exception e) {
             Log.v("API error", "Failed to get profile from id "+e);
             return null;
         }
     }
-    //todo This method needs to take an array of offers, as the last argument, but we can only send strings!!
+
     //ADD STYLIST TO ACCOUNT
-    public boolean addStylist(String clientID, String bio, String placeholder){
+    public boolean addStylist(String clientID, String bio, Offer[] offers){
         try{
             Map<String, String> parameters = new HashMap<>();
             parameters.put("id", clientID);
             parameters.put("bio", bio);
-            parameters.put("styles", "none");
+            parameters.put("styles", offerArrayToString(offers));
             String response = network.post(network.herokuURL + "add-stylist", parameters);
             JSONObject result = new JSONObject(response);
             boolean status = (boolean) result.get("status");
             return status;
         } catch (Exception e){
-            Log.v("API error", "Failed to get profile from id "+e);
+            Log.v("API error", "Failed to activate stylist account "+e);
             return false;
         }
 
@@ -173,6 +142,53 @@ public class API {
     }
     public boolean createBooking(Booking booking){
         return false;
+    }
+
+
+
+    //2 FUNCTIONS TO TURN OFFER OBJECTS INTO STRINGS TO BE PASSED TO PARAMETERS MAP
+    public String offerArrayToString(Offer[] offers){
+        String[] jsonStrings = new String[offers.length];
+        for (int i=0; i< offers.length; i++){
+            jsonStrings[i] = offerToJsonString(offers[i]);
+        }
+        String string = "{\"styleArray\": "+ Arrays.toString(jsonStrings)+"}";
+        return string;
+    }
+    public String offerToJsonString(Offer offer){
+        return "{\"id\":"+offer.styleID+", \"price\": "+offer.price+", \"deposit\": "+offer.deposit+", \"duration\": "+offer.duration+"}";
+    }
+
+
+    //FUNCTION TO GET PROFILE FROM JSON
+    public Profile jsonToProfile(JSONObject profile) {
+        try {
+            String email = (String) profile.get("email");
+            String first = (String) profile.get("first");
+            String last = (String) profile.get("last");
+            String stylistBio = (String) profile.get("stylistBio");
+            String salonBio = (String) profile.get("salonBio");
+            //not sure if this works
+            double salonRate = Double.parseDouble((String) profile.get("salonRate"));
+
+            //get booleans from strings
+            boolean isStylist = false;
+            boolean isSalon = false;
+            int resultStylist = (int) profile.get("isStylist");
+            if (resultStylist == 1){
+                isStylist = true;
+            }
+            int resultSalon = (int) profile.get("isStylist");
+            if (resultSalon == 1){
+                isSalon = true;
+            }
+
+            Profile newProfile = new Profile(email, first, last, null, isStylist, isSalon, stylistBio, salonBio, salonRate);
+            return newProfile;
+        } catch (Exception e) {
+            Log.v("API error", "Failed to convert json to profile " + e);
+            return null;
+        }
     }
 }
 

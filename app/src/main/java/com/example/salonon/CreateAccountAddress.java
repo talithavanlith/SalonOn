@@ -43,24 +43,13 @@ public class CreateAccountAddress extends AppCompatActivity {
         String state = stateEditText.getText().toString();
         String zip = zipEditText.getText().toString();
 
-        // create account
-        API api = new API();
-        Image image = null;
-        Profile userProfile = new Profile(email, first,last, image,true, false, "none", "none", 0);
 
-        if(api.createNewProfile(userProfile, password)) {
-            Toast.makeText(this, "Account created successfully", Toast.LENGTH_LONG).show();
-            Log.v("success", "Account created successfully");
 
-            //start search intent
-            Intent searchIntent = new Intent(CreateAccountAddress.this, SearchActivity.class);
-            searchIntent.putExtra("email", email);
-            startActivity(searchIntent);
-            finish();
-        } else {
-            Toast.makeText(this, "Error, account not created.", Toast.LENGTH_LONG).show();
-            Log.v("Profile", "Failed to Create User Profile!!!");
-        }
+        //start search intent
+        Intent activateStylistIntent = new Intent(CreateAccountAddress.this, CreateAccountActivateStylist.class);
+        activateStylistIntent.putExtra("email", email);
+        startActivity(activateStylistIntent);
+        finish();
 
     }
 

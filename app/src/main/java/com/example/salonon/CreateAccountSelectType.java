@@ -25,11 +25,9 @@ public class CreateAccountSelectType extends AppCompatActivity {
         if (v == findViewById(R.id.client)){
             Intent addressIntent = new Intent(CreateAccountSelectType.this, SearchActivity.class);
             addressIntent.putExtra("email", email);
-            addressIntent.putExtra("accountType", "stylist");
             startActivity(addressIntent);
             //USER IS STYLIST
         } else if (v== findViewById(R.id.stylist)){
-            new API().addStylist(email, "bio", "none");
             Intent addressIntent = new Intent(CreateAccountSelectType.this, CreateAccountAddress.class);
             addressIntent.putExtra("email", email);
             addressIntent.putExtra("accountType", "stylist");

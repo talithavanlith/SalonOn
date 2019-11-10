@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateAccountActivateStylist"
+    android:background="#F4FBD5"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/logolong"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="ADD A BIO FOR FUTURE CLIENTS!"
+                android:textColor="#81CF4D"
+                android:textAlignment="center"
+                android:layout_margin="10dp">
+            </TextView>
+            <EditText
+                android:id="@+id/bio"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@android:color/white"
+                android:layout_margin="10dp"
+                android:hint="I am the machine"
+                android:lines="5"
+                android:gravity="top">
+            </EditText>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="SELECT THE SERVICES YOU WANT TO OFFER CLIENTS:"
+                android:textColor="#81CF4D"
+                android:textAlignment="center"
+                android:layout_margin="10dp">
+
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:textColor="#81CF4D"
+                android:text="Barber"
+                android:textSize="30dp">
+
+            </TextView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:background="#81CF4D">
+
+                <CheckBox
+                    android:id="@+id/style1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp">
+                </CheckBox>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="20dp"
+                    android:text="Beard Styling"
+                    android:layout_margin="10dp">
+                </TextView>
+                <EditText
+                    android:id="@+id/style1price"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/white"
+                    android:layout_margin="5dp"
+                    android:hint="Price"
+                    android:inputType="numberDecimal">
+                </EditText>
+                <EditText
+                    android:id="@+id/style1deposit"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/white"
+                    android:layout_margin="5dp"
+                    android:hint="Deposit"
+                    android:inputType="numberDecimal">
+                </EditText>
+                <EditText
+                    android:id="@+id/style1duration"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/white"
+                    android:layout_margin="5dp"
+                    android:hint="Duration"
+                    android:inputType="time">
+
+                </EditText>
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/submitButton"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    app:backgroundTint = "#81CF4D"
+                    android:text="Done"
+                    android:textColor="@android:color/white"
+                    android:textSize="21sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
+                    android:onClick="doneButton"
+                    />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
