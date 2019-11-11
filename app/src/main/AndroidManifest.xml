@@ -16,8 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateAccountActivateStylist"></activity>
-        <activity android:name=".CreateAccountSelectType"></activity>
+        <activity android:name=".CreateAccountActivateStylist" android:theme="@style/AppTheme.NoActionBar" android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".CreateAccountSelectType" android:theme="@style/AppTheme.NoActionBar" android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
