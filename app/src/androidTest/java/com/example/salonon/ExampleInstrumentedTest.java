@@ -21,6 +21,8 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        API api = new API();
+        Profile userProfile = api.login("thomas@mail.com", "thomastestpassword");
 
         assertEquals("com.example.salonon", appContext.getPackageName());
     }
