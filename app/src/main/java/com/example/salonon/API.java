@@ -37,7 +37,7 @@ public class API {
             }
             parameters.put("stylistBio", profile.stylistBio);
             parameters.put("salonBio", profile.salonBio);
-            parameters.put("salonRate", "0");
+            parameters.put("salonRate", "0.0");
 
             //request code
             String response = network.post(network.herokuURL + "createuser", parameters);
@@ -73,7 +73,7 @@ public class API {
     }
 
     //Todo no zip
-    public Profile[] searchStylistByLocation(String address, String city, String state, String country, String postalCode, String radius) {
+    public Profile[] searchStylistByLocation(String address, String city, String state, String postalCode, String radius) {
         try {
             //request code
             Map<String, String> parameters = new HashMap<>();
@@ -88,8 +88,9 @@ public class API {
 
             //data code
             Profile[] objects = new Profile[array.length()];
-            for(int i=0;i<array.length();i++)
+            for(int i=0; i<array.length(); i++)
             {
+                System.out.println("stylist num " + i  + " " + array.getJSONObject(i));
                 objects[i] = jsonToProfile(array.getJSONObject(i));
             }
             return objects;
@@ -98,6 +99,45 @@ public class API {
             return null;
         }
     }
+
+    //FUNCTION TO GET PROFILE FROM JSON
+    public Profile jsonToProfile(JSONObject profile) {
+        try {
+
+            String email = (String) profile.get("email");
+            String first = (String) profile.get("first");
+            String last = (String) profile.get("last");
+            String stylistBio = (String) profile.get("stylistBio");
+            String salonBio = (String) profile.get("salonBio");
+
+            double salonRate;
+            try {
+                salonRate = (double) (profile.get("salonRate"));
+            }catch(Exception e){
+                salonRate = new Double((int)profile.get("salonRate"));
+            }
+
+
+            //get booleans from strings
+            boolean isStylist = false;
+            boolean isSalon = false;
+            int resultStylist = (int) profile.get("isStylist");
+            if (resultStylist == 1){
+                isStylist = true;
+            }
+            int resultSalon = (int) profile.get("isStylist");
+            if (resultSalon == 1){
+                isSalon = true;
+            }
+
+            Profile newProfile = new Profile(email, first, last, null, isStylist, isSalon, stylistBio, salonBio, salonRate);
+            return newProfile;
+        } catch (Exception e) {
+            Log.v("API error", "Failed to convert json to profile " + e);
+            return null;
+        }
+    }
+
     public Profile[] searchSalonByLocation(String latitude, String longitude, int radius) {
         return null;
     }
@@ -159,36 +199,5 @@ public class API {
         return "{\"id\":"+offer.styleID+", \"price\": "+offer.price+", \"deposit\": "+offer.deposit+", \"duration\": "+offer.duration+"}";
     }
 
-
-    //FUNCTION TO GET PROFILE FROM JSON
-    public Profile jsonToProfile(JSONObject profile) {
-        try {
-            String email = (String) profile.get("email");
-            String first = (String) profile.get("first");
-            String last = (String) profile.get("last");
-            String stylistBio = (String) profile.get("stylistBio");
-            String salonBio = (String) profile.get("salonBio");
-            //not sure if this works
-            double salonRate = Double.parseDouble((String) profile.get("salonRate"));
-
-            //get booleans from strings
-            boolean isStylist = false;
-            boolean isSalon = false;
-            int resultStylist = (int) profile.get("isStylist");
-            if (resultStylist == 1){
-                isStylist = true;
-            }
-            int resultSalon = (int) profile.get("isStylist");
-            if (resultSalon == 1){
-                isSalon = true;
-            }
-
-            Profile newProfile = new Profile(email, first, last, null, isStylist, isSalon, stylistBio, salonBio, salonRate);
-            return newProfile;
-        } catch (Exception e) {
-            Log.v("API error", "Failed to convert json to profile " + e);
-            return null;
-        }
-    }
 }
 

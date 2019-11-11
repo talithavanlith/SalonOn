@@ -127,13 +127,13 @@ public class SearchActivity extends AppCompatActivity {
             String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
             String city = addresses.get(0).getLocality();
             String state = addresses.get(0).getAdminArea();
-            String country = addresses.get(0).getCountryName();
+//            String country = addresses.get(0).getCountryName();
             String postalCode = addresses.get(0).getPostalCode();
 
-            Toast.makeText(SearchActivity.this, "Your location is: \n" + address + "\n" + city + ", " + state + "\n" + country + "\n" + postalCode, Toast.LENGTH_SHORT).show();
+            Toast.makeText(SearchActivity.this, "Your location is: \n" + address + "\n" + city + ", " + state + "\n" + postalCode, Toast.LENGTH_SHORT).show();
 
             // Display stylists in activity_search
-            Profile[] arrayOfStylists = api.searchStylistByLocation(address, city, state, country, postalCode, "10");
+            Profile[] arrayOfStylists = api.searchStylistByLocation(address, city, state, postalCode, "10");
             //^^^ we actually want this to search with their location so i think i need to change the api method too
             if (arrayOfStylists[0] != null) {
 //                fillSearchActivityWithData(arrayOfStylists);
