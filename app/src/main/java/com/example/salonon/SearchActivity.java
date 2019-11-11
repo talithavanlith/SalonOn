@@ -4,6 +4,8 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +25,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import java.io.IOException;
+import java.util.List;
 import java.util.Locale;
 
 public class SearchActivity extends AppCompatActivity {
@@ -33,6 +37,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private Boolean mLocationPermissionsGranted = false;
     private FusedLocationProviderClient mFusedLocationProviderClient;
+    private API api;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +50,7 @@ public class SearchActivity extends AppCompatActivity {
         String email = bundle.getString("email");
 
         //get user profile
-        API api = new API();
+        api = new API();
         Profile userProfile = api.getClientProfile(email);
 
         if(userProfile == null) {
@@ -72,14 +77,7 @@ public class SearchActivity extends AppCompatActivity {
 
         //then send address to method below
 
-        // Display stylists in activity_search
-        Profile[] arrayOfStylists = api.searchStylistByLocation(userProfile);
-        //^^^ we actually want this to search with their location so i think i need to change the api method too
-        if (arrayOfStylists != null) {
-            fillSearchActivityWithData(arrayOfStylists);
-        } else {
-            Toast.makeText(this, "Failed to get stylists by location", Toast.LENGTH_LONG).show();
-        }
+
     }
 
 
@@ -115,12 +113,41 @@ public class SearchActivity extends AppCompatActivity {
         }
     }
 
-    private void processLocation(LatLng loc){
-
-        Toast.makeText(SearchActivity.this, "the location is found and it is:" + loc,
-                Toast.LENGTH_SHORT).show();
+    private void processLocation(LatLng latLng){
 
         //convert to address then send to API
+        Geocoder geocoder;
+        List<Address> addresses;
+
+        geocoder = new Geocoder(this, Locale.getDefault());
+
+        try{
+            addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+
+            String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+            String city = addresses.get(0).getLocality();
+            String state = addresses.get(0).getAdminArea();
+            String country = addresses.get(0).getCountryName();
+            String postalCode = addresses.get(0).getPostalCode();
+
+            Toast.makeText(SearchActivity.this, "Your location is: \n" + address + "\n" + city + ", " + state + "\n" + country + "\n" + postalCode, Toast.LENGTH_SHORT).show();
+
+            // Display stylists in activity_search
+            Profile[] arrayOfStylists = api.searchStylistByLocation(address, city, state, country, postalCode, "10");
+            //^^^ we actually want this to search with their location so i think i need to change the api method too
+            if (arrayOfStylists[0] != null) {
+//                fillSearchActivityWithData(arrayOfStylists);
+                Toast.makeText(SearchActivity.this, "Stylist 1 is: \n" + arrayOfStylists[0].first, Toast.LENGTH_SHORT).show();
+
+            } else {
+                Toast.makeText(this, "Failed to get stylists by location", Toast.LENGTH_LONG).show();
+            }
+
+        }catch (IOException e){
+            System.err.println("couldn't convert address: " + e);
+        }
+
+
 
     }
 

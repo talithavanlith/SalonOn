@@ -73,15 +73,15 @@ public class API {
     }
 
     //Todo no zip
-    public Profile[] searchStylistByLocation(Profile profile) {
+    public Profile[] searchStylistByLocation(String address, String city, String state, String country, String postalCode, String radius) {
         try {
             //request code
             Map<String, String> parameters = new HashMap<>();
-            parameters.put("addr", "106 shadowood dr ");
-            parameters.put("city", "chapel hill");
-            parameters.put("state", "nc");
-            parameters.put("zip", "27514");
-            parameters.put("radius", "10");
+            parameters.put("addr", address);
+            parameters.put("city", city);
+            parameters.put("state", state);
+            parameters.put("zip", postalCode);
+            parameters.put("radius", radius);
             String response = network.post(network.herokuURL + "searchstylistslocation", parameters);
             JSONObject json = new JSONObject(response);
             JSONArray array = json.getJSONArray("profiles");
