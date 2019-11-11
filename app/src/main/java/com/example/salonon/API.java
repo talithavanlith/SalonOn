@@ -84,13 +84,13 @@ public class API {
             parameters.put("radius", radius);
             String response = network.post(network.herokuURL + "searchstylistslocation", parameters);
             JSONObject json = new JSONObject(response);
+
+            //gets an array of ALL profiles
             JSONArray array = json.getJSONArray("profiles");
 
             //data code
             Profile[] objects = new Profile[array.length()];
-            for(int i=0; i<array.length(); i++)
-            {
-                System.out.println("stylist num " + i  + " " + array.getJSONObject(i));
+            for(int i=0; i<array.length(); i++) {
                 objects[i] = jsonToProfile(array.getJSONObject(i));
             }
             return objects;
@@ -116,7 +116,6 @@ public class API {
             }catch(Exception e){
                 salonRate = new Double((int)profile.get("salonRate"));
             }
-
 
             //get booleans from strings
             boolean isStylist = false;

@@ -136,7 +136,7 @@ public class SearchActivity extends AppCompatActivity {
             Profile[] arrayOfStylists = api.searchStylistByLocation(address, city, state, postalCode, "10");
             //^^^ we actually want this to search with their location so i think i need to change the api method too
             if (arrayOfStylists[0] != null) {
-//                fillSearchActivityWithData(arrayOfStylists);
+                fillSearchActivityWithData(arrayOfStylists);
                 Toast.makeText(SearchActivity.this, "Stylist 1 is: \n" + arrayOfStylists[0].first, Toast.LENGTH_SHORT).show();
 
             } else {
@@ -186,8 +186,8 @@ public class SearchActivity extends AppCompatActivity {
 
     private void fillSearchActivityWithData(Profile [] profiles){
         // Get TextViews from view:
-        TextView stylistNameTextView = findViewById(R.id.txtName1);
-        TextView stylistInfoTextView = findViewById(R.id.txtInfo1);
+        TextView name = findViewById(R.id.txtName1);
+        TextView info = findViewById(R.id.txtInfo1);
 
         //todo: fix this. Need to be able to display any number of profiles. not just 3
         for(int i = 0; i < profiles.length; i++) {
@@ -197,20 +197,21 @@ public class SearchActivity extends AppCompatActivity {
             }
             // render profile information to XML.
             if(i == 0) {
-                stylistNameTextView = findViewById(R.id.txtName1);
-                stylistInfoTextView = findViewById(R.id.txtInfo1);
+                name = findViewById(R.id.txtName1);
+                info = findViewById(R.id.txtInfo1);
             } else if (i == 1) {
-                stylistNameTextView = findViewById(R.id.txtName2);
-                stylistInfoTextView = findViewById(R.id.txtInfo2);
+                name = findViewById(R.id.txtName2);
+                info = findViewById(R.id.txtInfo2);
             } else if (i == 2) {
-                stylistNameTextView = findViewById(R.id.txtName3);
-                stylistInfoTextView = findViewById(R.id.txtInfo3);
+                name = findViewById(R.id.txtName3);
+                info = findViewById(R.id.txtInfo3);
             } else if (i == 3) {
-                stylistNameTextView = findViewById(R.id.txtName4);
-                stylistInfoTextView = findViewById(R.id.txtInfo4);
+                name = findViewById(R.id.txtName4);
+                info = findViewById(R.id.txtInfo4);
             }
 
-            stylistNameTextView.setText(profiles[i].first);
+            name.setText(profiles[i].first + " " + profiles[i].last);
+            info.setText(profiles[i].stylistBio);
         }
     }
 
