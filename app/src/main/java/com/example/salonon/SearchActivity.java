@@ -147,8 +147,6 @@ public class SearchActivity extends AppCompatActivity {
             System.err.println("couldn't convert address: " + e);
         }
 
-
-
     }
 
     public boolean isServicesOK(){
