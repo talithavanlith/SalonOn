@@ -38,7 +38,7 @@ import java.util.Locale;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
-    private static final int ERROR_DIALOG_REQUEST = 9001;
+//    private static final int ERROR_DIALOG_REQUEST = 9001;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
     private static final float DEFAULT_ZOOM = 15f;
 
@@ -52,31 +52,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        if(isServicesOK()) {
             getLocationPermissions();
-        }
+//
+//        initMap();
     }
 
 
-    public boolean isServicesOK(){
-        // checking google services version
-
-        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(MapsActivity.this);
-
-        if(available == ConnectionResult.SUCCESS){
-            //everything is fine and the user can make map requests
-            return true;
-        }else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
-            //an error occurred but we can resolve it
-            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(MapsActivity.this, available, ERROR_DIALOG_REQUEST);
-            dialog.show();
-        }else{
-            //if they don't have the correct services, theres nothing we can do
-            //TODO: make something happen if they deny services e.g. set a default location
-            Toast.makeText(this, "You can't make map requests", Toast.LENGTH_SHORT).show();
-        }
-        return false;
-    }
+//    public boolean isServicesOK(){
+//        // checking google services version
+//
+//        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(MapsActivity.this);
+//
+//        if(available == ConnectionResult.SUCCESS){
+//            //everything is fine and the user can make map requests
+//            return true;
+//        }else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
+//            //an error occurred but we can resolve it
+//            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(MapsActivity.this, available, ERROR_DIALOG_REQUEST);
+//            dialog.show();
+//        }else{
+//            //if they don't have the correct services, theres nothing we can do
+//            //TODO: make something happen if they deny services e.g. set a default location
+//            Toast.makeText(this, "You can't make map requests", Toast.LENGTH_SHORT).show();
+//        }
+//        return false;
+//    }
 
 
     public void getLocationPermissions(){
