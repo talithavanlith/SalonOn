@@ -2,6 +2,7 @@ package com.example.salonon;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +32,7 @@ public class SearchActivity extends AppCompatActivity {
         Profile[] arrayOfStylists = api.searchStylistByLocation(userProfile);
         if (arrayOfStylists != null) {
             fillSearchActivityWithData(arrayOfStylists);
+            // Log.v("API Stylists", "API Call index 0 is: " + arrayOfStylists[0]);
         } else {
             Toast.makeText(this, "Failed to get stylists by location", Toast.LENGTH_LONG).show();
         }
