@@ -49,7 +49,7 @@ Thomas Goss - tpgoss@live.unc.edu - Backend Developer and Network Admin
 Responsible for implementing the network communications between node.js webserver and the android API, as well as managing the deployment of the backend onto heroku and its associated automated test suites. 
 
 **License:**
-TBD
+All source code in this repository and other creative works related to this project are property of the University of North Carolina at Chapel Hill.  
 
 **Acknowledgements:**
 
