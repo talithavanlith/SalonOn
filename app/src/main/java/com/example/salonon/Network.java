@@ -105,7 +105,7 @@ public class Network {
             String line;
             StringBuffer jsonString = new StringBuffer();
 
-            uc.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            uc.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             uc.setRequestMethod("POST");
             uc.setDoInput(true);
             uc.setInstanceFollowRedirects(false);

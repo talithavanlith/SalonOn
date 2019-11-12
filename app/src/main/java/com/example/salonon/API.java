@@ -107,7 +107,7 @@ public class API {
 //        parameters.put("state", state);
 //        parameters.put("zip", postalCode);
 //        parameters.put("radius", radius);
-        String response = network.post(network.herokuURL + "update-profile-photo", parameters);
+        String response = network.post(network.herokuTestURL + "update-profile-photo", parameters);
 //        JSONObject json = new JSONObject(response);
 //
 //        //gets an array of ALL profiles
