@@ -51,11 +51,11 @@ public class SearchResultsActivity extends AppCompatActivity {
         Intent currentIntent = getIntent();
         Bundle bundle = currentIntent.getExtras();
         String email = bundle.getString("email");
-        address = bundle.getString("address");
-        city = bundle.getString("city");
-        state = bundle.getString("state");
-        postalCode = bundle.getString("postalCode");
-        radius = bundle.getString("radius");
+//        address = bundle.getString("address");
+//        city = bundle.getString("city");
+//        state = bundle.getString("state");
+//        postalCode = bundle.getString("postalCode");
+//        radius = bundle.getString("radius");
 
         //get user profile
         api = new API();
