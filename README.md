@@ -53,7 +53,7 @@ All source code in this repository and other creative works related to this proj
 
 **Acknowledgements:**
 
-We extend our graditude to our mentor Mike Lake, and Professor Jeff Terrell for providing their insights throughout the duration of this project.
+We extend our graditude to our mentor Dr. Mike Lake, and Professor Dr. Jeff Terrell for providing their insights throughout the duration of this project.
 
 
 
