@@ -1,10 +1,13 @@
 package com.example.salonon;
 
+import android.content.Context;
 import android.os.AsyncTask;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -32,7 +35,8 @@ public class Network {
         try {
             NetworkPost task = new NetworkPost();
             task.parameters = parameters;
-            return task.execute(url).get();
+            String value = task.execute(url).get();
+            return value;
         } catch (Exception e) {
             return null;
         }
@@ -88,32 +92,38 @@ public class Network {
             try {
                 // Create a connection to the "test" endpoint on our server.
                 String queryParameters = getParametersString(parameters);
-                URL url = new URL(urls[0] + queryParameters);
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                con.setRequestMethod("POST");
-
-                con.setDoOutput(true);
-                DataOutputStream out = new DataOutputStream(con.getOutputStream());
-//                out.writeBytes(getParametersString(parameters));
-                out.flush();
-                out.close();
-
-                // Read the content returned from that endpoint.
-                BufferedReader in = new BufferedReader(
-                        new InputStreamReader(con.getInputStream()));
-                String inputLine;
-                StringBuilder content = new StringBuilder();
-                while ((inputLine = in.readLine()) != null) {
-                    content.append(inputLine);
-                }
-                in.close();
-                con.disconnect();
-                // Return the string.
-                return content.toString();
+                return makePostRequest(urls[0], queryParameters);
             } catch (Exception e) {
                 this.exception = e;
                 return null;
             }
+        }
+
+        public String makePostRequest(String stringUrl, String payload) throws IOException {
+            URL url = new URL(stringUrl);
+            HttpURLConnection uc = (HttpURLConnection) url.openConnection();
+            String line;
+            StringBuffer jsonString = new StringBuffer();
+
+            uc.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            uc.setRequestMethod("POST");
+            uc.setDoInput(true);
+            uc.setInstanceFollowRedirects(false);
+            uc.connect();
+            OutputStreamWriter writer = new OutputStreamWriter(uc.getOutputStream(), "UTF-8");
+            writer.write(payload);
+            writer.close();
+            try {
+                BufferedReader br = new BufferedReader(new InputStreamReader(uc.getInputStream()));
+                while((line = br.readLine()) != null){
+                    jsonString.append(line);
+                }
+                br.close();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            uc.disconnect();
+            return jsonString.toString();
         }
     }
 
