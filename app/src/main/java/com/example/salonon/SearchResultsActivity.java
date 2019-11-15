@@ -51,11 +51,11 @@ public class SearchResultsActivity extends AppCompatActivity {
         Intent currentIntent = getIntent();
         Bundle bundle = currentIntent.getExtras();
         String email = bundle.getString("email");
-//        address = bundle.getString("address");
-//        city = bundle.getString("city");
-//        state = bundle.getString("state");
-//        postalCode = bundle.getString("postalCode");
-//        radius = bundle.getString("radius");
+        address = bundle.getString("address");
+        city = bundle.getString("city");
+        state = bundle.getString("state");
+        postalCode = bundle.getString("postalCode");
+        radius = bundle.getString("radius");
 
         //get user profile
         api = new API();
@@ -102,16 +102,13 @@ public class SearchResultsActivity extends AppCompatActivity {
             // render profile information to XML.
             if(i == 0) {
                 name = findViewById(R.id.txtName1);
-                info = findViewById(R.id.txtInfo1);
+                info = findViewById(R.id.txtInfo1a);
             } else if (i == 1) {
                 name = findViewById(R.id.txtName2);
-                info = findViewById(R.id.txtInfo2);
+                info = findViewById(R.id.txtInfo2a);
             } else if (i == 2) {
                 name = findViewById(R.id.txtName3);
-                info = findViewById(R.id.txtInfo3);
-            } else if (i == 3) {
-                name = findViewById(R.id.txtName4);
-                info = findViewById(R.id.txtInfo4);
+                info = findViewById(R.id.txtInfo3a);
             }
 
             name.setText(profiles[i].first + " " + profiles[i].last);

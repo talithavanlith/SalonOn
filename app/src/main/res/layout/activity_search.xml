@@ -39,7 +39,7 @@
             android:id="@+id/btnMenu"
             android:layout_width="38dp"
             android:layout_height="38dp"
-            android:background="#000000"
+            android:background="#272423"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.067"
@@ -51,7 +51,7 @@
             android:id="@+id/txtQuickFind"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="#1E1B1B"
+            android:background="#272423"
             android:gravity="center"
             android:text="Quick find on your location"
             android:textColor="#F5F5EF"
@@ -68,7 +68,7 @@
             android:layout_width="414dp"
             android:layout_height="496dp"
             android:layout_marginTop="0dp"
-            android:background="#171515"
+            android:background="#272423"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.666"
@@ -159,7 +159,7 @@
                     android:id="@+id/crdStylist2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="#171515"
+                    app:cardBackgroundColor="#272423"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/crdStylist1">
@@ -167,7 +167,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="#171515">
+                        android:background="#272423">
 
                         <TextView
                             android:id="@+id/txtName2"

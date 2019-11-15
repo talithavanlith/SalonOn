@@ -258,11 +258,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         System.out.println("find styist button is clicked --------------------------------------------------------\n\n");
 
         Intent stylistProfileIntent = new Intent(MapsActivity.this, SearchResultsActivity.class);
-//        stylistProfileIntent.putExtra("address", address);
-//        stylistProfileIntent.putExtra("city", city);
-//        stylistProfileIntent.putExtra("state", state);
-//        stylistProfileIntent.putExtra("postalCode", postalCode);
-//        stylistProfileIntent.putExtra("radius", radius);
+        stylistProfileIntent.putExtra("address", address);
+        stylistProfileIntent.putExtra("city", city);
+        stylistProfileIntent.putExtra("state", state);
+        stylistProfileIntent.putExtra("postalCode", postalCode);
+        stylistProfileIntent.putExtra("radius", radius);
         stylistProfileIntent.putExtra("email", userProfile.email);
 
         System.out.println("intent is created with info -------------------------------------------------------\n\n");

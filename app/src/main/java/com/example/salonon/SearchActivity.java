@@ -88,6 +88,7 @@ public class SearchActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             //found location
                             Location currentLocation = (Location) task.getResult(); //return this to main to send to next method
+                            System.out.println(currentLocation.getLatitude() + " ---------------------------------iifrjijfioji------------------------");
                             LatLng curLocation = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
                             processLocation(curLocation);
                             return;
@@ -190,16 +191,13 @@ public class SearchActivity extends AppCompatActivity {
             // render profile information to XML.
             if(i == 0) {
                 name = findViewById(R.id.txtName1);
-                info = findViewById(R.id.txtInfo1);
+                info = findViewById(R.id.txtInfo1a);
             } else if (i == 1) {
                 name = findViewById(R.id.txtName2);
-                info = findViewById(R.id.txtInfo2);
+                info = findViewById(R.id.txtInfo2a);
             } else if (i == 2) {
                 name = findViewById(R.id.txtName3);
-                info = findViewById(R.id.txtInfo3);
-            } else if (i == 3) {
-                name = findViewById(R.id.txtName4);
-                info = findViewById(R.id.txtInfo4);
+                info = findViewById(R.id.txtInfo3a);
             }
 
             name.setText(profiles[i].first + " " + profiles[i].last);
