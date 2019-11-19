@@ -10,18 +10,19 @@
 
     <Button
         android:id="@+id/btnFindStylist"
-        android:onClick="findStylistOnClick"
         android:layout_width="300dp"
         android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
         android:background="#81CF4D"
+        android:onClick="findStylistOnClick"
         android:text="FIND STYLIST"
         android:textColor="#F7F7F2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintTop_toBottomOf="@+id/map" />
 
         <View
             android:id="@+id/viewBackground"
@@ -37,16 +38,16 @@
             app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:src="@drawable/logolong"
         android:id="@+id/txtLogo"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_marginTop="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnFindStylist"
+        android:src="@drawable/logolong"
+        app:layout_constraintBottom_toTopOf="@+id/txtInfo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnMenu"
@@ -76,23 +77,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtLogo" />
 
-        <SeekBar
-            android:id="@+id/seekBar"
-            android:layout_width="370dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:maxHeight="8dp"
-            android:minHeight="8dp"
-            android:progress="30"
-            android:progressDrawable="@drawable/seek_bar_ruler"
-            android:thumb="@drawable/seek_bar_slider"
-            app:layout_constraintBottom_toTopOf="@+id/btnFindStylist"
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:layout_marginTop="4dp"
+        android:maxHeight="8dp"
+        android:minHeight="8dp"
+        android:progress="30"
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/viewBackground"
-            app:layout_constraintVertical_bias="0.0" />
+        android:progressDrawable="@drawable/seek_bar_ruler"
+        android:thumb="@drawable/seek_bar_slider"
+        app:layout_constraintBottom_toTopOf="@+id/map"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewBackground" />
 
     <fragment
         android:id="@+id/map"
@@ -100,7 +101,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="15dp"
-        android:layout_marginTop="13dp"
         app:layout_constraintBottom_toTopOf="@+id/btnFindStylist"
         app:layout_constraintEnd_toEndOf="@+id/viewBackground"
         app:layout_constraintHorizontal_bias="0.483"
