@@ -91,7 +91,7 @@ public class SearchResultsActivity extends AppCompatActivity {
     private void fillSearchActivityWithData(Profile [] profiles){
         // Get TextViews from view:
         TextView name = findViewById(R.id.txtName1);
-        TextView info = findViewById(R.id.txtInfo1);
+        TextView info = findViewById(R.id.txtInfo1a);
 
         //todo: fix this. Need to be able to display any number of profiles. not just 3
         for(int i = 0; i < profiles.length; i++) {
