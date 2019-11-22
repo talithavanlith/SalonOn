@@ -51,7 +51,6 @@ public class Network {
         // Override method provided by asynctask.  This code is run upon NetworkGet.execute().
         protected String doInBackground(String... urls) {
             try {
-                // Create a connection to the "test" endpoint on our server.
                 URL url = new URL(urls[0]);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod("GET");
@@ -67,18 +66,12 @@ public class Network {
                 }
                 in.close();
                 con.disconnect();
-                // Return the string.
                 return content.toString();
             } catch (Exception e) {
                 this.exception = e;
                 return null;
             }
         }
-
-//        // TODO this might be useful, but so far I'm not using it.
-//        protected void onPostExecute(String string) {
-////            print(string);
-//        }
 
     }
 
@@ -90,7 +83,6 @@ public class Network {
         // Override method provided by asynctask.  This code is run upon NetworkGet.execute().
         protected String doInBackground(String... urls) {
             try {
-                // Create a connection to the "test" endpoint on our server.
                 String queryParameters = getParametersString(parameters);
                 return makePostRequest(urls[0], queryParameters);
             } catch (Exception e) {

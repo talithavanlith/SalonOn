@@ -100,24 +100,11 @@ public class API {
         }
     }
 
-    public String updateProfilePhoto() {
+    public String updateProfilePhoto(String photoData) {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("id", "thomas@mail.com");
-        parameters.put("photo", "photo");
-//        parameters.put("state", state);
-//        parameters.put("zip", postalCode);
-//        parameters.put("radius", radius);
-        String response = network.post(network.herokuTestURL + "update-profile-photo", parameters);
-//        JSONObject json = new JSONObject(response);
-//
-//        //gets an array of ALL profiles
-//        JSONArray array = json.getJSONArray("profiles");
-//
-//        //data code
-//        Profile[] objects = new Profile[array.length()];
-//        for(int i=0; i<array.length(); i++) {
-//            objects[i] = jsonToProfile(array.getJSONObject(i));
-//        }
+        parameters.put("photo", photoData);
+        String response = network.post(network.herokuURL + "update-profile-photo", parameters);
         return response;
     }
 
