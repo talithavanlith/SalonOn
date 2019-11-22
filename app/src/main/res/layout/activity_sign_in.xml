@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:src="@drawable/logolong"/>
+        android:src="@drawable/bare"/>
 
     <EditText
         android:id="@+id/emailEditText"
