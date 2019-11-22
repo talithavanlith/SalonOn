@@ -38,6 +38,7 @@ public class SearchActivity extends AppCompatActivity {
     private Boolean mLocationPermissionsGranted = false;
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private API api;
+    private Profile userProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +52,7 @@ public class SearchActivity extends AppCompatActivity {
 
         //get user profile
         api = new API();
-        Profile userProfile = api.getClientProfile(email);
+        userProfile = api.getClientProfile(email);
 
         if(userProfile == null) {
             Toast.makeText(this, "Failed to re-fetch profile", Toast.LENGTH_LONG).show();
@@ -71,13 +72,6 @@ public class SearchActivity extends AppCompatActivity {
             LatLng chapelHill = new LatLng(35.913200, -79.055847);
             processLocation(chapelHill);
         }
-
-
-        //then convert location to address
-
-        //then send address to method below
-
-
     }
 
 
@@ -94,6 +88,7 @@ public class SearchActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             //found location
                             Location currentLocation = (Location) task.getResult(); //return this to main to send to next method
+                            System.out.println(currentLocation.getLatitude() + " ---------------------------------iifrjijfioji------------------------");
                             LatLng curLocation = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
                             processLocation(curLocation);
                             return;
@@ -134,7 +129,7 @@ public class SearchActivity extends AppCompatActivity {
 
             // Display stylists in activity_search
             Profile[] arrayOfStylists = api.searchStylistByLocation(address, city, state, postalCode, "10");
-            //^^^ we actually want this to search with their location so i think i need to change the api method too
+
             if (arrayOfStylists[0] != null) {
                 fillSearchActivityWithData(arrayOfStylists);
                 Toast.makeText(SearchActivity.this, "Stylist 1 is: \n" + arrayOfStylists[0].first, Toast.LENGTH_SHORT).show();
@@ -162,7 +157,7 @@ public class SearchActivity extends AppCompatActivity {
             Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(SearchActivity.this, available, ERROR_DIALOG_REQUEST);
             dialog.show();
         }else{
-            //if they don't have the correct services, theres nothing we can do
+            //if they don't have the correct services, there's nothing we can do
             //TODO: make something happen if they deny services e.g. set a default location
             Toast.makeText(this, "You can't make map requests", Toast.LENGTH_SHORT).show();
         }
@@ -185,7 +180,7 @@ public class SearchActivity extends AppCompatActivity {
     private void fillSearchActivityWithData(Profile [] profiles){
         // Get TextViews from view:
         TextView name = findViewById(R.id.txtName1);
-        TextView info = findViewById(R.id.txtInfo1);
+        TextView info = findViewById(R.id.txtInfo1a);
 
         //todo: fix this. Need to be able to display any number of profiles. not just 3
         for(int i = 0; i < profiles.length; i++) {
@@ -196,16 +191,13 @@ public class SearchActivity extends AppCompatActivity {
             // render profile information to XML.
             if(i == 0) {
                 name = findViewById(R.id.txtName1);
-                info = findViewById(R.id.txtInfo1);
+                info = findViewById(R.id.txtInfo1a);
             } else if (i == 1) {
                 name = findViewById(R.id.txtName2);
-                info = findViewById(R.id.txtInfo2);
+                info = findViewById(R.id.txtInfo2a);
             } else if (i == 2) {
                 name = findViewById(R.id.txtName3);
-                info = findViewById(R.id.txtInfo3);
-            } else if (i == 3) {
-                name = findViewById(R.id.txtName4);
-                info = findViewById(R.id.txtInfo4);
+                info = findViewById(R.id.txtInfo3a);
             }
 
             name.setText(profiles[i].first + " " + profiles[i].last);
@@ -215,6 +207,7 @@ public class SearchActivity extends AppCompatActivity {
 
     public void btnSelectLocationOnClick(View v) {
         Intent mapIntent = new Intent(SearchActivity.this, MapsActivity.class);
+        mapIntent.putExtra("email", userProfile.email);
         startActivity(mapIntent);
     }
 

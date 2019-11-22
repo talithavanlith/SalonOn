@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Address;
@@ -15,6 +16,7 @@ import android.location.Location;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -38,8 +40,8 @@ import java.util.Locale;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
-//    private static final int ERROR_DIALOG_REQUEST = 9001;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
+    private static final int ERROR_DIALOG_REQUEST = 9001;
     private static final float DEFAULT_ZOOM = 15f;
 
     //vars
@@ -47,37 +49,63 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private UiSettings uiSettings;
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationProviderClient;
+    private API api;
+    private Profile userProfile;
+
+    //address vars
+    private String address;
+    private String city;
+    private String state;
+    private String postalCode;
+    private String radius;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        //in here we want to request permission to get location
+
+        if(isServicesOK()) {
             getLocationPermissions();
-//
-//        initMap();
+        }
+
+//        getLocationPermissions();
+        api = new API();
+
+        // get extras from passed intent:
+        Intent currentIntent = getIntent();
+        Bundle bundle = currentIntent.getExtras();
+        String email = bundle.getString("email");
+
+        //get user profile
+        api = new API();
+        userProfile = api.getClientProfile(email);
+
+        if(userProfile == null) {
+            Toast.makeText(this, "Failed to re-fetch profile", Toast.LENGTH_LONG).show();
+        }
     }
 
+    public boolean isServicesOK(){
+        // checking google services version
 
-//    public boolean isServicesOK(){
-//        // checking google services version
-//
-//        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(MapsActivity.this);
-//
-//        if(available == ConnectionResult.SUCCESS){
-//            //everything is fine and the user can make map requests
-//            return true;
-//        }else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
-//            //an error occurred but we can resolve it
-//            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(MapsActivity.this, available, ERROR_DIALOG_REQUEST);
-//            dialog.show();
-//        }else{
-//            //if they don't have the correct services, theres nothing we can do
-//            //TODO: make something happen if they deny services e.g. set a default location
-//            Toast.makeText(this, "You can't make map requests", Toast.LENGTH_SHORT).show();
-//        }
-//        return false;
-//    }
+        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(MapsActivity.this);
 
+        if(available == ConnectionResult.SUCCESS){
+            //everything is fine and the user can make map requests
+            return true;
+        }else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
+            //an error occurred but we can resolve it
+            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(MapsActivity.this, available, ERROR_DIALOG_REQUEST);
+            dialog.show();
+        }else{
+            //if they don't have the correct services, there's nothing we can do
+            //TODO: make something happen if they deny services e.g. set a default location
+            Toast.makeText(this, "You can't make map requests", Toast.LENGTH_SHORT).show();
+        }
+        return false;
+    }
 
     public void getLocationPermissions(){
         String[] permissions = {FINE_LOCATION};
@@ -147,8 +175,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             //found location
                             Location currentLocation = (Location) task.getResult();
 
-                            moveCamera(new LatLng(currentLocation.getLatitude(),
-                                    currentLocation.getLongitude()), DEFAULT_ZOOM);
+                            LatLng latLng = new LatLng(currentLocation.getLatitude(),
+                                    currentLocation.getLongitude());
+
+                            moveCamera(latLng, DEFAULT_ZOOM);
                         }else{
                             // current location is null
                             Toast.makeText(MapsActivity.this, "Unable to get current location",
@@ -200,19 +230,43 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         geocoder = new Geocoder(this, Locale.getDefault());
 
         try{
+            System.out.println("trying to convert addresss " + latLng + "--------------------------------------------------------\n\n");
+
             addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+            System.out.println("got latlng " + addresses + " --------------------------------------------------------\n\n");
 
-            String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-            String city = addresses.get(0).getLocality();
-            String state = addresses.get(0).getAdminArea();
-            String country = addresses.get(0).getCountryName();
-            String postalCode = addresses.get(0).getPostalCode();
+            address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+            city = addresses.get(0).getLocality();
+            state = addresses.get(0).getAdminArea();
+            postalCode = addresses.get(0).getPostalCode();
+            System.out.println("got this far?   --------------------------------------------------------------------------\n\n");
 
-            Toast.makeText(MapsActivity.this, "You choose the location: \n" + address + "\n" + city + ", " + state + "\n" + country + "\n" + postalCode, Toast.LENGTH_SHORT).show();
+            //radius to be set
+            radius = "10";
+
+            Toast.makeText(MapsActivity.this, "You choose the location: \n" + address + "\n" + city + ", " + state + "\n" + postalCode, Toast.LENGTH_SHORT).show();
 
         }catch (IOException e){
             System.err.println("couldn't convert address: " + e);
         }
+
+    }
+
+    //this method will be called when "find stylists" button is clicked (maybe make it an event listener?)
+    public void findStylistOnClick(View v){
+
+        System.out.println("find styist button is clicked --------------------------------------------------------\n\n");
+
+        Intent stylistProfileIntent = new Intent(MapsActivity.this, SearchResultsActivity.class);
+        stylistProfileIntent.putExtra("address", address);
+        stylistProfileIntent.putExtra("city", city);
+        stylistProfileIntent.putExtra("state", state);
+        stylistProfileIntent.putExtra("postalCode", postalCode);
+        stylistProfileIntent.putExtra("radius", radius);
+        stylistProfileIntent.putExtra("email", userProfile.email);
+
+        System.out.println("intent is created with info -------------------------------------------------------\n\n");
+        startActivity(stylistProfileIntent);
 
     }
 }

@@ -39,7 +39,7 @@
             android:id="@+id/btnMenu"
             android:layout_width="38dp"
             android:layout_height="38dp"
-            android:background="#000000"
+            android:background="#272423"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.067"
@@ -51,7 +51,7 @@
             android:id="@+id/txtQuickFind"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="#1E1B1B"
+            android:background="#272423"
             android:gravity="center"
             android:text="Quick find on your location"
             android:textColor="#F5F5EF"
@@ -68,7 +68,7 @@
             android:layout_width="414dp"
             android:layout_height="496dp"
             android:layout_marginTop="0dp"
-            android:background="#171515"
+            android:background="#272423"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.666"
@@ -81,179 +81,226 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/txtName1"
-                    android:layout_width="wrap_content"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/crdStylist1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:onClick="stylistProfileOnClick"
-                    android:text="Stylist Name 1"
-                    android:textColor="#f7f7f4"
-                    android:textSize="30sp"
-                    android:visibility="visible"
-                    app:fontFamily="sans-serif-black"
-                    app:layout_constraintBottom_toTopOf="@+id/txtInfo1"
+                    app:cardBackgroundColor="#322E2D"
+                    app:layout_constraintBottom_toTopOf="@+id/crdStylist2"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.867"
-                    app:layout_constraintStart_toEndOf="@+id/imageView1"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
-
-                <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="92dp"
-                    android:layout_height="84dp"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintBottom_toTopOf="@+id/imageView2"
-                    app:layout_constraintEnd_toStartOf="@+id/txtName1"
-                    app:layout_constraintHorizontal_bias="0.439"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.377"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/txtInfo1"
-                    android:layout_width="wrap_content"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#322E2D">
+
+                        <TextView
+                            android:id="@+id/txtName1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:onClick="stylistProfileOnClick"
+                            android:text="Stylist Name 1"
+                            android:textColor="#f7f7f4"
+                            android:textSize="30sp"
+                            android:visibility="visible"
+                            app:fontFamily="sans-serif-black"
+                            app:layout_constraintBottom_toTopOf="@+id/txtInfo1a"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.867"
+                            app:layout_constraintStart_toEndOf="@+id/imageView1"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imageView1"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/txtName1"
+                            app:layout_constraintHorizontal_bias="0.439"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:srcCompat="@tools:sample/avatars" />
+
+                        <TextView
+                            android:id="@+id/txtInfo1a"
+                            android:layout_width="wrap_content"
+                            android:layout_height="19dp"
+                            android:text="Stylist info 1a"
+                            android:textColor="#F5F5F1"
+                            app:layout_constraintBottom_toTopOf="@+id/txtInfo1b"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.208"
+                            app:layout_constraintStart_toEndOf="@+id/imageView1"
+                            app:layout_constraintTop_toBottomOf="@+id/txtName1" />
+
+                        <TextView
+                            android:id="@+id/txtInfo1b"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:text="Stylist info 1b"
+                            android:textColor="#F5F5F1"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.208"
+                            app:layout_constraintStart_toEndOf="@+id/imageView1"
+                            app:layout_constraintTop_toBottomOf="@+id/txtInfo1a" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/crdStylist2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Stylist info 1"
-                    android:textColor="#F5F5F1"
-                    app:layout_constraintBottom_toTopOf="@+id/txtName2"
+                    app:cardBackgroundColor="#272423"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.463"
-                    app:layout_constraintStart_toEndOf="@+id/imageView1"
-                    app:layout_constraintTop_toBottomOf="@+id/txtName1"
-                    app:layout_constraintVertical_bias="0.134" />
-
-                <TextView
-                    android:id="@+id/txtName2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:text="Stylist Name 2"
-                    android:textColor="#f7f7f4"
-                    android:textSize="30sp"
-                    android:visibility="visible"
-                    app:fontFamily="sans-serif-black"
-                    app:layout_constraintBottom_toTopOf="@+id/txtInfo2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.872"
-                    app:layout_constraintStart_toEndOf="@+id/imageView2"
-                    app:layout_constraintTop_toBottomOf="@+id/txtInfo1"
-                    app:layout_constraintVertical_bias="0.51" />
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="92dp"
-                    android:layout_height="84dp"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintBottom_toTopOf="@+id/imageView3"
-                    app:layout_constraintEnd_toStartOf="@+id/txtName2"
-                    app:layout_constraintHorizontal_bias="0.439"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView1"
-                    app:layout_constraintVertical_bias="0.114"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    app:layout_constraintTop_toBottomOf="@+id/crdStylist1">
 
-                <TextView
-                    android:id="@+id/txtInfo2"
-                    android:layout_width="wrap_content"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#272423">
+
+                        <TextView
+                            android:id="@+id/txtName2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:onClick="stylistProfileOnClick"
+                            android:text="Stylist Name 2"
+                            android:textColor="#f7f7f4"
+                            android:textSize="30sp"
+                            android:visibility="visible"
+                            app:fontFamily="sans-serif-black"
+                            app:layout_constraintBottom_toTopOf="@+id/txtInfo2a"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.867"
+                            app:layout_constraintStart_toEndOf="@+id/imageView2"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/txtName2"
+                            app:layout_constraintHorizontal_bias="0.439"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:srcCompat="@tools:sample/avatars" />
+
+                        <TextView
+                            android:id="@+id/txtInfo2a"
+                            android:layout_width="wrap_content"
+                            android:layout_height="19dp"
+                            android:text="Stylist info 2a"
+                            android:textColor="#F5F5F1"
+                            app:layout_constraintBottom_toTopOf="@+id/txtInfo2b"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.208"
+                            app:layout_constraintStart_toEndOf="@+id/imageView2"
+                            app:layout_constraintTop_toBottomOf="@+id/txtName2" />
+
+                        <TextView
+                            android:id="@+id/txtInfo2b"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:text="Stylist info 2b"
+                            android:textColor="#F5F5F1"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.208"
+                            app:layout_constraintStart_toEndOf="@+id/imageView2"
+                            app:layout_constraintTop_toBottomOf="@+id/txtInfo2a" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/crdStylist3"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Stylist info 2"
-                    android:textColor="#F5F5F1"
-                    app:layout_constraintBottom_toTopOf="@+id/txtName3"
+                    app:cardBackgroundColor="#322E2D"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.463"
-                    app:layout_constraintStart_toEndOf="@+id/imageView2"
-                    app:layout_constraintTop_toBottomOf="@+id/txtName2"
-                    app:layout_constraintVertical_bias="0.163" />
-
-                <TextView
-                    android:id="@+id/txtName3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:text="Stylist Name 3"
-                    android:textColor="#f7f7f4"
-                    android:textSize="30sp"
-                    android:visibility="visible"
-                    app:fontFamily="sans-serif-black"
-                    app:layout_constraintBottom_toTopOf="@+id/txtInfo3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.867"
-                    app:layout_constraintStart_toEndOf="@+id/imageView3"
-                    app:layout_constraintTop_toBottomOf="@+id/txtInfo2"
-                    app:layout_constraintVertical_bias="0.764" />
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="92dp"
-                    android:layout_height="84dp"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintBottom_toTopOf="@+id/imageView4"
-                    app:layout_constraintEnd_toStartOf="@+id/txtName3"
-                    app:layout_constraintHorizontal_bias="0.439"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                    app:layout_constraintVertical_bias="0.0"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    app:layout_constraintTop_toBottomOf="@+id/crdStylist2">
 
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#322E2D">
 
-                <TextView
-                    android:id="@+id/txtInfo3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Stylist info 3"
-                    android:textColor="#F5F5F1"
-                    app:layout_constraintBottom_toTopOf="@+id/txtName4"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.463"
-                    app:layout_constraintStart_toEndOf="@+id/imageView3"
-                    app:layout_constraintTop_toBottomOf="@+id/txtName3"
-                    app:layout_constraintVertical_bias="0.148" />
+                        <TextView
+                            android:id="@+id/txtName3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:onClick="stylistProfileOnClick"
+                            android:text="Stylist Name 3"
+                            android:textColor="#f7f7f4"
+                            android:textSize="30sp"
+                            android:visibility="visible"
+                            app:fontFamily="sans-serif-black"
+                            app:layout_constraintBottom_toTopOf="@+id/txtInfo3a"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.867"
+                            app:layout_constraintStart_toEndOf="@+id/imageView3"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/txtName4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:text="Stylist Name 4"
-                    android:textColor="#f7f7f4"
-                    android:textSize="30sp"
-                    android:visibility="visible"
-                    app:fontFamily="sans-serif-black"
-                    app:layout_constraintBottom_toTopOf="@+id/txtInfo4"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.867"
-                    app:layout_constraintStart_toEndOf="@+id/imageView4"
-                    app:layout_constraintTop_toBottomOf="@+id/txtInfo3"
-                    app:layout_constraintVertical_bias="0.812" />
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/txtName3"
+                            app:layout_constraintHorizontal_bias="0.439"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:srcCompat="@tools:sample/avatars" />
 
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="92dp"
-                    android:layout_height="84dp"
-                    android:layout_marginTop="30dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/txtName4"
-                    app:layout_constraintHorizontal_bias="0.439"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView3"
-                    app:layout_constraintVertical_bias="0.288"
-                    tools:srcCompat="@tools:sample/avatars" />
+                        <TextView
+                            android:id="@+id/txtInfo3a"
+                            android:layout_width="wrap_content"
+                            android:layout_height="19dp"
+                            android:text="Stylist info 3a"
+                            android:textColor="#F5F5F1"
+                            app:layout_constraintBottom_toTopOf="@+id/txtInfo3b"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.208"
+                            app:layout_constraintStart_toEndOf="@+id/imageView3"
+                            app:layout_constraintTop_toBottomOf="@+id/txtName3" />
 
-                <TextView
-                    android:id="@+id/txtInfo4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Stylist info 4"
-                    android:textColor="#F5F5F1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.463"
-                    app:layout_constraintStart_toEndOf="@+id/imageView4"
-                    app:layout_constraintTop_toBottomOf="@+id/txtName4"
-                    app:layout_constraintVertical_bias="0.142" />
+                        <TextView
+                            android:id="@+id/txtInfo3b"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:text="Stylist info 3b"
+                            android:textColor="#F5F5F1"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.208"
+                            app:layout_constraintStart_toEndOf="@+id/imageView3"
+                            app:layout_constraintTop_toBottomOf="@+id/txtInfo3a" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
