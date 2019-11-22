@@ -22,7 +22,7 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         API api = new API();
-        String userProfile = api.updateProfilePhoto();
+        String userProfile = api.updateProfilePhoto("test");
 
         assertEquals("com.example.salonon", appContext.getPackageName());
     }
