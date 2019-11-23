@@ -31,10 +31,11 @@ public class Network {
     }
 
     // When creating a post request, first create a HashMap of <String, String> parameters and pass it in.
-    public String post(String url, Map<String, String> parameters) {
+    public String post(String url, Map<String, String> parameters, Boolean useBody) {
         try {
             NetworkPost task = new NetworkPost();
             task.parameters = parameters;
+            task.useBody = useBody;
             String value = task.execute(url).get();
             return value;
         } catch (Exception e) {
@@ -79,19 +80,24 @@ public class Network {
 
         private Exception exception;
         public Map<String, String> parameters = new HashMap<>();
+        public Boolean useBody = false;
 
         // Override method provided by asynctask.  This code is run upon NetworkGet.execute().
         protected String doInBackground(String... urls) {
             try {
-                String queryParameters = getParametersString(parameters);
-                return makePostRequest(urls[0], queryParameters);
+                String queryParameters = getParametersString(parameters, useBody);
+                if (useBody) {
+                    return postWithBody(urls[0], queryParameters);
+                } else {
+                    return postWithParameters(urls[0], queryParameters);
+                }
             } catch (Exception e) {
                 this.exception = e;
                 return null;
             }
         }
 
-        public String makePostRequest(String stringUrl, String payload) throws IOException {
+        public String postWithBody(String stringUrl, String payload) throws IOException {
             URL url = new URL(stringUrl);
             HttpURLConnection uc = (HttpURLConnection) url.openConnection();
             String line;
@@ -117,14 +123,46 @@ public class Network {
             uc.disconnect();
             return jsonString.toString();
         }
+
+        public String postWithParameters(String urlString, String parameters) {
+            try {
+                // Create a connection to the "test" endpoint on our server.
+                URL url = new URL(urlString + parameters);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setRequestMethod("POST");
+
+                con.setDoOutput(true);
+                DataOutputStream out = new DataOutputStream(con.getOutputStream());
+                out.flush();
+                out.close();
+
+                // Read the content returned from that endpoint.
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(con.getInputStream()));
+                String inputLine;
+                StringBuilder content = new StringBuilder();
+                while ((inputLine = in.readLine()) != null) {
+                    content.append(inputLine);
+                }
+                in.close();
+                con.disconnect();
+                // Return the string.
+                return content.toString();
+            } catch (Exception e) {
+                this.exception = e;
+                return null;
+            }
+        }
     }
 
     // Takes the Network's parameters and converts them to something that the server is able to parse via JSON.
-    private String getParametersString(Map<String, String> parameters)
+    private String getParametersString(Map<String, String> parameters, boolean useBody)
             throws UnsupportedEncodingException {
         StringBuilder result = new StringBuilder();
 
-        result.append("?");
+        if (!useBody) {
+            result.append("?");
+        }
         for (Map.Entry<String, String> entry : parameters.entrySet()) {
             result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
             result.append("=");

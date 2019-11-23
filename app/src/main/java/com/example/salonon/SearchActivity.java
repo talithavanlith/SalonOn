@@ -130,7 +130,7 @@ public class SearchActivity extends AppCompatActivity {
             // Display stylists in activity_search
             Profile[] arrayOfStylists = api.searchStylistByLocation(address, city, state, postalCode, "10");
 
-            if (arrayOfStylists[0] != null) {
+            if (arrayOfStylists.length > 0) {
                 fillSearchActivityWithData(arrayOfStylists);
                 Toast.makeText(SearchActivity.this, "Stylist 1 is: \n" + arrayOfStylists[0].first, Toast.LENGTH_SHORT).show();
 

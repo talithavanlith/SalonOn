@@ -1,10 +1,16 @@
 package com.example.salonon;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,7 +46,7 @@ public class API {
             parameters.put("salonRate", "0.0");
 
             //request code
-            String response = network.post(network.herokuURL + "createuser", parameters);
+            String response = network.post(network.herokuURL + "createuser", parameters, false);
             Log.v("createNewProfile", "response from server is: " + response);
             JSONObject jsonStatus = new JSONObject(response);
             boolean status = (boolean) jsonStatus.get("status");
@@ -51,8 +57,6 @@ public class API {
             return false;
         }
     }
-    // Maybe change string array to a list of activity_profile parameters.
-    // Need to know what a activity_profile should encapsulate first.
 
     //LOGIN
     public Profile login(String emailAddress, String password) {
@@ -61,7 +65,7 @@ public class API {
             //make request
             parameters.put("user", emailAddress);
             parameters.put("pass", password);
-            String response = network.post(network.herokuURL + "login", parameters);
+            String response = network.post(network.herokuURL + "login", parameters, false);
             JSONObject json = new JSONObject(response);
             JSONObject profile = json.getJSONObject("profile");
 
@@ -72,7 +76,7 @@ public class API {
         }
     }
 
-    //Todo no zip
+    //GET STYLISTS FROM ADDRESS
     public Profile[] searchStylistByLocation(String address, String city, String state, String postalCode, String radius) {
         try {
             //request code
@@ -82,7 +86,7 @@ public class API {
             parameters.put("state", state);
             parameters.put("zip", postalCode);
             parameters.put("radius", radius);
-            String response = network.post(network.herokuURL + "searchstylistslocation", parameters);
+            String response = network.post(network.herokuURL + "searchstylistslocation", parameters, false);
             JSONObject json = new JSONObject(response);
 
             //gets an array of ALL profiles
@@ -98,14 +102,6 @@ public class API {
             Log.v("API error", "Failed to get stylists by location "+e);
             return null;
         }
-    }
-
-    public String updateProfilePhoto(String photoData) {
-        Map<String, String> parameters = new HashMap<>();
-        parameters.put("id", "thomas@mail.com");
-        parameters.put("photo", photoData);
-        String response = network.post(network.herokuURL + "update-profile-photo", parameters);
-        return response;
     }
 
     //FUNCTION TO GET PROFILE FROM JSON
@@ -154,7 +150,7 @@ public class API {
         try {
             Map<String, String> parameters = new HashMap<>();
             parameters.put("id", clientID);
-            String response = network.post(network.herokuURL + "client-by-id", parameters);
+            String response = network.post(network.herokuURL + "client-by-id", parameters, false);
             JSONObject profile = new JSONObject(response);
             return jsonToProfile(profile);
         } catch (Exception e) {
@@ -170,7 +166,7 @@ public class API {
             parameters.put("id", clientID);
             parameters.put("bio", bio);
             parameters.put("styles", offerArrayToString(offers));
-            String response = network.post(network.herokuURL + "add-stylist", parameters);
+            String response = network.post(network.herokuURL + "add-stylist", parameters, false);
             JSONObject result = new JSONObject(response);
             boolean status = (boolean) result.get("status");
             return status;
@@ -193,7 +189,7 @@ public class API {
 
 
 
-    //2 FUNCTIONS TO TURN OFFER OBJECTS INTO STRINGS TO BE PASSED TO PARAMETERS MAP
+    //2 FUNCTIONS TO TURN OFFER OBJECTS INTO JSON STRINGS TO BE PASSED TO PARAMETERS MAP
     public String offerArrayToString(Offer[] offers){
         String[] jsonStrings = new String[offers.length];
         for (int i=0; i< offers.length; i++){
@@ -206,5 +202,31 @@ public class API {
         return "{\"id\":"+offer.styleID+", \"price\": "+offer.price+", \"deposit\": "+offer.deposit+", \"duration\": "+offer.duration+"}";
     }
 
+    //ADD PROFILE PIC TO ACCOUNT
+    public boolean addProfilePic(String clientID, Bitmap bitmap){
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream .toByteArray();
+        String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
+        Log.v("photostring", encoded);
+
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("id", clientID);
+        parameters.put("photo", "myphoto");
+        String response = network.post(network.herokuURL + "update-profile-photo", parameters, true);
+
+        try{
+            JSONObject json = new JSONObject(response);
+            JSONObject status = json.getJSONObject("status");
+            if (status.equals(true)){
+                return true;
+            } else {
+                return false;
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
 
