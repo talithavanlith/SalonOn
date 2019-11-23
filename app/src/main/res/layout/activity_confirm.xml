@@ -195,7 +195,7 @@
             android:layout_height="47dp"
             android:background="#FFFFFF"
             android:gravity="center"
-            android:hint="Any notes for the stylist?" />
+            android:hint="any notes for the stylist?" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -203,7 +203,7 @@
         android:id="@+id/btnConfirm"
         android:layout_width="310dp"
         android:layout_height="61dp"
-        android:background="#81CF4D"
+        android:background="@drawable/mybutton"
         android:text="REQUEST BOOOKING!"
         android:textColor="#F7F7F2"
         android:textSize="18sp"
