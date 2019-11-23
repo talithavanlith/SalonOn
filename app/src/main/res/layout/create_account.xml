@@ -6,6 +6,16 @@
 
     android:background="#F4FBD5">
 
+    <View
+        android:id="@+id/background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#F4FBD5"/>
+
     <ImageView
         android:id="@+id/logo"
         android:layout_height="100dp"
@@ -90,11 +100,11 @@
         android:id="@+id/continueButton"
         android:onClick="continueButtonOnClick"
         android:layout_width="250dp"
-        android:layout_height="65dp"
+        android:layout_height="60dp"
         android:layout_alignTop="@+id/confirmPasswordEditText"
         android:layout_marginTop="90dp"
         android:layout_centerHorizontal="true"
-        app:backgroundTint = "#81CF4D"
+        android:background= "@drawable/mybutton"
         android:text="Next"
         android:textColor="@android:color/white"
         android:textSize="20sp"
@@ -102,7 +112,6 @@
 
     <TextView
         android:id="@+id/haveAccountQuestion"
-        android:onClick="haveAccountTextViewOnClick"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignTop="@+id/continueButton"
