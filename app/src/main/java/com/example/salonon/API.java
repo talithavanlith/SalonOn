@@ -1,8 +1,6 @@
 package com.example.salonon;
 
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 
@@ -11,42 +9,37 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class API {
-    Network network = new Network();
-
-    public String test(){
-        return "test";
-    }
 
     //CREATE USER
     public boolean createNewProfile(Profile profile, String password) {
         try {
             //data code
-            Map<String, String> parameters = new HashMap<>();
-            parameters.put("user", profile.email);
-            parameters.put("first", profile.first);
-            parameters.put("last", profile.last);
-            parameters.put("pass", password);
+            HttpRequest request = new HttpRequest("post",  "creatuser");
+            request.queryValues.put("user", profile.email);
+            request.queryValues.put("first", profile.first);
+            request.queryValues.put("last", profile.last);
+            request.queryValues.put("pass", password);
             if (profile.isStylist){
-                parameters.put("isStylist", "TRUE");
+                request.queryValues.put("isStylist", "TRUE");
             } else {
-                parameters.put("isStylist", "FALSE");
+                request.queryValues.put("isStylist", "FALSE");
             }
             if (profile.isSalon){
-                parameters.put("isSalon", "TRUE");
+                request.queryValues.put("isSalon", "TRUE");
             } else {
-                parameters.put("isSalon", "FALSE");
+                request.queryValues.put("isSalon", "FALSE");
             }
-            parameters.put("stylistBio", profile.stylistBio);
-            parameters.put("salonBio", profile.salonBio);
-            parameters.put("salonRate", "0.0");
+            request.queryValues.put("stylistBio", profile.stylistBio);
+            request.queryValues.put("salonBio", profile.salonBio);
+            request.queryValues.put("salonRate", "0.0");
+            String response = request.send();
 
-            //request code
-            String response = network.post(network.herokuURL + "createuser", parameters, false);
+            //result code
             Log.v("createNewProfile", "response from server is: " + response);
             JSONObject jsonStatus = new JSONObject(response);
             boolean status = (boolean) jsonStatus.get("status");
@@ -61,11 +54,11 @@ public class API {
     //LOGIN
     public Profile login(String emailAddress, String password) {
         try {
-            Map<String, String> parameters = new HashMap<>();
-            //make request
-            parameters.put("user", emailAddress);
-            parameters.put("pass", password);
-            String response = network.post(network.herokuURL + "login", parameters, false);
+            HttpRequest request = new HttpRequest("post",  "login");
+            request.queryValues.put("user", emailAddress);
+            request.queryValues.put("pass", password);
+            String response = request.send();
+
             JSONObject json = new JSONObject(response);
             JSONObject profile = json.getJSONObject("profile");
 
@@ -80,13 +73,13 @@ public class API {
     public Profile[] searchStylistByLocation(String address, String city, String state, String postalCode, String radius) {
         try {
             //request code
-            Map<String, String> parameters = new HashMap<>();
-            parameters.put("addr", address);
-            parameters.put("city", city);
-            parameters.put("state", state);
-            parameters.put("zip", postalCode);
-            parameters.put("radius", radius);
-            String response = network.post(network.herokuURL + "searchstylistslocation", parameters, false);
+            HttpRequest request = new HttpRequest("post",  "searchstylistslocation");
+            request.queryValues.put("addr", address);
+            request.queryValues.put("city", city);
+            request.queryValues.put("state", state);
+            request.queryValues.put("zip", postalCode);
+            request.queryValues.put("radius", radius);
+            String response = request.send();
             JSONObject json = new JSONObject(response);
 
             //gets an array of ALL profiles
@@ -107,13 +100,13 @@ public class API {
     //FUNCTION TO GET PROFILE FROM JSON
     public Profile jsonToProfile(JSONObject profile) {
         try {
-
             String email = (String) profile.get("email");
             String first = (String) profile.get("first");
             String last = (String) profile.get("last");
             String stylistBio = (String) profile.get("stylistBio");
             String salonBio = (String) profile.get("salonBio");
 
+            //Handle salonRate as double or int
             double salonRate;
             try {
                 salonRate = (double) (profile.get("salonRate"));
@@ -148,9 +141,10 @@ public class API {
     //GET PROFILE (WILL EVENTUALLY USE TOKEN INSTEAD OF EMAIL)
     public Profile getClientProfile(String clientID) {
         try {
-            Map<String, String> parameters = new HashMap<>();
-            parameters.put("id", clientID);
-            String response = network.post(network.herokuURL + "client-by-id", parameters, false);
+            HttpRequest request = new HttpRequest("post",  "client-by-id");
+            request.queryValues.put("id", clientID);
+            String response = request.send();
+
             JSONObject profile = new JSONObject(response);
             return jsonToProfile(profile);
         } catch (Exception e) {
@@ -162,11 +156,11 @@ public class API {
     //ADD STYLIST TO ACCOUNT
     public boolean addStylist(String clientID, String bio, Offer[] offers){
         try{
-            Map<String, String> parameters = new HashMap<>();
-            parameters.put("id", clientID);
-            parameters.put("bio", bio);
-            parameters.put("styles", offerArrayToString(offers));
-            String response = network.post(network.herokuURL + "add-stylist", parameters, false);
+            HttpRequest request = new HttpRequest("post",  "update-profile-photo");
+            request.queryValues.put("id", clientID);
+            request.queryValues.put("bio", bio);
+            request.queryValues.put("styles", offerArrayToString(offers));
+            String response = request.send();
             JSONObject result = new JSONObject(response);
             boolean status = (boolean) result.get("status");
             return status;
@@ -176,18 +170,6 @@ public class API {
         }
 
     }
-    public Booking getClientBookings(Profile profile){
-        return null;
-    }
-
-    public Offer[] getStylistOffers(Profile profile){
-        return null;
-    }
-    public boolean createBooking(Booking booking){
-        return false;
-    }
-
-
 
     //2 FUNCTIONS TO TURN OFFER OBJECTS INTO JSON STRINGS TO BE PASSED TO PARAMETERS MAP
     public String offerArrayToString(Offer[] offers){
@@ -202,19 +184,17 @@ public class API {
         return "{\"id\":"+offer.styleID+", \"price\": "+offer.price+", \"deposit\": "+offer.deposit+", \"duration\": "+offer.duration+"}";
     }
 
+
     //ADD PROFILE PIC TO ACCOUNT
     public boolean addProfilePic(String clientID, Bitmap bitmap){
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-        byte[] byteArray = byteArrayOutputStream .toByteArray();
-        String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
-        Log.v("photostring", encoded);
+        String encodedImage = bitmapToBase64(bitmap);
+    //Make request
+        HttpRequest request = new HttpRequest("post",  "update-profile-photo");
+        request.bodyValues.put("id", clientID);
+        request.bodyValues.put("photo", encodedImage);
+        String response = request.send();
 
-        Map<String, String> parameters = new HashMap<>();
-        parameters.put("id", clientID);
-        parameters.put("photo", "myphoto");
-        String response = network.post(network.herokuURL + "update-profile-photo", parameters, true);
-
+        //Handle response as json
         try{
             JSONObject json = new JSONObject(response);
             JSONObject status = json.getJSONObject("status");
@@ -227,6 +207,36 @@ public class API {
             e.printStackTrace();
             return false;
         }
+    }
+
+    //CONVERT BITMAP IMAGE TO STRING FOR HTTP REQUESTS
+    public String bitmapToBase64(Bitmap bitmap){
+
+        //CONVERT BITMAP To BYTE ARRAY
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        String encodedImage = "";
+
+        //CONVERT BYTE ARRAY TO BASE64 STRING
+        try {
+            encodedImage= URLEncoder.encode(Base64.encodeToString(byteArray, Base64.DEFAULT), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        Log.v("photostring", encodedImage);
+        return encodedImage;
+    }
+
+    public Booking getClientBookings(Profile profile){
+        return null;
+    }
+
+    public Offer[] getStylistOffers(Profile profile){
+        return null;
+    }
+    public boolean createBooking(Booking booking){
+        return false;
     }
 }
 

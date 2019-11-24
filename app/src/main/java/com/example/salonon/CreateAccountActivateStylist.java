@@ -3,32 +3,29 @@ package com.example.salonon;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
-import java.io.ByteArrayOutputStream;
+
 import java.io.IOException;
 
 public class CreateAccountActivateStylist extends AppCompatActivity {
 
     final int MY_PERMISSIONS_REQUEST =2;
     Bitmap photo = null;
+    API api = new API();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +33,8 @@ public class CreateAccountActivateStylist extends AppCompatActivity {
         setContentView(R.layout.activity_create_account_activate_stylist);
 
     }
+
+    //USER SELECTS PHOTO FROM NEW INTENT
     public void photoButton(View v){
         //check for permissions
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -46,6 +45,7 @@ public class CreateAccountActivateStylist extends AppCompatActivity {
         }
     }
 
+    //ASK FOR PHOTOS PERMISSION
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
@@ -63,22 +63,20 @@ public class CreateAccountActivateStylist extends AppCompatActivity {
             }
         }
     }
+
+    //START PHOTO SELECT INTENT
     public void getphoto() {
-        //Create an Intent with action as ACTION_PICK
         Intent intent=new Intent(Intent.ACTION_PICK);
-        // Sets the type as image/*. This ensures only components of type image are selected
-        intent.setType("image/*");
-        //We pass an extra array with the accepted mime types. This will ensure only components with these MIME types as targeted.
+        intent.setType("image/*");  // only components of type image are selected
         String[] mimeTypes = {"image/jpeg", "image/png"};
         intent.putExtra(Intent.EXTRA_MIME_TYPES,mimeTypes);
-        // Launching the Intent
         startActivityForResult(intent,1);
 
     }
+
+    //RESULT OF PHOTO INTENT
     protected  void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // Result code is RESULT_OK only if the user selects an Image
         if (resultCode == Activity.RESULT_OK && requestCode==1) {
-            //data.getData returns the content URI for the selected Image
             Uri selectedImage = data.getData();
             ImageButton view = findViewById(R.id.profilepic);
             view.setImageURI(selectedImage);
@@ -92,22 +90,25 @@ public class CreateAccountActivateStylist extends AppCompatActivity {
             }
         }
     }
+
+    //GRABS USER INFO FROM VIEWS AND ATTEMPTS TO ACTIVATE STYLIST ACCOUNT AND UPLOAD PROFILE PHOTO
     public void doneButton(View v){
+        //GET EMAIL AND BIO VIEW
         Intent currentIntent = getIntent();
         Bundle bundle = currentIntent.getExtras();
         String email = bundle.getString("email");
-        EditText bioView = (EditText)findViewById(R.id.bio);
+        EditText bioView = findViewById(R.id.bio);
         String bio = bioView.getText().toString();
 
         Offer[] offers = new Offer[0];
-        CheckBox checkBox = (CheckBox)findViewById(R.id.style1);
+        CheckBox checkBox = findViewById(R.id.style1);
 
         //adds the checked styles to offers, currently only checking for first one.
         if(checkBox.isChecked()){
             offers = new Offer[1];
-            EditText priceBox = (EditText)findViewById(R.id.style1price);
-            EditText depositBox = (EditText)findViewById(R.id.style1deposit);
-            EditText durationBox = (EditText)findViewById(R.id.style1duration);
+            EditText priceBox = findViewById(R.id.style1price);
+            EditText depositBox = findViewById(R.id.style1deposit);
+            EditText durationBox = findViewById(R.id.style1duration);
 
             String price = priceBox.getText().toString();
             String deposit = depositBox.getText().toString();
@@ -117,9 +118,8 @@ public class CreateAccountActivateStylist extends AppCompatActivity {
         }
 
         //add the offers and bio info to account
-        if (new API().addStylist(email, bio, offers)){
-            new API().addProfilePic(email,photo);
-
+        if (api.addStylist(email, bio, offers)){
+            api.addProfilePic(email, photo);
             Toast.makeText(this, "Stylist account activated successfully", Toast.LENGTH_LONG).show();
             Log.v("Add-stylist", "success");
             Intent searchIntent = new Intent(CreateAccountActivateStylist.this, SearchActivity.class);
