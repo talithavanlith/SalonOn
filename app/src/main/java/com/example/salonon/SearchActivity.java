@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -204,6 +205,117 @@ public class SearchActivity extends AppCompatActivity {
             info.setText(profiles[i].stylistBio);
         }
     }
+//    private void fillSearchActivityWithData(Profile [] profiles){
+//        // Get TextViews from view and set stylist 1 details
+//        CardView stylist1 = findViewById(R.id.crdStylist1);
+//
+//        TextView name1 = findViewById(R.id.txtName1);
+//        TextView info1A = findViewById(R.id.txtInfo1a);
+//        TextView info1B = findViewById(R.id.txtInfo1b);
+//
+//
+//        name1.setText(profiles[0].first + " " + profiles[0].last);
+//        info1A.setText(profiles[0].stylistBio);
+//
+//
+//        for(int i = 2; i <= profiles.length; i++) {
+//            String idCard = "crdStylist" + i;
+//            String idConstraintTop = "crdStylist" + (i - 1);
+//            String color;
+//
+//            //set alternating colours
+//            if(i % 2 == 0){
+//                color = "#272423";
+//            }else{
+//                color = "#322E2D";
+//            }
+//
+//            String idName = "txtName" + i;
+//            String name = profiles[i-1].first + " " + profiles[i-1].last;
+//            String idImage = "imageView" + i;
+//            String idInfoA = "txtInfo" + i + "a";
+//            String infoA = profiles[i-1].stylistBio;
+//            String idInfoB = "txtInfo" + i + "b";
+//            String infoB = "for now we'll say hello";
+//
+//            String xmlText = "\n" +
+//                    "                <androidx.cardview.widget.CardView\n" +
+//                    "                    android:id=\"@+id/" + idCard +"\"\n" +
+//                    "                    android:layout_width=\"match_parent\"\n" +
+//                    "                    android:layout_height=\"wrap_content\"\n" +
+//                    "                    app:cardBackgroundColor=\""+color+"\"\n" +
+//                    "                    app:layout_constraintEnd_toEndOf=\"parent\"\n" +
+//                    "                    app:layout_constraintStart_toStartOf=\"parent\"\n" +
+//                    "                    app:layout_constraintTop_toBottomOf=\"@+id/"+idConstraintTop+"\">\n" +
+//                    "\n" +
+//                    "                    <androidx.constraintlayout.widget.ConstraintLayout\n" +
+//                    "                        android:layout_width=\"match_parent\"\n" +
+//                    "                        android:layout_height=\"match_parent\"\n" +
+//                    "                        android:background=\""+color+"\">\n" +
+//                    "\n" +
+//                    "                        <TextView\n" +
+//                    "                            android:id=\"@+id/"+idName+"\"\n" +
+//                    "                            android:layout_width=\"wrap_content\"\n" +
+//                    "                            android:layout_height=\"wrap_content\"\n" +
+//                    "                            android:layout_marginTop=\"20dp\"\n" +
+//                    "                            android:onClick=\"stylistProfileOnClick\"\n" +
+//                    "                            android:text=\""+name+"\"\n" +
+//                    "                            android:textColor=\"#f7f7f4\"\n" +
+//                    "                            android:textSize=\"30sp\"\n" +
+//                    "                            android:visibility=\"visible\"\n" +
+//                    "                            app:fontFamily=\"sans-serif-black\"\n" +
+//                    "                            app:layout_constraintBottom_toTopOf=\"@+id/"+idInfoA+"\"\n" +
+//                    "                            app:layout_constraintEnd_toEndOf=\"parent\"\n" +
+//                    "                            app:layout_constraintHorizontal_bias=\"0.867\"\n" +
+//                    "                            app:layout_constraintStart_toEndOf=\"@+id/"+idImage+"\"\n" +
+//                    "                            app:layout_constraintTop_toTopOf=\"parent\" />\n" +
+//                    "\n" +
+//                    "                        <ImageView\n" +
+//                    "                            android:id=\"@+id/"+idImage+"\"\n" +
+//                    "                            android:layout_width=\"90dp\"\n" +
+//                    "                            android:layout_height=\"90dp\"\n" +
+//                    "                            android:layout_marginTop=\"20dp\"\n" +
+//                    "                            android:layout_marginBottom=\"20dp\"\n" +
+//                    "                            app:layout_constraintBottom_toBottomOf=\"parent\"\n" +
+//                    "                            app:layout_constraintEnd_toStartOf=\"@+id/"+idName+"\"\n" +
+//                    "                            app:layout_constraintHorizontal_bias=\"0.439\"\n" +
+//                    "                            app:layout_constraintStart_toStartOf=\"parent\"\n" +
+//                    "                            app:layout_constraintTop_toTopOf=\"parent\"\n" +
+//                    "                            tools:srcCompat=\"@tools:sample/avatars\" />\n" +
+//                    "\n" +
+//                    "                        <TextView\n" +
+//                    "                            android:id=\"@+id/"+idInfoA+"\"\n" +
+//                    "                            android:layout_width=\"wrap_content\"\n" +
+//                    "                            android:layout_height=\"19dp\"\n" +
+//                    "                            android:text=\""+infoA+"\"\n" +
+//                    "                            android:textColor=\"#F5F5F1\"\n" +
+//                    "                            app:layout_constraintBottom_toTopOf=\"@+id/"+idInfoB+"\"\n" +
+//                    "                            app:layout_constraintEnd_toEndOf=\"parent\"\n" +
+//                    "                            app:layout_constraintHorizontal_bias=\"0.208\"\n" +
+//                    "                            app:layout_constraintStart_toEndOf=\"@+id/"+idImage+"\"\n" +
+//                    "                            app:layout_constraintTop_toBottomOf=\"@+id/"+idName+"\" />\n" +
+//                    "\n" +
+//                    "                        <TextView\n" +
+//                    "                            android:id=\"@+id/"+idInfoB+"\"\n" +
+//                    "                            android:layout_width=\"wrap_content\"\n" +
+//                    "                            android:layout_height=\"wrap_content\"\n" +
+//                    "                            android:layout_marginBottom=\"20dp\"\n" +
+//                    "                            android:text=\""+infoB+"\"\n" +
+//                    "                            android:textColor=\"#F5F5F1\"\n" +
+//                    "                            app:layout_constraintBottom_toBottomOf=\"parent\"\n" +
+//                    "                            app:layout_constraintEnd_toEndOf=\"parent\"\n" +
+//                    "                            app:layout_constraintHorizontal_bias=\"0.208\"\n" +
+//                    "                            app:layout_constraintStart_toEndOf=\"@+id/"+idImage+"\"\n" +
+//                    "                            app:layout_constraintTop_toBottomOf=\"@+id/"+idInfoA+"\" />\n" +
+//                    "                    </androidx.constraintlayout.widget.ConstraintLayout>\n" +
+//                    "\n" +
+//                    "                </androidx.cardview.widget.CardView>\n";
+//
+//            // BELOW = one line to figure out
+////            stylist1.appendChild(xmlText);
+//        }
+//    }
+
 
     public void btnSelectLocationOnClick(View v) {
         Intent mapIntent = new Intent(SearchActivity.this, MapsActivity.class);

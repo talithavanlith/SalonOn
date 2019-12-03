@@ -10,11 +10,11 @@
 
     <Button
         android:id="@+id/btnFindStylist"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="20dp"
-        android:background="#81CF4D"
+        android:background="@drawable/mybutton"
         android:onClick="findStylistOnClick"
         android:text="FIND STYLIST"
         android:textColor="#F7F7F2"

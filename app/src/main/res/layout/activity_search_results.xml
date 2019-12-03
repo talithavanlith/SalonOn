@@ -27,7 +27,7 @@
         android:layout_height="49dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
-        android:background="#81CF4D"
+        android:background="@drawable/mybutton"
         android:onClick="btnSelectLocationOnClick"
         android:text="CHANGE LOCATION"
         android:textColor="#F7F7F2"

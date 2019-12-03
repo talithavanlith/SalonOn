@@ -59,15 +59,15 @@
 
     <TextView
         android:id="@+id/txtInfo"
-        android:layout_width="358dp"
-        android:layout_height="230dp"
+        android:layout_width="359dp"
+        android:layout_height="200dp"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginBottom="27dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/border"
         android:text=""
         app:layout_constraintBottom_toTopOf="@+id/scrollView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,15 +75,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtStylistName" />
 
+    <!--        <a target="_blank" href="/icons/set/time">Time icon</a> by <a target="_blank" href="https://icons8.com">Icons8</a>-->
+
+
     <ImageView
         android:id="@+id/imgTimeLogo"
         android:layout_width="59dp"
         android:layout_height="58dp"
+        android:src="@drawable/time"
         app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
         app:layout_constraintEnd_toStartOf="@+id/txtTime"
         app:layout_constraintTop_toTopOf="@+id/txtInfo"
-        app:layout_constraintVertical_bias="0.191"
-        app:srcCompat="@android:drawable/ic_menu_recent_history" />
+        app:layout_constraintVertical_bias="0.19" />
 
     <TextView
         android:id="@+id/txtDate"
@@ -121,12 +124,12 @@
         android:id="@+id/txtTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
         android:text="X.X hr"
         android:textColor="#000000"
         android:textSize="20dp"
-        app:fontFamily="sans-serif-black"
+        app:fontFamily="sans-serif-condensed-medium"
         app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
         app:layout_constraintEnd_toStartOf="@+id/imgPriceLogo"
         app:layout_constraintTop_toTopOf="@+id/txtInfo"
@@ -136,24 +139,26 @@
         android:id="@+id/imgPriceLogo"
         android:layout_width="65dp"
         android:layout_height="60dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:src="@drawable/price"
         app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
         app:layout_constraintEnd_toStartOf="@+id/txtPrice"
         app:layout_constraintTop_toTopOf="@+id/txtInfo"
-        app:layout_constraintVertical_bias="0.194"
-        app:srcCompat="@android:drawable/ic_notification_clear_all" />
+        app:layout_constraintVertical_bias="0.194" />
+    <!--    <a target="_blank" href="/icons/set/price-tag">Price Tag icon</a> by <a target="_blank" href="https://icons8.com">Icons8</a>-->
+
 
     <TextView
         android:id="@+id/txtPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
         android:text="$X"
         android:textColor="#000000"
         android:textSize="20dp"
-        app:fontFamily="sans-serif-black"
+        app:fontFamily="sans-serif-condensed-medium"
         app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
         app:layout_constraintEnd_toEndOf="@+id/txtInfo"
         app:layout_constraintTop_toTopOf="@+id/txtInfo"
@@ -161,18 +166,18 @@
 
     <TextView
         android:id="@+id/txtStyle"
-        android:layout_width="93dp"
+        android:layout_width="81dp"
         android:layout_height="53dp"
         android:text="Mid Length Style"
         android:textColor="#000000"
         android:textSize="18dp"
-        app:fontFamily="sans-serif-black"
+        app:fontFamily="sans-serif-condensed"
         app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
         app:layout_constraintEnd_toStartOf="@+id/imgTimeLogo"
-        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="@+id/txtInfo"
         app:layout_constraintTop_toTopOf="@+id/txtInfo"
-        app:layout_constraintVertical_bias="0.186" />
+        app:layout_constraintVertical_bias="0.183" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtNotesInput"
@@ -193,9 +198,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="47dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/border_thick"
             android:gravity="center"
-            android:hint="Any notes for the stylist?" />
+            android:hint="any notes for the stylist?" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -203,7 +208,7 @@
         android:id="@+id/btnConfirm"
         android:layout_width="310dp"
         android:layout_height="61dp"
-        android:background="#81CF4D"
+        android:background="@drawable/mybutton"
         android:text="REQUEST BOOOKING!"
         android:textColor="#F7F7F2"
         android:textSize="18sp"
