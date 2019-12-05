@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/imgProfile"
-        android:layout_width="92dp"
-        android:layout_height="84dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="92dp"
         android:layout_marginLeft="92dp"
         android:layout_marginTop="50dp"
@@ -21,6 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.85"
+        android:background="@drawable/img_borders"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView

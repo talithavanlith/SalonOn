@@ -24,23 +24,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/map" />
 
-        <View
-            android:id="@+id/viewBackground"
-            android:layout_width="412dp"
-            android:layout_height="560dp"
-            android:background="#171515"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.666"
-            app:layout_constraintStart_toStartOf="parent"
+    <View
+        android:id="@+id/viewBackground"
+        android:layout_width="412dp"
+        android:layout_height="560dp"
+        android:background="#272423"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
 
-            app:layout_constraintTop_toBottomOf="@+id/txtInfo"
-            app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/txtInfo"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/txtLogo"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         android:layout_marginTop="30dp"
         android:src="@drawable/logolong"
         app:layout_constraintBottom_toTopOf="@+id/txtInfo"
@@ -49,44 +49,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnMenu"
-        android:layout_width="43dp"
-        android:layout_height="36dp"
-        android:background="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <TextView
+        android:id="@+id/txtInfo"
+        android:layout_width="230dp"
+        android:layout_height="43dp"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="3dp"
+        android:gravity="center"
+        android:text="Select the area you want to book your appointment in:"
+        android:textColor="#272423"
+        app:fontFamily="sans-serif-black"
+        app:layout_constraintBottom_toTopOf="@id/viewBackground"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
-
-        <TextView
-            android:id="@+id/txtInfo"
-            android:layout_width="230dp"
-            android:layout_height="43dp"
-            android:layout_margin="20dp"
-            android:layout_marginBottom="3dp"
-            android:gravity="center"
-            android:text="Select the area you want to book your appointment in:"
-            android:textColor="#1E1B1B"
-            app:layout_constraintBottom_toTopOf="@id/viewBackground"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtLogo" />
+        app:layout_constraintTop_toBottomOf="@id/txtLogo" />
 
     <SeekBar
         android:id="@+id/seekBar"
         android:layout_width="370dp"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="23dp"
         android:maxHeight="8dp"
         android:minHeight="8dp"
         android:progress="30"
-
         android:progressDrawable="@drawable/seek_bar_ruler"
         android:thumb="@drawable/seek_bar_slider"
         app:layout_constraintBottom_toTopOf="@+id/map"
@@ -94,6 +82,23 @@
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/viewBackground" />
+
+
+    <TextView
+        android:id="@+id/txtAdjust"
+        android:layout_width="230dp"
+        android:layout_height="43dp"
+        android:layout_margin="30dp"
+        android:gravity="center"
+        android:text="adjust location perimeter"
+        android:textColor="#F7F7F2"
+        android:textSize="14sp"
+        app:fontFamily="sans-serif-condensed"
+        app:layout_constraintBottom_toTopOf="@id/map"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seekBar" />
 
     <fragment
         android:id="@+id/map"

@@ -13,12 +13,12 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_height="60dp"
+            android:layout_height="90dp"
             android:layout_width="match_parent"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:src="@drawable/logolong"/>
+            android:layout_marginTop="60dp"
+            android:src="@drawable/bare"/>
 
         <EditText
             android:id="@+id/addressEditText"
@@ -26,12 +26,12 @@
             android:layout_height="50dp"
             android:layout_alignTop="@+id/logo"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="130dp"
             android:background="#F7F7F2"
-            android:hint="Address"
+            android:hint="address"
             android:textAlignment="center"
             android:textColor="@android:color/black"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
 
         <EditText
@@ -40,12 +40,12 @@
             android:layout_height="50dp"
             android:layout_alignTop="@+id/addressEditText"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="65dp"
             android:background="#F7F7F2"
-            android:hint="City"
+            android:hint="city"
             android:textAlignment="center"
             android:textColor="@android:color/black"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/stateEditText"
@@ -53,12 +53,12 @@
             android:layout_height="50dp"
             android:layout_alignTop="@+id/cityEditText"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="65dp"
             android:background="#F7F7F2"
-            android:hint="State"
+            android:hint="state"
             android:textAlignment="center"
             android:textColor="@android:color/black"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/zipEditText"
@@ -66,34 +66,35 @@
             android:layout_height="50dp"
             android:layout_alignTop="@+id/stateEditText"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="65dp"
             android:background="#F7F7F2"
-            android:hint="Zip"
+            android:hint="zip"
             android:inputType="number"
             android:textAlignment="center"
             android:textColor="@android:color/black"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/imageButton"
+        <EditText
+            android:id="@+id/countryEditText"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_alignTop="@+id/zipEditText"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"
-            android:onClick="imageButtonOnClick"
-            android:text="Select Profile Image"
-            android:textColor="#F7F7F2"
-            android:textSize="21sp"
-            android:background="@drawable/mybutton" />
+            android:layout_marginTop="65dp"
+            android:background="#F7F7F2"
+            android:hint="country"
+            android:inputType="number"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/signUpButton"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_alignTop="@+id/imageButton"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_alignTop="@+id/countryEditText"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="90dp"
             android:onClick="signUpButtonOnClick"
             android:text="Sign Up"
             android:textColor="#F7F7F2"
@@ -101,19 +102,33 @@
             app:backgroundTint="#81CF4D"
             android:background="@drawable/mybutton" />
 
+
         <TextView
-            android:id="@+id/haveAccountTextView"
-            android:layout_width="150dp"
+            android:id="@+id/haveAccountQuestion"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_alignTop="@+id/signUpButton"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="100dp"
             android:background="#F4FBD5"
-            android:onClick="haveAccountTextViewOnClick"
-            android:text="Already Have an account?"
+            android:text="----------- already have an account? -----------"
             android:textAlignment="center"
             android:textColor="#828282"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/haveAccountTextView"
+            android:onClick="haveAccountTextViewOnClick"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignTop="@+id/haveAccountQuestion"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:background="#F4FBD5"
+            android:text="SIGN IN"
+            android:textAlignment="center"
+            android:textColor="#27AE60"
+            android:textSize="20sp" />
 
     </RelativeLayout>
 </ScrollView>

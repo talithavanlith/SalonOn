@@ -18,7 +18,7 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_height="100dp"
+        android:layout_height="90dp"
         android:layout_width="match_parent"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -32,11 +32,11 @@
         android:layout_alignTop="@+id/logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="130dp"
-        android:background="@android:color/white"
-        android:hint="First Name"
+        android:background="#F7F7F2"
+        android:hint="first name"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
 
     <EditText
@@ -46,11 +46,11 @@
         android:layout_alignTop="@+id/firstNameEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="65dp"
-        android:background="@android:color/white"
-        android:hint="Last Name"
+        android:background="#F7F7F2"
+        android:hint="last name"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
 
     <EditText
@@ -61,11 +61,11 @@
         android:layout_alignTop="@+id/lastNameEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="65dp"
-        android:background="@android:color/white"
-        android:hint="Email"
+        android:background="#F7F7F2"
+        android:hint="email"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -75,11 +75,11 @@
         android:layout_alignTop="@+id/emailEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="65dp"
-        android:background="@android:color/white"
-        android:hint="Password"
+        android:background="#F7F7F2"
+        android:hint="password"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/confirmPasswordEditText"
@@ -89,11 +89,11 @@
         android:layout_alignTop="@+id/passwordEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="65dp"
-        android:background="@android:color/white"
-        android:hint="Confirm password"
+        android:background="#F7F7F2"
+        android:hint="confirm password"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
 
     <Button
@@ -106,7 +106,7 @@
         android:layout_centerHorizontal="true"
         android:background= "@drawable/mybutton"
         android:text="Next"
-        android:textColor="@android:color/white"
+        android:textColor="#F7F7F2"
         android:textSize="20sp"
         />
 
