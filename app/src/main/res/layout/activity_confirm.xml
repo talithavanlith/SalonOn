@@ -62,9 +62,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtStylistName" />
 
-    <!--        <a target="_blank" href="/icons/set/time">Time icon</a> by <a target="_blank" href="https://icons8.com">Icons8</a>-->
-
-
     <ImageView
         android:id="@+id/imgTimeLogo"
         android:layout_width="59dp"
