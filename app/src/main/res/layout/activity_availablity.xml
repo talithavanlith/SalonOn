@@ -8,26 +8,13 @@
     android:background="#F4FBD5">
 
 
-    <Button
-        android:id="@+id/btnMenu"
-        android:layout_width="42dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="16dp"
-        android:background="#1E1B1B"
-        app:layout_constraintBottom_toBottomOf="@+id/txtDetails"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.067"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096" />
-
     <ImageView
         android:id="@+id/imgProfile"
-        android:layout_width="92dp"
-        android:layout_height="84dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="92dp"
         android:layout_marginLeft="92dp"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="21dp"
         android:layout_marginRight="21dp"
         android:layout_marginBottom="24dp"
@@ -35,6 +22,7 @@
         app:layout_constraintEnd_toStartOf="@+id/txtStylistName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/img_borders"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -43,13 +31,13 @@
         android:layout_height="86dp"
         android:layout_marginStart="21dp"
         android:layout_marginLeft="21dp"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="95dp"
         android:layout_marginRight="95dp"
         android:layout_marginBottom="10dp"
         android:lineSpacingExtra="10sp"
         android:text="Stylist Name"
-        android:textColor="#1E1B1B"
+        android:textColor="#272423"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/txtInfo"
@@ -61,7 +49,7 @@
         android:id="@+id/scrollView"
         android:layout_width="425dp"
         android:layout_height="466dp"
-        android:background="#171515"
+        android:background="#272423"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -86,7 +74,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="16dp"
                 android:text="Available times:"
-                android:textColor="#f7f7f4"
+                android:textColor="#F7F7F2"
                 android:textSize="18sp"
                 android:visibility="visible"
                 app:fontFamily="sans-serif-black"
@@ -104,7 +92,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="52dp"
                 android:layout_marginRight="52dp"
-                android:background="#FFFFFF"
+                android:background="#F7F7F2"
                 android:text="CALENDLY"
                 android:textColor="#121111"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -126,7 +114,7 @@
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginBottom="27dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/border"
         android:text=""
         app:layout_constraintBottom_toTopOf="@+id/scrollView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -135,12 +123,13 @@
 
     <ImageView
         android:id="@+id/imgTimeLogo"
-        android:layout_width="59dp"
-        android:layout_height="58dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/time"
         app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
         app:layout_constraintEnd_toStartOf="@+id/txtTime"
         app:layout_constraintTop_toTopOf="@+id/txtInfo"
-        app:srcCompat="@android:drawable/ic_menu_recent_history" />
+        app:layout_constraintStart_toEndOf="@+id/txtStyle" />
 
     <TextView
         android:id="@+id/txtTime"
@@ -149,12 +138,13 @@
         android:layout_marginEnd="6dp"
         android:layout_marginRight="6dp"
         android:text="X.X hr"
-        android:textColor="#000000"
+        android:textColor="#272423"
         android:textSize="20dp"
         app:fontFamily="sans-serif-black"
         app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
         app:layout_constraintEnd_toStartOf="@+id/imgPriceLogo"
-        app:layout_constraintTop_toTopOf="@+id/txtInfo" />
+        app:layout_constraintTop_toTopOf="@+id/txtInfo"
+        app:layout_constraintStart_toEndOf="@+id/imgTimeLogo" />
 
     <ImageView
         android:id="@+id/imgPriceLogo"
@@ -163,7 +153,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
         app:layout_constraintEnd_toStartOf="@+id/txtPrice"
         app:layout_constraintTop_toTopOf="@+id/txtInfo"
-        app:srcCompat="@android:drawable/ic_notification_clear_all" />
+        app:layout_constraintStart_toEndOf="@+id/txtTime"
+        android:src="@drawable/price"/>
 
     <TextView
         android:id="@+id/txtPrice"
@@ -172,23 +163,28 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:text="$X"
-        android:textColor="#000000"
+        android:textColor="#272423"
         android:textSize="20dp"
         app:fontFamily="sans-serif-black"
         app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
         app:layout_constraintEnd_toEndOf="@+id/txtInfo"
-        app:layout_constraintTop_toTopOf="@+id/txtInfo" />
+        app:layout_constraintTop_toTopOf="@+id/txtInfo"
+        app:layout_constraintStart_toEndOf="@+id/imgPriceLogo" />
 
     <TextView
         android:id="@+id/txtStyle"
         android:layout_width="93dp"
         android:layout_height="53dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
         android:text="Mid Length Style"
-        android:textColor="#000000"
+        android:textColor="#272423"
         android:textSize="18dp"
-        app:fontFamily="sans-serif-black"
+        app:fontFamily="sans-serif-condensed"
         app:layout_constraintBottom_toBottomOf="@+id/txtInfo"
         app:layout_constraintEnd_toStartOf="@+id/imgTimeLogo"
+        app:layout_constraintHorizontal_bias="0.32"
         app:layout_constraintStart_toStartOf="@+id/txtInfo"
         app:layout_constraintTop_toTopOf="@+id/txtInfo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
