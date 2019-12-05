@@ -12,6 +12,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.Response;
 
 public class API {
 
@@ -19,7 +23,7 @@ public class API {
     public boolean createNewProfile(Profile profile, String password) {
         try {
             //data code
-            HttpRequest request = new HttpRequest("post",  "creatuser");
+            HttpRequest request = new HttpRequest("post",  "createuser");
             request.queryValues.put("user", profile.email);
             request.queryValues.put("first", profile.first);
             request.queryValues.put("last", profile.last);
@@ -199,12 +203,15 @@ public class API {
             JSONObject json = new JSONObject(response);
             JSONObject status = json.getJSONObject("status");
             if (status.equals(true)){
+                Log.v("API Success", "Profile photo added successfully");
                 return true;
             } else {
+                Log.v("API Error", "Profile photo return false");
                 return false;
             }
         } catch (JSONException e) {
             e.printStackTrace();
+            Log.v("API Error", "Profile photo failed");
             return false;
         }
     }
@@ -226,6 +233,85 @@ public class API {
         }
         Log.v("photostring", encodedImage);
         return encodedImage;
+    }
+
+    //ADD LOCATION TO ACCOUNT IN DB
+    public Boolean addLocation(String id, String address, String city, String state, String zip){
+        HttpRequest request = new HttpRequest("post",  "add-location");
+        request.queryValues.put("id", id);
+        request.queryValues.put("addr", address);
+        request.queryValues.put("state", state);
+        request.queryValues.put("city", city);
+        request.queryValues.put("addr", zip);
+        String response = request.send();
+
+        //handle response
+        try{
+            JSONObject json = new JSONObject(response);
+            boolean status = json.getBoolean("status");
+            if (status){
+                return true;
+            }
+            Log.v("API Error", "addLocation returned false");
+            return false;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean addSalon(String email, String bio, int[] amens){
+        HttpRequest request = new HttpRequest("post",  "add-salon");
+
+        request.queryValues.put("id", email);
+        request.queryValues.put("bio", bio);
+        request.queryValues.put("amenities", Arrays.toString(amens));
+        String response = request.send();
+        try {
+            JSONObject json = new JSONObject(response);
+            JSONObject status = json.getJSONObject("status");
+            if (status.equals(true)){
+                Log.v("API Success", "Salon activated successfully");
+                return true;
+            }
+            Log.v("API Error", "addSalon returned false");
+            return false;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    //GET ALL AMENITIES FOR SALON SIGNUP
+    public Map<Integer, String> getAllAmentities(){
+        HttpRequest request = new HttpRequest("post",  "get-amenities");
+        String response = request.send();
+
+        //CONVERT JSON ARRAY TO HASHMAP
+        Map<Integer, String> amenities = new HashMap<>();
+        try {
+            JSONArray amens = new JSONObject(response).getJSONArray("results");
+            for (int i=0; i<amens.length(); i++){
+                int id = amens.getJSONObject(i).getInt("aid");
+                String name = amens.getJSONObject(i).getString("name");
+                amenities.put(id, name);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return amenities;
+    }
+
+    public JSONArray getAllHairstyles(){
+        HttpRequest request = new HttpRequest("post",  "get-styles");
+        String response = request.send();
+        try {
+            JSONArray styles = new JSONObject(response).getJSONArray("results");
+            return styles;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public Booking getClientBookings(Profile profile){

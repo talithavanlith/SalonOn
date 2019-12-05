@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
-                android:text="ADD A PHOTO FOR YOUR PROFILE"
+                android:text="ADD A PHOTO OF YOUR SALON LOCATION"
                 android:textColor="#81CF4D"
                 android:textAlignment="center"
                 android:layout_margin="10dp">
@@ -37,7 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/blankprofilepic"
+                    android:src="@drawable/hairdresserchair"
                     android:background="?android:selectableItemBackground"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
-                android:text="ADD A BIO FOR FUTURE CLIENTS!"
+                android:text="TELL USERS ABOUT YOUR LOCATION"
                 android:textColor="#81CF4D"
                 android:textAlignment="center"
                 android:layout_margin="10dp">
@@ -61,7 +61,7 @@
                 android:layout_height="100dp"
                 android:background="@android:color/white"
                 android:layout_margin="10dp"
-                android:hint="I am the machine"
+                android:hint="We have a popcorn machine bruh"
                 android:lines="5"
                 android:gravity="top">
             </EditText>
@@ -69,28 +69,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
-                android:text="SELECT THE SERVICES YOU WANT TO OFFER CLIENTS"
+                android:text="WHAT AMENITIES DOES YOUR LOCATION OFFER?"
                 android:textColor="#81CF4D"
                 android:textAlignment="center"
                 android:layout_margin="10dp">
 
             </TextView>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:textColor="#81CF4D"
-                android:text="Barber"
-                android:textSize="30dp">
 
-            </TextView>
             <LinearLayout
-                android:id="@+id/stylelist"
+                android:id="@+id/amenitylist"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
+
 
 
             </LinearLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">

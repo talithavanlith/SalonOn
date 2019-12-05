@@ -1,0 +1,47 @@
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal"
+    android:background="#81CF4D"
+    android:layout_margin="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBox
+        android:id="@+id/stylecheck"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="5dp">
+    </CheckBox>
+    <TextView
+        android:id="@+id/stylename"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textSize="20dp"
+        android:text="Style Name"
+        android:layout_toRightOf="@id/stylecheck"
+        android:layout_margin="10dp">
+    </TextView>
+    <EditText
+        android:id="@+id/style1price"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:background="@android:color/white"
+        android:layout_margin="5dp"
+        android:layout_toLeftOf="@id/style1duration"
+        android:hint="Price"
+        android:inputType="numberDecimal">
+    </EditText>
+
+    <EditText
+        android:id="@+id/style1duration"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:background="@android:color/white"
+        android:layout_margin="5dp"
+        android:layout_alignParentRight="true"
+        android:hint="Duration"
+        android:inputType="time">
+
+    </EditText>
+</RelativeLayout>

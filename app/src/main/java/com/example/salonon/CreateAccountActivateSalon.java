@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -15,6 +16,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -22,46 +24,49 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class CreateAccountActivateStylist extends AppCompatActivity {
+public class CreateAccountActivateSalon extends AppCompatActivity {
 
     final int MY_PERMISSIONS_REQUEST =2;
     Bitmap photo = null;
     API api = new API();
     ArrayList<CheckBox> options = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_account_activate_stylist);
+        setContentView(R.layout.activity_create_account_activate_salon);
 
-        JSONArray hairstyles = api.getAllHairstyles();
 
-        LinearLayout insertPoint = (LinearLayout) findViewById(R.id.stylelist);
+        //*****DYNAMICALLY ADD AMENITIES VALUES TO XML******
+
+        //Integer is amenity ID, String is amenity name
+        Map<Integer, String> amenities = api.getAllAmentities();
+
+        LinearLayout insertPoint = (LinearLayout) findViewById(R.id.amenitylist);
         LayoutInflater inflater = getLayoutInflater();
 
-        for (int i=0; i< hairstyles.length(); i++){
-            View v = inflater.inflate(R.layout.hairstyle, insertPoint, false);
-            CheckBox check = v.findViewById(R.id.stylecheck);
-            TextView name = v.findViewById(R.id.stylename);
-            try {
-                int hid = hairstyles.getJSONObject(i).getInt("hid");
-                String cat = hairstyles.getJSONObject(i).getString("category");
-                String styleName = hairstyles.getJSONObject(i).getString("styleName");
-                check.setId(hid);
-                name.setText(styleName);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+        //GET INFO FROM AMENITY LIST
+        for (Map.Entry<Integer, String> entry : amenities.entrySet() ) {
 
+            //CREATE A INFLATED VIEW BY GIVING REFERENCE TO CHILD FILE (amenity.xml) AND FUTURE PARENT VIEW (insertPoint)
+            View v = inflater.inflate(R.layout.amenity, insertPoint, false);
+
+            //ACCESS THE ELEMENTS IN THE INFLATED VIEW (THIS IS WHERE WE EDIT THEM)
+            CheckBox check = v.findViewById(R.id.amencheck);
+            TextView name = v.findViewById(R.id.amentext);
+            check.setTag(entry.getKey());
+            name.setText(entry.getValue());
+
+            //KEEPING A REFERENCE TO CHECKBOXES
+            options.add(check);
+
+            //FINALLY, USE INSERT POINT TO ADD INFLATED VIEW.
             insertPoint.addView(v);
         }
+
 
     }
 
@@ -122,7 +127,7 @@ public class CreateAccountActivateStylist extends AppCompatActivity {
         }
     }
 
-    //GRABS USER INFO FROM VIEWS AND ATTEMPTS TO ACTIVATE STYLIST ACCOUNT AND UPLOAD PROFILE PHOTO
+    //GRABS USER INFO FROM VIEWS AND ATTEMPTS TO ACTIVATE SALON ACCOUNT AND UPLOAD PROFILE PHOTO
     public void doneButton(View v){
         //GET EMAIL AND BIO VIEW
         Intent currentIntent = getIntent();
@@ -131,23 +136,27 @@ public class CreateAccountActivateStylist extends AppCompatActivity {
         EditText bioView = findViewById(R.id.bio);
         String bio = bioView.getText().toString();
 
-        Offer[] offers = new Offer[0];
+        ArrayList<Integer> checked = new ArrayList<>();
+        for (int i=0; i<options.size(); i++){
+            if (options.get(i).isChecked()){
+                checked.add((Integer) options.get(i).getTag());
+            }
+        }
+        int[] amenities = new int[checked.size()];
+        for (int i=0; i< amenities.length; i++){
+            amenities[i] = checked.get(i);
+        }
 
-        //adds the checked styles to offers, currently only checking for first one.
+        boolean salonStatus = api.addSalon(email, bio, amenities);
+        boolean photoStatus = api.addProfilePic(email, photo);
 
-
-        //add the offers and bio info to account
-        if (api.addStylist(email, bio, offers)){
-            api.addProfilePic(email, photo);
-            Toast.makeText(this, "Stylist account activated successfully", Toast.LENGTH_LONG).show();
-            Log.v("Add-stylist", "success");
-            Intent searchIntent = new Intent(CreateAccountActivateStylist.this, SearchActivity.class);
+        if (salonStatus && photoStatus){
+            Toast.makeText(this, "Salon account activated successfully", Toast.LENGTH_LONG).show();
+            Intent searchIntent = new Intent(CreateAccountActivateSalon.this, SearchActivity.class);
             searchIntent.putExtra("email", email);
+            searchIntent.putExtra("accountType", "salon");
             startActivity(searchIntent);
             finish();
-        } else{
-            Toast.makeText(this, "Error: Stylist account not activated", Toast.LENGTH_LONG).show();
-            Log.v("Add-stylist", "failed");
         }
     }
 }

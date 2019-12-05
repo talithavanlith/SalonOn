@@ -25,10 +25,7 @@ public class CreateAccountAddress extends AppCompatActivity {
         // get extras from passed intent:
         Intent currentIntent = getIntent();
         Bundle bundle = currentIntent.getExtras();
-        String first = bundle.getString("first");
-        String last = bundle.getString("last");
         String email = bundle.getString("email");
-        String password = bundle.getString("password");
         String accountType = bundle.getString("accountType");
 
         // get data from edit texts:
@@ -37,19 +34,32 @@ public class CreateAccountAddress extends AppCompatActivity {
         EditText stateEditText = findViewById(R.id.stateEditText);
         EditText zipEditText = findViewById(R.id.zipEditText);
 
-        //currently doing nothing with this info
+        //get address info
         String address = addressEditText.getText().toString();
         String city = cityEditText.getText().toString();
         String state = stateEditText.getText().toString();
         String zip = zipEditText.getText().toString();
 
+        //add location to account
+        new API().addLocation(email, address, city, state, zip);
 
 
-        //start search intent
-        Intent activateStylistIntent = new Intent(CreateAccountAddress.this, CreateAccountActivateStylist.class);
-        activateStylistIntent.putExtra("email", email);
-        startActivity(activateStylistIntent);
-        finish();
+
+        //START PROFILE EDIT FOR STYLIST
+        if (accountType.equals("stylist")){
+            Intent activateStylistIntent = new Intent(CreateAccountAddress.this, CreateAccountActivateStylist.class);
+            activateStylistIntent.putExtra("email", email);
+            startActivity(activateStylistIntent);
+            finish();
+        }  else
+
+        //START PROFILE EDIT FOR SALON
+        if (accountType.equals("salon")){
+            Intent activateSalonIntent = new Intent(CreateAccountAddress.this, CreateAccountActivateSalon.class);
+            activateSalonIntent.putExtra("email", email);
+            startActivity(activateSalonIntent);
+            finish();
+        }
 
     }
 
