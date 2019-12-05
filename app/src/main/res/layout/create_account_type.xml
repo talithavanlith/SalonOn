@@ -35,7 +35,7 @@
     <LinearLayout
         android:id="@+id/ctnButtons"
         android:layout_width="wrap_content"
-        android:layout_height="376dp"
+        android:layout_height="400dp"
         android:layout_alignTop="@id/logo"
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
@@ -52,6 +52,8 @@
             android:onClick="accountTypeButton"
             android:scaleType="fitCenter"
             android:padding="15dp"
+            android:layout_margin="5dp"
+            android:background="#F7F7F2"
             android:src="@drawable/hairstyling">
 
         </ImageButton>
@@ -62,7 +64,9 @@
             android:layout_height="120dp"
             android:onClick="accountTypeButton"
             android:scaleType="fitCenter"
+            android:background="#F7F7F2"
             android:padding="15dp"
+            android:layout_margin="5dp"
             android:src="@drawable/scissors">
 
         </ImageButton>
@@ -72,7 +76,9 @@
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:scaleType="fitCenter"
+            android:background="#F7F7F2"
             android:padding="15dp"
+            android:layout_margin="5dp"
             android:src="@drawable/barberpole">
 
         </ImageButton>
