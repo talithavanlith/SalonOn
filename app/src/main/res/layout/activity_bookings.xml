@@ -7,20 +7,6 @@
     tools:context=".LoginActivity"
     android:background="#F4FBD5">
 
-
-    <Button
-        android:id="@+id/btnMenu"
-        android:layout_width="42dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="16dp"
-        android:background="#1E1B1B"
-        app:layout_constraintBottom_toBottomOf="@+id/txtDetails"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.067"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096" />
-
     <ImageView
         android:id="@+id/imgProfile"
         android:layout_width="92dp"
@@ -42,7 +28,7 @@
         android:layout_height="wrap_content"
         android:lineSpacingExtra="10sp"
         android:text="Your bookings:"
-        android:textColor="#1E1B1B"
+        android:textColor="#272423"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/txtDetails"
@@ -55,7 +41,7 @@
         android:id="@+id/scrollView"
         android:layout_width="416dp"
         android:layout_height="533dp"
-        android:background="#171515"
+        android:background="#272423"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -161,7 +147,7 @@
                         android:background="#ECDD59"
                         android:text="pending"
                         android:textAllCaps="false"
-                        android:textColor="#322E2D"
+                        android:textColor="#272423"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.442"
@@ -244,7 +230,7 @@
                         android:background="#81CF4D"
                         android:text="completed: \nclick here to leave a review"
                         android:textAllCaps="false"
-                        android:textColor="#322E2D"
+                        android:textColor="#272423"
                         app:layout_constraintBottom_toTopOf="@+id/txtLocation"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.442"
