@@ -24,6 +24,8 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name=".CreateAccountSelectType" android:theme="@style/AppTheme.NoActionBar" android:configChanges="orientation"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".BookingsActivity" android:theme="@style/AppTheme.NoActionBar" android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
