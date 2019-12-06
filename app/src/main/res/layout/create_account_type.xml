@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_alignTop="@id/logo"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="120dp"
         android:layout_marginBottom="0dp"
         android:orientation="vertical"
         android:text="Select your account type:"
@@ -35,7 +35,7 @@
     <LinearLayout
         android:id="@+id/ctnButtons"
         android:layout_width="wrap_content"
-        android:layout_height="400dp"
+        android:layout_height="500dp"
         android:layout_alignTop="@id/logo"
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"

@@ -1,33 +1,15 @@
 package com.example.salonon;
 
-import android.Manifest;
-import android.app.Dialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
 
 public class SearchResultsActivity extends AppCompatActivity {
 
@@ -89,30 +71,38 @@ public class SearchResultsActivity extends AppCompatActivity {
     }
 
     private void fillSearchActivityWithData(Profile [] profiles){
-        // Get TextViews from view:
-        TextView name = findViewById(R.id.txtName1);
-        TextView info = findViewById(R.id.txtInfo1a);
+        //*****DYNAMICALLY ADD search results to screen ******
 
-        //todo: fix this. Need to be able to display any number of profiles. not just 3
-        for(int i = 0; i < profiles.length; i++) {
-            if(i > 3) {
-                // return here because I do not currently have a way to dynamically generate the xml for each profile item, so I only want to have 4 profile objects be read if we can read them.
-                return;
-            }
-            // render profile information to XML.
-            if(i == 0) {
-                name = findViewById(R.id.txtName1);
-                info = findViewById(R.id.txtInfo1a);
-            } else if (i == 1) {
-                name = findViewById(R.id.txtName2);
-                info = findViewById(R.id.txtInfo2a);
-            } else if (i == 2) {
-                name = findViewById(R.id.txtName3);
-                info = findViewById(R.id.txtInfo3a);
+        LinearLayout insertPoint = (LinearLayout) findViewById(R.id.searchResults);
+        LayoutInflater inflater = getLayoutInflater();
+
+        //GET INFO FROM AMENITY LIST
+        for (int i = 0; i < profiles.length; i++) {
+
+            //CREATE A INFLATED VIEW BY GIVING REFERENCE TO CHILD FILE (amenity.xml) AND FUTURE PARENT VIEW (insertPoint)
+            View v;
+
+            //Gets the odd layout file (different colour) if the iteration is odd
+            if(i % 2 == 0){
+                v = inflater.inflate(R.layout.search_results, insertPoint, false);
+            }else{
+                v = inflater.inflate(R.layout.search_results_odd, insertPoint, false);
             }
 
+            //ACCESS THE ELEMENTS IN THE INFLATED VIEW (THIS IS WHERE WE EDIT THEM)
+            TextView name = v.findViewById(R.id.txtName);
+            TextView infoA = v.findViewById(R.id.txtInfoA);
+            TextView infoB = v.findViewById(R.id.txtInfoB);
+            ImageView image = v.findViewById(R.id.imageView);
+
+            // set the details
             name.setText(profiles[i].first + " " + profiles[i].last);
-            info.setText(profiles[i].stylistBio);
+            infoA.setText(profiles[i].stylistBio);
+            infoB.setText("for now we'll say hello");
+            //todo: add image
+
+            //FINALLY, USE INSERT POINT TO ADD INFLATED VIEW.
+            insertPoint.addView(v);
         }
     }
 

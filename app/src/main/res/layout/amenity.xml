@@ -10,7 +10,9 @@
     <CheckBox
         android:id="@+id/amencheck"
         android:layout_width="30dp"
-        android:layout_height="30dp">
+        android:layout_height="30dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp">
     </CheckBox>
     <TextView
         android:id="@+id/amentext"
@@ -18,7 +20,9 @@
         android:layout_height="match_parent"
         android:textSize="30dp"
         android:text="Amenity name"
-        android:layout_margin="5dp">
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginVertical="5dp">
     </TextView>
 
 </LinearLayout>

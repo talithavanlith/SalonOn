@@ -13,13 +13,16 @@
         android:layout_width="match_parent"
         android:layout_marginTop="30dp"
         android:src="@drawable/logolong"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -29,9 +32,11 @@
                 android:textAlignment="center"
                 android:layout_margin="10dp">
             </TextView>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="150dp">
+
                 <ImageButton
                     android:id="@+id/profilepic"
                     android:layout_width="wrap_content"
@@ -42,29 +47,31 @@
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
                     android:onClick="photoButton">
-
                 </ImageButton>
 
             </RelativeLayout>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:text="TELL USERS ABOUT YOUR LOCATION"
-                android:textColor="#81CF4D"
-                android:textAlignment="center"
-                android:layout_margin="10dp">
-            </TextView>
+
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textSize="15sp"-->
+<!--                android:text="TELL USERS ABOUT YOUR LOCATION"-->
+<!--                android:textColor="#81CF4D"-->
+<!--                android:textAlignment="center"-->
+<!--                android:layout_margin="10dp">-->
+<!--            </TextView>-->
+
             <EditText
                 android:id="@+id/bio"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@android:color/white"
-                android:layout_margin="10dp"
-                android:hint="We have a popcorn machine bruh"
+                android:layout_height="70dp"
+                android:background="@drawable/border_thick"
+                android:layout_margin="20dp"
+                android:hint="tell users about your location"
                 android:lines="5"
-                android:gravity="top">
+                android:gravity="center">
             </EditText>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,7 +80,6 @@
                 android:textColor="#81CF4D"
                 android:textAlignment="center"
                 android:layout_margin="10dp">
-
             </TextView>
 
             <LinearLayout
@@ -81,19 +87,17 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-
-
             </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <Button
                     android:id="@+id/submitButton"
-                    android:layout_width="200dp"
-                    android:layout_height="100dp"
-                    app:backgroundTint = "#81CF4D"
+                    android:layout_width="250dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/mybutton"
                     android:text="Done"
                     android:textColor="@android:color/white"
                     android:textSize="21sp"
@@ -101,6 +105,7 @@
                     android:layout_margin="10dp"
                     android:onClick="doneButton"
                     />
+
             </RelativeLayout>
 
         </LinearLayout>
