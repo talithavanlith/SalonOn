@@ -292,4 +292,41 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+    <LinearLayout
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <ImageButton
+            android:id="@+id/searchnavbutton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:layout_margin="2dp"
+            android:src="@drawable/searchicon"
+            android:background="#F4FBD5"
+            android:scaleType="fitCenter">
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/bookingsnavbutton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:src="@drawable/calendericon"
+            android:scaleType="fitCenter"
+            android:background="#F4FBD5"
+            android:layout_margin="2dp">
+        </ImageButton>
+        <ImageButton
+            android:id="@+id/profilenavbutton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:src="@drawable/profileicon"
+            android:scaleType="fitCenter"
+            android:background="#F4FBD5"
+            android:layout_margin="2dp">
+        </ImageButton>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

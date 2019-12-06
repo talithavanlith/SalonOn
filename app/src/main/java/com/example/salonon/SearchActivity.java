@@ -328,4 +328,10 @@ public class SearchActivity extends AppCompatActivity {
         Intent stylistProfileIntent = new Intent(SearchActivity.this, ProfileActivity.class);
         startActivity(stylistProfileIntent);
     }
+
+    public void bookingsButton(View v){
+        Intent mapIntent = new Intent(SearchActivity.this, BookingsActivity.class);
+        mapIntent.putExtra("email", userProfile.email);
+        startActivity(mapIntent);
+    }
 }
