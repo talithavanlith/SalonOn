@@ -1,4 +1,4 @@
-<RelativeLayout android:layout_width="match_parent"
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="50dp"
     android:orientation="horizontal"
     android:background="#81CF4D"
@@ -9,39 +9,37 @@
         android:id="@+id/stylecheck"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
         android:layout_margin="5dp">
     </CheckBox>
     <TextView
         android:id="@+id/stylename"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="40dp"
         android:textSize="20dp"
         android:text="Style Name"
-        android:layout_toRightOf="@id/stylecheck"
-        android:layout_margin="10dp">
+        android:layout_margin="5dp">
     </TextView>
+
     <EditText
         android:id="@+id/style1price"
         android:layout_width="70dp"
         android:layout_height="40dp"
-        android:background="@android:color/white"
-        android:layout_margin="5dp"
-        android:layout_toLeftOf="@id/style1duration"
-        android:hint="Price"
-        android:inputType="numberDecimal">
-    </EditText>
+        android:layout_marginVertical="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/border"
+        android:gravity="center"
+        android:hint="price"
+        android:inputType="numberDecimal"></EditText>
 
     <EditText
         android:id="@+id/style1duration"
-        android:layout_width="70dp"
+        android:layout_width="100dp"
         android:layout_height="40dp"
-        android:background="@android:color/white"
+        android:background="@drawable/border"
+        android:gravity="center"
         android:layout_margin="5dp"
-        android:layout_alignParentRight="true"
-        android:hint="Duration"
+        android:hint="duration"
         android:inputType="time">
-
     </EditText>
-</RelativeLayout>
+</LinearLayout>

@@ -79,12 +79,10 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_alignTop="@+id/zipEditText"
-            android:layout_marginTop="90dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="65dp"
             android:background="#F7F7F2"
             android:hint="country"
-            android:inputType="number"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
