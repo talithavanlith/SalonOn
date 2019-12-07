@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".BookingsActivity"
     android:background="#F4FBD5">
 
     <ImageView
@@ -294,6 +294,7 @@
             android:layout_margin="2dp"
             android:src="@drawable/searchicon"
             android:background="#F4FBD5"
+            android:onClick="searchNavButton"
             android:scaleType="fitCenter">
         </ImageButton>
         <ImageButton
@@ -303,7 +304,7 @@
             android:layout_weight=".25"
             android:src="@drawable/calendericon"
             android:scaleType="fitCenter"
-            android:background="#F4FBD5"
+            android:background="#4D803B"
             android:layout_margin="2dp">
         </ImageButton>
         <ImageButton

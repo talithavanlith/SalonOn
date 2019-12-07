@@ -236,5 +236,6 @@ public class SearchActivity extends AppCompatActivity {
         Intent mapIntent = new Intent(SearchActivity.this, BookingsActivity.class);
         mapIntent.putExtra("email", userProfile.email);
         startActivity(mapIntent);
+        finish();
     }
 }

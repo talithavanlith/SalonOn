@@ -314,8 +314,53 @@ public class API {
         }
     }
 
-    public Booking getClientBookings(Profile profile){
-        return null;
+
+
+    public Booking[] getClientBookings(String clientID){
+        HttpRequest request = new HttpRequest("post",  "get-client-bookings");
+        request.queryValues.put("id", clientID);
+        String response = request.send();
+        try {
+            JSONArray jsonBookings = new JSONObject(response).getJSONArray("results");
+            Booking[] bookings = new Booking[jsonBookings.length()];
+
+            for(int i=0; i<bookings.length; i++){
+                bookings[i] = jsonToBooking(jsonBookings.getJSONObject(i));
+            }
+            return bookings;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Booking jsonToBooking(JSONObject json){
+        String client, stylist, salon, styleName, category, bookDate, bookTime = null;
+        double price, duration;
+        boolean clientConfirm, stylistConfirm, salonConfirm;
+        try {
+            client = json.getString("client");
+            stylist = json.getString("stylist");
+            salon = json.getString("salon");
+            styleName = json.getString("styleName");
+            category = json.getString("category");
+            bookDate = json.getString("bookDate");
+            bookTime = json.getString("bookTime");
+            price = json.getDouble("price");
+            duration = json.getDouble("duration");
+            clientConfirm = json.getBoolean("clientConfirm");
+            stylistConfirm = json.getBoolean("stylistConfirm");
+            salonConfirm = json.getBoolean("salonConfirm");
+            int bid = json.getInt("bid");
+
+
+            return new Booking(bid,client,stylist, salon, styleName, category, price, duration,
+                    bookDate, bookTime, clientConfirm, stylistConfirm, salonConfirm );
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public Offer[] getStylistOffers(Profile profile){
