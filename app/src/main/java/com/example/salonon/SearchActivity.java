@@ -94,7 +94,6 @@ public class SearchActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             //found location
                             Location currentLocation = (Location) task.getResult(); //return this to main to send to next method
-                            System.out.println(currentLocation.getLatitude() + " ---------------------------------iifrjijfioji------------------------");
                             LatLng curLocation = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
                             processLocation(curLocation);
                             return;
@@ -131,14 +130,13 @@ public class SearchActivity extends AppCompatActivity {
 //            String country = addresses.get(0).getCountryName();
             String postalCode = addresses.get(0).getPostalCode();
 
-            Toast.makeText(SearchActivity.this, "Your location is: \n" + address + "\n" + city + ", " + state + "\n" + postalCode, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(SearchActivity.this, "Your location is: \n" + address + "\n" + city + ", " + state + "\n" + postalCode, Toast.LENGTH_SHORT).show();
 
             // Display stylists in activity_search
             Profile[] arrayOfStylists = api.searchStylistByLocation(address, city, state, postalCode, "10");
 
             if (arrayOfStylists.length > 0) {
                 fillSearchActivityWithData(arrayOfStylists);
-                Toast.makeText(SearchActivity.this, "Stylist 1 is: \n" + arrayOfStylists[0].first, Toast.LENGTH_SHORT).show();
 
             } else {
                 Toast.makeText(this, "Failed to get stylists by location", Toast.LENGTH_LONG).show();
