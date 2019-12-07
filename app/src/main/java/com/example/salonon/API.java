@@ -321,13 +321,19 @@ public class API {
         request.queryValues.put("id", clientID);
         String response = request.send();
         try {
-            JSONArray jsonBookings = new JSONObject(response).getJSONArray("results");
-            Booking[] bookings = new Booking[jsonBookings.length()];
+            JSONObject json = new JSONObject(response);
+            if(json.getBoolean("status")){
+                JSONArray jsonBookings = new JSONObject(response).getJSONArray("results");
+                Booking[] bookings = new Booking[jsonBookings.length()];
 
-            for(int i=0; i<bookings.length; i++){
-                bookings[i] = jsonToBooking(jsonBookings.getJSONObject(i));
+                for(int i=0; i<bookings.length; i++){
+                    bookings[i] = jsonToBooking(jsonBookings.getJSONObject(i));
+                }
+                return bookings;
+            } else {
+                Log.v("API Error", "Get Client Booking returned false");
+                return null;
             }
-            return bookings;
 
         } catch (JSONException e) {
             e.printStackTrace();

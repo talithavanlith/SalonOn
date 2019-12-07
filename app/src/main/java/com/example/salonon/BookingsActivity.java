@@ -18,6 +18,11 @@ public class BookingsActivity extends AppCompatActivity {
         Intent currentIntent = getIntent();
         Bundle bundle = currentIntent.getExtras();
         clientID = bundle.getString("email");
+        API api = new API();
+
+        //BOOKING OBJECTS TO FILL XML WITH
+        Booking[] bookings = api.getClientBookings(clientID);
+
     }
 
     public void searchNavButton(View v){
