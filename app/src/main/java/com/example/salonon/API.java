@@ -160,7 +160,7 @@ public class API {
     //ADD STYLIST TO ACCOUNT
     public boolean addStylist(String clientID, String bio, Offer[] offers){
         try{
-            HttpRequest request = new HttpRequest("post",  "update-profile-photo");
+            HttpRequest request = new HttpRequest("post",  "add-stylist");
             request.queryValues.put("id", clientID);
             request.queryValues.put("bio", bio);
             request.queryValues.put("styles", offerArrayToString(offers));
@@ -221,8 +221,8 @@ public class API {
         //Handle response as json
         try{
             JSONObject json = new JSONObject(response);
-            JSONObject status = json.getJSONObject("status");
-            if (status.equals(true)){
+            boolean status = json.getBoolean("status");
+            if (status){
                 Log.v("API Success", "Profile photo added successfully");
                 return true;
             } else {
@@ -262,7 +262,7 @@ public class API {
         request.queryValues.put("addr", address);
         request.queryValues.put("state", state);
         request.queryValues.put("city", city);
-        request.queryValues.put("addr", zip);
+        request.queryValues.put("zip", zip);
         String response = request.send();
 
         //handle response

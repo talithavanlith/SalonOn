@@ -59,7 +59,7 @@ public class CreateAccountActivateStylist extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
+            options.add(check);
             insertPoint.addView(v);
         }
 
@@ -131,14 +131,31 @@ public class CreateAccountActivateStylist extends AppCompatActivity {
         EditText bioView = findViewById(R.id.bio);
         String bio = bioView.getText().toString();
 
-        Offer[] offers = new Offer[0];
+        ArrayList<Offer> offers = new ArrayList<>();
+        for (int i=0; i<options.size(); i++){
+            CheckBox check = options.get(i);
+            if (check.isChecked()){
+                int hid = check.getId();
+                LinearLayout parent = (LinearLayout)check.getParent();
+                EditText priceText = parent.findViewWithTag("styleprice");
+                double price = Double.parseDouble(priceText.getText().toString());
+                EditText durationText = parent.findViewWithTag("styleduration");
+                double duration = Double.parseDouble(durationText.getText().toString());
+                Log.v("price", ""+price);
+                Log.v("duration", ""+duration);
+                offers.add(new Offer (hid, price, 0, duration));
 
-        //adds the checked styles to offers, currently only checking for first one.
+            }
+        }
+        Offer[] offerArray = new Offer[offers.size()];
+        for (int i=0; i< offers.size(); i++){
+            offerArray[i] = offers.get(i);
+        }
 
 
         //add the offers and bio info to account
-        if (api.addStylist(email, bio, offers)){
-            api.addProfilePic(email, photo);
+        if (api.addStylist(email, bio, offerArray)){
+            //api.addProfilePic(email, photo);
             Toast.makeText(this, "Stylist account activated successfully", Toast.LENGTH_LONG).show();
             Log.v("Add-stylist", "success");
             Intent searchIntent = new Intent(CreateAccountActivateStylist.this, SearchActivity.class);
