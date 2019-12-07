@@ -188,6 +188,26 @@ public class API {
         return "{\"id\":"+offer.styleID+", \"price\": "+offer.price+", \"deposit\": "+offer.deposit+", \"duration\": "+offer.duration+"}";
     }
 
+    public Offer jsonToOffer(JSONObject json){
+        try {
+            String stylist, stylename, category;
+            double price, deposit, duration;
+            int offerID, styleID;
+            stylist = json.getString("stylist");
+            stylename = json.getString("styleName");
+            category = json.getString("category");
+            price = json.getDouble("price");
+            deposit = json.getDouble("deposit");
+            duration = json.getDouble("duration");
+            offerID = json.getInt("offerID");
+            styleID = json.getInt("hid");
+            return new Offer(offerID, styleID, stylist, stylename, category, price, deposit, duration);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     //ADD PROFILE PIC TO ACCOUNT
     public boolean addProfilePic(String clientID, Bitmap bitmap){
@@ -369,8 +389,27 @@ public class API {
         }
     }
 
-    public Offer[] getStylistOffers(Profile profile){
-        return null;
+    public Offer[] getStylistOffers(String stylistID){
+        HttpRequest request = new HttpRequest("post",  "get-stylist-offers");
+        request.queryValues.put("id", stylistID);
+        String response = request.send();
+        try {
+            JSONObject json = new JSONObject(response);
+            if(json.getBoolean("status")) {
+                JSONArray styles = json.getJSONArray("results");
+                Offer[] offers = new Offer[styles.length()];
+                for (int i=0; i< styles.length(); i++){
+                    offers[i] = jsonToOffer(styles.getJSONObject(i));
+                }
+                return offers;
+            } else {
+                Log.v("API Error", "Get stylist offers returned false");
+                return null;
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
     public boolean createBooking(Booking booking){
         return false;
