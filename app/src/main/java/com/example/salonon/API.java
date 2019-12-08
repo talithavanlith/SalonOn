@@ -1,6 +1,7 @@
 package com.example.salonon;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.util.Log;
 
@@ -109,28 +110,25 @@ public class API {
             String last = (String) profile.get("last");
             String stylistBio = (String) profile.get("stylistBio");
             String salonBio = (String) profile.get("salonBio");
+            double salonRate = profile.getDouble("salonRate");
 
-            //Handle salonRate as double or int
-            double salonRate;
-            try {
-                salonRate = (double) (profile.get("salonRate"));
-            }catch(Exception e){
-                salonRate = new Double((int)profile.get("salonRate"));
-            }
-
-            //get booleans from strings
+            int isStylistInt = profile.getInt("isStylist");
             boolean isStylist = false;
-            boolean isSalon = false;
-            int resultStylist = (int) profile.get("isStylist");
-            if (resultStylist == 1){
+            if(isStylistInt == 1){
                 isStylist = true;
             }
-            int resultSalon = (int) profile.get("isStylist");
-            if (resultSalon == 1){
+            int isSalonInt = profile.getInt("isSalon");
+            boolean isSalon = false;
+            if(isSalonInt == 1){
                 isSalon = true;
+            }
+            double distance =0;
+            if(profile.has("distance")){
+                distance = profile.getDouble("distance");
             }
 
             Profile newProfile = new Profile(email, first, last, null, isStylist, isSalon, stylistBio, salonBio, salonRate);
+            newProfile.distance = distance;
             return newProfile;
         } catch (Exception e) {
             Log.v("API error", "Failed to convert json to profile " + e);
@@ -253,6 +251,30 @@ public class API {
         }
         Log.v("photostring", encodedImage);
         return encodedImage;
+    }
+
+    public Bitmap getProfilePic(String clientID){
+        HttpRequest request = new HttpRequest("post", "get-profile-photo" );
+        request.queryValues.put("id", clientID);
+        String response = request.send();
+        try {
+            JSONObject json = new JSONObject(response);
+            if(json.getBoolean("status")){
+                String base64 = json.getString("results");
+                if(base64.equals("null")){
+                    return null;
+                }
+                byte[] decodedByteArray = Base64.decode(base64, Base64.NO_WRAP);
+                Bitmap decodedBitmap = BitmapFactory.decodeByteArray(decodedByteArray, 0, decodedByteArray.length);
+                return decodedBitmap;
+            } else {
+                return null;
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
     //ADD LOCATION TO ACCOUNT IN DB

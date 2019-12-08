@@ -1,5 +1,6 @@
 package com.example.salonon;
 
+import android.graphics.Bitmap;
 import android.media.Image;
 
 public class Profile {
@@ -11,12 +12,13 @@ public class Profile {
     String salonBio;
     String stylistBio;
     double salonRate;
-    Image image;
+    Bitmap image;
     String[] addresses;
     int[] zips; //indexes match address
     Offer[] offers; //null if not a stylist
+    double distance;
 
-    public Profile(String email, String first, String last, Image image, boolean isStylist, boolean isSalon,
+    public Profile(String email, String first, String last, Bitmap image, boolean isStylist, boolean isSalon,
                    String salonBio, String stylistBio, double salonRate){
         this.email = email;
         this.first = first;

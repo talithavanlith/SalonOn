@@ -15,7 +15,11 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        Offer[] offers = new API().getStylistOffers("susie@mail.com");
+
+        Intent currentIntent = getIntent();
+        Bundle bundle = currentIntent.getExtras();
+        String email = bundle.getString("id");
+        Offer[] offers = new API().getStylistOffers(email);
         Log.v("offerLength", "" +offers.length);
     }
 

@@ -4,10 +4,12 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -208,9 +211,18 @@ public class SearchActivity extends AppCompatActivity {
 
             // set the details
             name.setText(profiles[i].first + " " + profiles[i].last);
-            infoA.setText(profiles[i].stylistBio);
-            infoB.setText("for now we'll say hello");
-            //todo: add image
+            infoA.setText("Stylist");
+            infoB.setText(profiles[i].distance+" miles away");
+            image.setBackgroundResource(R.drawable.blankprofilepic);
+            name.setTag(profiles[i].email);
+            View parent = (View) name.getParent();
+            //parent.setTag(""+profiles[i].email);
+//            Bitmap bitmap = api.getProfilePic(profiles[i].email);
+//            if(bitmap == null){
+//                image.setBackgroundResource(R.drawable.blankprofilepic);
+//            } else {
+//                image.setImageBitmap(bitmap);
+//            }
 
             //FINALLY, USE INSERT POINT TO ADD INFLATED VIEW.
             insertPoint.addView(v);
@@ -226,7 +238,10 @@ public class SearchActivity extends AppCompatActivity {
 
     public void stylistProfileOnClick(View v) {
         // Create activity_profile Intent;
+        String stylistID = (String)v.getTag();
+        Log.v("stylistID", stylistID);
         Intent stylistProfileIntent = new Intent(SearchActivity.this, ProfileActivity.class);
+        stylistProfileIntent.putExtra("id", stylistID);
         startActivity(stylistProfileIntent);
     }
 

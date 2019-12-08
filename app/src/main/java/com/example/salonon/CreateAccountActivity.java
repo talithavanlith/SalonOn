@@ -1,6 +1,7 @@
 package com.example.salonon;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
@@ -53,7 +54,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
 
         //ATTEMPT CREATE ACCOUNT
-        Image image = null;
+        Bitmap image = null;
         Profile userProfile = new Profile(email, first,last, image,false, false, "none", "none", 0);
         if(new API().createNewProfile(userProfile, password)) {
             Toast.makeText(this, "Account created successfully", Toast.LENGTH_LONG).show();

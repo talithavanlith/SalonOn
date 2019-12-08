@@ -155,7 +155,7 @@ public class CreateAccountActivateStylist extends AppCompatActivity {
 
         //add the offers and bio info to account
         if (api.addStylist(email, bio, offerArray)){
-            //api.addProfilePic(email, photo);
+            api.addProfilePic(email, photo);
             Toast.makeText(this, "Stylist account activated successfully", Toast.LENGTH_LONG).show();
             Log.v("Add-stylist", "success");
             Intent searchIntent = new Intent(CreateAccountActivateStylist.this, SearchActivity.class);
