@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -35,6 +36,7 @@ import com.google.android.gms.tasks.Task;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -202,10 +204,10 @@ public class SearchActivity extends AppCompatActivity {
             }
 
             //ACCESS THE ELEMENTS IN THE INFLATED VIEW (THIS IS WHERE WE EDIT THEM)
-            TextView name = v.findViewById(R.id.txtStylistName);
+            TextView name = v.findViewById(R.id.txtName);
             TextView infoA = v.findViewById(R.id.txtInfoA);
             TextView infoB = v.findViewById(R.id.txtInfoB);
-            ImageView image = v.findViewById(R.id.imgStylist);
+            ImageView image = v.findViewById(R.id.imageView);
 
             // set the details
             name.setText(profiles[i].first + " " + profiles[i].last);

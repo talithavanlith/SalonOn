@@ -7,6 +7,45 @@
     tools:context=".LoginActivity"
     android:background="#F4FBD5">
 
+
+    <TextView
+        android:id="@+id/txtDetails"
+        android:layout_width="428dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="20dp"
+        android:background="#001E1B1B"
+        android:gravity="center"
+        android:text="x years experience - x miles away"
+        android:textColor="#171515"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtStylistName" />
+
+<!--    <android.support.v7.widget.CardView-->
+<!--        android:id="@+id/imgProfile"-->
+<!--        android:layout_width="90dp"-->
+<!--        android:layout_height="90dp"-->
+<!--        app:cardCornerRadius="80dp"-->
+<!--        android:layout_marginTop="40dp"-->
+<!--        android:layout_marginEnd="160dp"-->
+<!--        android:layout_marginRight="160dp"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/txtStylistName"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:background="@drawable/img_borders"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:elevation="10dp">-->
+<!--        <ImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            tools:srcCompat="@tools:sample/avatars" />-->
+<!--    </android.support.v7.widget.CardView>-->
+
     <ImageView
         android:id="@+id/imgProfile"
         android:layout_width="100dp"
@@ -38,31 +77,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgProfile" />
 
-
-    <TextView
-        android:id="@+id/txtDetails"
-        android:layout_width="428dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="20dp"
-        android:background="#001E1B1B"
-        android:gravity="center"
-        android:text="x years experience - x miles away"
-        android:textColor="#171515"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtStylistName" />
-
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="414dp"
-        android:layout_height="511dp"
+        android:layout_width="416dp"
+        android:layout_height="533dp"
         android:background="#272423"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDetails"
         app:layout_constraintVertical_bias="0.0">
@@ -97,7 +119,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="189dp"
                 android:layout_marginLeft="189dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginEnd="189dp"
                 android:layout_marginRight="189dp"
                 android:text="Style 1"
@@ -176,13 +197,69 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtAvailableStyle">
 
-                <LinearLayout
-                    android:id="@+id/styleOptions"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent">
 
-                </LinearLayout>
+                    <Button
+                        android:id="@+id/btnStyle1"
+                        android:layout_width="175dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_weight="1"
+                        android:background="#322E2D"
+                        android:text="Style 1"
+                        android:textColor="#f7f7f2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btnStyle2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btnStyle2"
+                        android:layout_width="175dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_weight="1"
+                        android:background="#322E2D"
+                        android:text="Style 2"
+                        android:textColor="#f7f7f2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btnStyle3"
+                        app:layout_constraintStart_toEndOf="@+id/btnStyle1"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btnStyle3"
+                        android:layout_width="175dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_weight="1"
+                        android:background="#322E2D"
+                        android:text="Style 3"
+                        android:textColor="#f7f7f2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btnStyle4"
+                        app:layout_constraintStart_toEndOf="@+id/btnStyle2"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btnStyle4"
+                        android:layout_width="175dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#322E2D"
+                        android:text="Style 4"
+                        android:textColor="#f7f7f2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/btnStyle3"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </HorizontalScrollView>
 
             <TextView
@@ -355,8 +432,9 @@
 
             <RatingBar
                 android:id="@+id/rateClean"
-                style="@android:style/Widget.Holo.Light.RatingBar.Indicator"
                 android:layout_width="wrap_content"
+                style="@android:style/Widget.Holo.Light.RatingBar.Indicator"
+                android:progressTint="#81CF4D"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="34dp"
                 android:layout_marginLeft="34dp"
@@ -364,7 +442,6 @@
                 android:layout_marginEnd="56dp"
                 android:layout_marginRight="56dp"
                 android:background="#00313131"
-                android:progressTint="#81CF4D"
                 android:rating="3.5"
                 app:layout_constraintBottom_toTopOf="@+id/rateFriend"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -383,8 +460,8 @@
                 android:layout_marginEnd="56dp"
                 android:layout_marginRight="56dp"
                 android:layout_marginBottom="5dp"
-                android:background="#00313131"
                 android:progressTint="#81CF4D"
+                android:background="#00313131"
                 android:rating="5"
                 app:layout_constraintBottom_toTopOf="@+id/rateProfes"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -419,10 +496,10 @@
                 android:layout_marginStart="34dp"
                 android:layout_marginLeft="34dp"
                 android:layout_marginTop="5dp"
+                android:progressTint="#81CF4D"
                 android:layout_marginEnd="56dp"
                 android:layout_marginRight="56dp"
                 android:background="#00313131"
-                android:progressTint="#81CF4D"
                 android:rating="4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/txtAccessibility"

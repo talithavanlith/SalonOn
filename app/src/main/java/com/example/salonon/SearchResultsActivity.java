@@ -59,7 +59,7 @@ public class SearchResultsActivity extends AppCompatActivity {
 
             if (arrayOfStylists[0] != null) {
                 fillSearchActivityWithData(arrayOfStylists);
-//                Toast.makeText(SearchResultsActivity.this, "Stylist 1 is: \n" + arrayOfStylists[0].first, Toast.LENGTH_SHORT).show();
+                Toast.makeText(SearchResultsActivity.this, "Stylist 1 is: \n" + arrayOfStylists[0].first, Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Failed to get stylists by location", Toast.LENGTH_LONG).show();
             }
@@ -90,10 +90,10 @@ public class SearchResultsActivity extends AppCompatActivity {
             }
 
             //ACCESS THE ELEMENTS IN THE INFLATED VIEW (THIS IS WHERE WE EDIT THEM)
-            TextView name = v.findViewById(R.id.txtStyleName);
-            TextView infoA = v.findViewById(R.id.txtPrice);
-            TextView infoB = v.findViewById(R.id.txtTime);
-            ImageView image = v.findViewById(R.id.imgStyle);
+            TextView name = v.findViewById(R.id.txtName);
+            TextView infoA = v.findViewById(R.id.txtInfoA);
+            TextView infoB = v.findViewById(R.id.txtInfoB);
+            ImageView image = v.findViewById(R.id.imageView);
 
             // set the details
             name.setText(profiles[i].first + " " + profiles[i].last);
