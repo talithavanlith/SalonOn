@@ -152,9 +152,8 @@ public class CreateAccountActivateSalon extends AppCompatActivity {
 
         if (salonStatus && photoStatus){
             Toast.makeText(this, "Salon account activated successfully", Toast.LENGTH_LONG).show();
-            Intent searchIntent = new Intent(CreateAccountActivateSalon.this, SearchActivity.class);
+            Intent searchIntent = new Intent(CreateAccountActivateSalon.this, BookingsActivity.class);
             searchIntent.putExtra("email", email);
-            searchIntent.putExtra("accountType", "salon");
             startActivity(searchIntent);
             finish();
         }
