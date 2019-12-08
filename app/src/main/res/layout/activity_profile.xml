@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".ProfileActivity"
     android:background="#F4FBD5">
 
 
@@ -24,27 +24,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtStylistName" />
 
-<!--    <android.support.v7.widget.CardView-->
-<!--        android:id="@+id/imgProfile"-->
-<!--        android:layout_width="90dp"-->
-<!--        android:layout_height="90dp"-->
-<!--        app:cardCornerRadius="80dp"-->
-<!--        android:layout_marginTop="40dp"-->
-<!--        android:layout_marginEnd="160dp"-->
-<!--        android:layout_marginRight="160dp"-->
-<!--        android:layout_marginBottom="8dp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/txtStylistName"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="1.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        android:background="@drawable/img_borders"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:elevation="10dp">-->
-<!--        <ImageView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            tools:srcCompat="@tools:sample/avatars" />-->
-<!--    </android.support.v7.widget.CardView>-->
 
     <ImageView
         android:id="@+id/imgProfile"
@@ -197,69 +176,55 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtAvailableStyle">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
+                    android:id="@+id/styleOptions"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/btnStyle1"
-                        android:layout_width="175dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_weight="1"
-                        android:background="#322E2D"
-                        android:text="Style 1"
-                        android:textColor="#f7f7f2"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/btnStyle2"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+<!--                    <Button-->
+<!--                        android:id="@+id/btnStyle1"-->
+<!--                        android:layout_width="175dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_marginEnd="15dp"-->
+<!--                        android:layout_marginRight="15dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:background="#322E2D"-->
+<!--                        android:text="Style 1"-->
+<!--                        android:textColor="#f7f7f2" />-->
 
-                    <Button
-                        android:id="@+id/btnStyle2"
-                        android:layout_width="175dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_weight="1"
-                        android:background="#322E2D"
-                        android:text="Style 2"
-                        android:textColor="#f7f7f2"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/btnStyle3"
-                        app:layout_constraintStart_toEndOf="@+id/btnStyle1"
-                        app:layout_constraintTop_toTopOf="parent" />
+<!--                    <Button-->
+<!--                        android:id="@+id/btnStyle2"-->
+<!--                        android:layout_width="175dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_marginEnd="15dp"-->
+<!--                        android:layout_marginRight="15dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:background="#322E2D"-->
+<!--                        android:text="Style 2"-->
+<!--                        android:textColor="#f7f7f2" />-->
 
-                    <Button
-                        android:id="@+id/btnStyle3"
-                        android:layout_width="175dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_weight="1"
-                        android:background="#322E2D"
-                        android:text="Style 3"
-                        android:textColor="#f7f7f2"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/btnStyle4"
-                        app:layout_constraintStart_toEndOf="@+id/btnStyle2"
-                        app:layout_constraintTop_toTopOf="parent" />
+<!--                    <Button-->
+<!--                        android:id="@+id/btnStyle3"-->
+<!--                        android:layout_width="175dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_marginEnd="15dp"-->
+<!--                        android:layout_marginRight="15dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:background="#322E2D"-->
+<!--                        android:text="Style 3"-->
+<!--                        android:textColor="#f7f7f2" />-->
 
-                    <Button
-                        android:id="@+id/btnStyle4"
-                        android:layout_width="175dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="#322E2D"
-                        android:text="Style 4"
-                        android:textColor="#f7f7f2"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/btnStyle3"
-                        app:layout_constraintTop_toTopOf="parent" />
+<!--                    <Button-->
+<!--                        android:id="@+id/btnStyle4"-->
+<!--                        android:layout_width="175dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:background="#322E2D"-->
+<!--                        android:text="Style 4"-->
+<!--                        android:textColor="#f7f7f2"/>-->
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
             </HorizontalScrollView>
 
             <TextView
