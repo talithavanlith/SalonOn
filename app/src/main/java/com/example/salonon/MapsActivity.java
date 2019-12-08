@@ -128,7 +128,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        Toast.makeText(this, "Map is ready", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Map is ready", Toast.LENGTH_SHORT).show();
         mMap = googleMap;
 
         if(mLocationPermissionsGranted){
@@ -230,21 +230,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         geocoder = new Geocoder(this, Locale.getDefault());
 
         try{
-            System.out.println("trying to convert addresss " + latLng + "--------------------------------------------------------\n\n");
+//            System.out.println("trying to convert addresss " + latLng + "--------------------------------------------------------\n\n");
 
             addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-            System.out.println("got latlng " + addresses + " --------------------------------------------------------\n\n");
+//            System.out.println("got latlng " + addresses + " --------------------------------------------------------\n\n");
 
             address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
             city = addresses.get(0).getLocality();
             state = addresses.get(0).getAdminArea();
             postalCode = addresses.get(0).getPostalCode();
-            System.out.println("got this far?   --------------------------------------------------------------------------\n\n");
+//            System.out.println("got this far?   --------------------------------------------------------------------------\n\n");
 
             //radius to be set
             radius = "10";
 
-            Toast.makeText(MapsActivity.this, "You choose the location: \n" + address + "\n" + city + ", " + state + "\n" + postalCode, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(MapsActivity.this, "You choose the location: \n" + address + "\n" + city + ", " + state + "\n" + postalCode, Toast.LENGTH_SHORT).show();
 
         }catch (IOException e){
             System.err.println("couldn't convert address: " + e);
@@ -255,7 +255,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     //this method will be called when "find stylists" button is clicked (maybe make it an event listener?)
     public void findStylistOnClick(View v){
 
-        System.out.println("find styist button is clicked --------------------------------------------------------\n\n");
+//        System.out.println("find styist button is clicked --------------------------------------------------------\n\n");
 
         Intent stylistProfileIntent = new Intent(MapsActivity.this, SearchResultsActivity.class);
         stylistProfileIntent.putExtra("address", address);
@@ -265,7 +265,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         stylistProfileIntent.putExtra("radius", radius);
         stylistProfileIntent.putExtra("email", userProfile.email);
 
-        System.out.println("intent is created with info -------------------------------------------------------\n\n");
+//        System.out.println("intent is created with info -------------------------------------------------------\n\n");
         startActivity(stylistProfileIntent);
 
     }

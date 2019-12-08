@@ -19,7 +19,7 @@
             android:background="#322E2D">
 
             <TextView
-                android:id="@+id/txtName"
+                android:id="@+id/txtStylistName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -34,17 +34,17 @@
                 app:layout_constraintBottom_toTopOf="@+id/txtInfoA"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.867"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintStart_toEndOf="@+id/imgStylist"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imgStylist"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/txtName"
+                app:layout_constraintEnd_toStartOf="@+id/txtStylistName"
                 app:layout_constraintHorizontal_bias="0.439"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -59,8 +59,8 @@
                 app:layout_constraintBottom_toTopOf="@+id/txtInfoB"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.208"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/txtName" />
+                app:layout_constraintStart_toEndOf="@+id/imgStylist"
+                app:layout_constraintTop_toBottomOf="@+id/txtStylistName" />
 
             <TextView
                 android:id="@+id/txtInfoB"
@@ -72,7 +72,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.208"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintStart_toEndOf="@+id/imgStylist"
                 app:layout_constraintTop_toBottomOf="@+id/txtInfoA" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AvailabilityActivity extends AppCompatActivity {
+public class StyleInfoActivity extends AppCompatActivity {
 
     private API api;
     private Profile userProfile;
@@ -17,7 +17,7 @@ public class AvailabilityActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_availablity);
+        setContentView(R.layout.activity_style_info);
 
         // get extras from passed intent:
         Intent currentIntent = getIntent();
@@ -39,8 +39,11 @@ public class AvailabilityActivity extends AppCompatActivity {
         //ACCESS THE ELEMENTS IN THE INFLATED VIEW (THIS IS WHERE WE EDIT THEM)
         ImageView image = this.findViewById(R.id.imgProfile);
         TextView name = this.findViewById(R.id.txtStylistName);
+        TextView details = this.findViewById(R.id.txtDetails);
 
-        TextView styleName = this.findViewById(R.id.txtStyle);
+        TextView styleName = this.findViewById(R.id.txtImagesOfWork2);
+
+        //todo: update slideshow with images of the stylist's work
 
         TextView time = this.findViewById(R.id.txtTime);
         TextView price = this.findViewById(R.id.txtPrice);
@@ -48,6 +51,7 @@ public class AvailabilityActivity extends AppCompatActivity {
         // set the details
         //todo: add image
         name.setText("Susie Kato");
+        details.setText("10 years experience - 5 miles away");
 
         styleName.setText("Pixie cut");
 
@@ -56,17 +60,14 @@ public class AvailabilityActivity extends AppCompatActivity {
 
     }
 
-    public void requestButtonOnClick(View v) {
+    public void bookNowButtonOnClick(View v) {
         // Create activity_profile Intent;
-        Intent bookingIntent = new Intent(AvailabilityActivity.this, BookingsActivity.class);
-        bookingIntent.putExtra("email", userProfile.email);
-        // todo: below get the name of the style/stylist/date/time/notes
-//        bookingIntent.putExtra("stylist", v.getStylistEmail());
-//        bookingIntent.putExtra("style", v.getStyleID());
-//        bookingIntent.putExtra("date", v.getDate());
-//        bookingIntent.putExtra("time", v.getTime());
-//        bookingIntent.putExtra("comment", v.getComment());
-        startActivity(bookingIntent);
+        Intent styleInfoIntent = new Intent(StyleInfoActivity.this, AvailabilityActivity.class);
+        styleInfoIntent.putExtra("email", userProfile.email);
+        // todo: below get the name of the style that is clicked (and maybe the stylist's email/id)
+//        styleInfoIntent.putExtra("stylist", v.getStylistEmail());
+//        styleInfoIntent.putExtra("style", v.getStyleID());
+        startActivity(styleInfoIntent);
 
     }
 }
