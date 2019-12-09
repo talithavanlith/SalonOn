@@ -144,13 +144,13 @@ public class CreateAccountActivateSalon extends AppCompatActivity {
         }
         int[] amenities = new int[checked.size()];
         for (int i=0; i< amenities.length; i++){
-            amenities[i] = checked.get(i);
+            amenities[i] =  checked.get(i);
         }
 
         boolean salonStatus = api.addSalon(email, bio, amenities);
-        boolean photoStatus = api.addProfilePic(email, photo);
+        //boolean photoStatus = api.addProfilePic(email, photo);
 
-        if (salonStatus && photoStatus){
+        if (salonStatus){
             Toast.makeText(this, "Salon account activated successfully", Toast.LENGTH_LONG).show();
             Intent searchIntent = new Intent(CreateAccountActivateSalon.this, BookingsActivity.class);
             searchIntent.putExtra("email", email);
