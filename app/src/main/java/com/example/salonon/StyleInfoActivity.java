@@ -15,6 +15,9 @@ public class StyleInfoActivity extends AppCompatActivity {
     private API api;
     private Profile stylist;
     private String offerID;
+    private String style;
+    private Double time;
+    private Double price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +29,9 @@ public class StyleInfoActivity extends AppCompatActivity {
         Bundle bundle = currentIntent.getExtras();
         String email = bundle.getString("stylist");
         offerID = bundle.getString("offerID");
-        String style = bundle.getString("style");
-        Double time = bundle.getDouble("duration");
-        Double price = bundle.getDouble("price");
+        style = bundle.getString("style");
+        time = bundle.getDouble("duration");
+        price = bundle.getDouble("price");
 
         api = new API();
 
@@ -64,12 +67,18 @@ public class StyleInfoActivity extends AppCompatActivity {
     }
 
     public void bookNowButtonOnClick(View v) {
+
         // Create activity_profile Intent;
-        Intent availabilityIntent = new Intent(StyleInfoActivity.this, AvailabilityActivity.class);
+        Intent styleInfoIntent = new Intent(StyleInfoActivity.this, AvailabilityActivity.class);
         // todo: below get the name of the style that is clicked (and maybe the stylist's email/id)
-//        styleInfoIntent.putExtra("stylist", v.getStylistEmail());
-//        styleInfoIntent.putExtra("style", v.getStyleID());
-        startActivity(availabilityIntent);
+        styleInfoIntent.putExtra("stylist", stylist.email);
+//        // Create activity_profile Intent;
+        styleInfoIntent.putExtra("style", style);
+        styleInfoIntent.putExtra("duration", time);
+        styleInfoIntent.putExtra("price", price);
+        styleInfoIntent.putExtra("offerID", offerID);
+
+        startActivity(styleInfoIntent);
 
     }
 }
