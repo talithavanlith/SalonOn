@@ -115,6 +115,7 @@ public class SearchResultsActivity extends AppCompatActivity {
     public void stylistProfileOnClick(View v) {
         // Create activity_profile Intent;
         Intent stylistProfileIntent = new Intent(SearchResultsActivity.this, ProfileActivity.class);
+        stylistProfileIntent.putExtra("email", userProfile.email);
         startActivity(stylistProfileIntent);
     }
 }

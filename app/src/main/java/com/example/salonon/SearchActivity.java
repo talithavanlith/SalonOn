@@ -249,6 +249,7 @@ public class SearchActivity extends AppCompatActivity {
         Log.v("stylistID", stylistID);
         Intent stylistProfileIntent = new Intent(SearchActivity.this, ProfileActivity.class);
         stylistProfileIntent.putExtra("id", stylistID);
+        stylistProfileIntent.putExtra("email", userProfile.email);
         startActivity(stylistProfileIntent);
     }
 
