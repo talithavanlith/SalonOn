@@ -74,76 +74,24 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtSpecialize"
+                android:id="@+id/txtBio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="152dp"
                 android:layout_marginLeft="152dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="14dp"
                 android:layout_marginEnd="151dp"
                 android:layout_marginRight="151dp"
-                android:text="I specialize in:"
+                android:text="Stylist bio"
                 android:textColor="#f7f7f2"
                 android:textSize="22sp"
                 android:visibility="visible"
                 app:fontFamily="sans-serif-black"
-                app:layout_constraintBottom_toTopOf="@+id/txtStyle1"
+                app:layout_constraintBottom_toTopOf="@+id/txtAvailableStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/txtStyle1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="189dp"
-                android:layout_marginLeft="189dp"
-                android:layout_marginEnd="189dp"
-                android:layout_marginRight="189dp"
-                android:text="Style 1"
-                android:textColor="#f7f7f2"
-                android:textSize="22sp"
-                android:visibility="visible"
-                app:fontFamily="sans-serif-black"
-                app:layout_constraintBottom_toTopOf="@+id/txtStyle2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtSpecialize" />
-
-            <TextView
-                android:id="@+id/txtStyle2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="189dp"
-                android:layout_marginLeft="189dp"
-                android:layout_marginEnd="189dp"
-                android:layout_marginRight="189dp"
-                android:text="Style 2"
-                android:textColor="#f7f7f2"
-                android:textSize="22sp"
-                android:visibility="visible"
-                app:fontFamily="sans-serif-black"
-                app:layout_constraintBottom_toTopOf="@+id/txtStyle3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtStyle1" />
-
-            <TextView
-                android:id="@+id/txtStyle3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="176dp"
-                android:layout_marginLeft="176dp"
-                android:layout_marginEnd="176dp"
-                android:layout_marginRight="176dp"
-                android:text="Style 3"
-                android:textColor="#f7f7f4"
-                android:textSize="22sp"
-                android:visibility="visible"
-                app:fontFamily="sans-serif-black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtStyle2" />
 
             <TextView
                 android:id="@+id/txtAvailableStyle"
@@ -151,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="177dp"
+                android:layout_marginTop="137dp"
                 android:layout_marginEnd="295dp"
                 android:layout_marginRight="295dp"
                 android:layout_marginBottom="11dp"
@@ -181,48 +129,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
-
-<!--                    <Button-->
-<!--                        android:id="@+id/btnStyle1"-->
-<!--                        android:layout_width="175dp"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:layout_marginEnd="15dp"-->
-<!--                        android:layout_marginRight="15dp"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:background="#322E2D"-->
-<!--                        android:text="Style 1"-->
-<!--                        android:textColor="#f7f7f2" />-->
-
-<!--                    <Button-->
-<!--                        android:id="@+id/btnStyle2"-->
-<!--                        android:layout_width="175dp"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:layout_marginEnd="15dp"-->
-<!--                        android:layout_marginRight="15dp"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:background="#322E2D"-->
-<!--                        android:text="Style 2"-->
-<!--                        android:textColor="#f7f7f2" />-->
-
-<!--                    <Button-->
-<!--                        android:id="@+id/btnStyle3"-->
-<!--                        android:layout_width="175dp"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:layout_marginEnd="15dp"-->
-<!--                        android:layout_marginRight="15dp"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:background="#322E2D"-->
-<!--                        android:text="Style 3"-->
-<!--                        android:textColor="#f7f7f2" />-->
-
-<!--                    <Button-->
-<!--                        android:id="@+id/btnStyle4"-->
-<!--                        android:layout_width="175dp"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:background="#322E2D"-->
-<!--                        android:text="Style 4"-->
-<!--                        android:textColor="#f7f7f2"/>-->
 
                 </LinearLayout>
             </HorizontalScrollView>

@@ -31,19 +31,16 @@ public class ProfileActivity extends AppCompatActivity {
         Profile stylist = api.getClientProfile(email);
         Log.v("offerLength", "" +offers.length);
 
-        loadProfileTEST();
+        loadProfile(stylist, offers);
     }
 
-
-    private void loadProfileTEST(){
+    private void loadProfile(Profile stylist, Offer[] offers){
         //ACCESS THE ELEMENTS IN THE INFLATED VIEW (THIS IS WHERE WE EDIT THEM)
         ImageView image = this.findViewById(R.id.imgProfile);
         TextView name = this.findViewById(R.id.txtStylistName);
         TextView details = this.findViewById(R.id.txtDetails);
 
-        TextView specStyle1 = this.findViewById(R.id.txtStyle1);
-        TextView specStyle2 = this.findViewById(R.id.txtStyle2);
-        TextView specStyle3 = this.findViewById(R.id.txtStyle3);
+        TextView bio = this.findViewById(R.id.txtBio);
 
         RatingBar rateClean = this.findViewById(R.id.rateClean);
         RatingBar rateAccess = this.findViewById(R.id.rateAccess);
@@ -55,20 +52,19 @@ public class ProfileActivity extends AppCompatActivity {
 
         // set the details
         //todo: add image
-        name.setText("Susie Kato");
-        details.setText("10 years experience - 5 miles away");
+        name.setText(stylist.first + " " + stylist.last);
+        //todo: get miles away data from SearchActivity.java (maybe by creating a hash map)
+        details.setText("5 miles away");
+        bio.setText(stylist.stylistBio);
 
-        specStyle1.setText("Pixie cut");
-        specStyle2.setText("long hair");
-        specStyle3.setText("mid-length hair");
+        //todo: access stylist's ratings and comments
+//        rateClean.setRating(stylist.getCleanRating);
+//        rateAccess.setRating(stylist.getAccessRating);
+//        rateFriend.setRating(stylist.getFriendRating);
+//        rateProfes.setRating(stylist.getProfesRating);
 
-        rateClean.setRating(5);
-        rateAccess.setRating(5);
-        rateFriend.setRating(5);
-        rateProfes.setRating(5);
-
-        comment1.setText("\"brilliant\" - Jennie");
-        comment2.setText("\"couldn't be better but smells funny\" - Eric");
+//        comment1.setText(stylist.getComment);
+//        comment2.setText(stylist.getComment2);
 
         //todo: dynamically generate the styles available
         //*****DYNAMICALLY ADD search results to screen ******
@@ -76,16 +72,8 @@ public class ProfileActivity extends AppCompatActivity {
         LinearLayout insertPoint = (LinearLayout) findViewById(R.id.styleOptions);
         LayoutInflater inflater = getLayoutInflater();
 
-        // **** get all the styles that the stylist does from the database
-
-        //temp values
-        String[] styles = new String[]{"Pixie-cut", "Mid-Length", "Long Hair"};
-        Double[] times = new Double[]{2.0, 3.5, 1.5};
-        Double[] prices = new Double[]{50.00, 35.00, 70.00};
-
-
         //GET INFO FROM AMENITY LIST
-        for (int i = 0; i < styles.length; i++) {
+        for (int i = 0; i < offers.length; i++) {
 
             //CREATE A INFLATED VIEW BY GIVING REFERENCE TO CHILD FILE (amenity.xml) AND FUTURE PARENT VIEW (insertPoint)
             View newView = inflater.inflate(R.layout.style, insertPoint, false);
@@ -97,15 +85,14 @@ public class ProfileActivity extends AppCompatActivity {
             ImageView styleImage = newView.findViewById(R.id.imgStyle);
 
             // set the details
-            styleName.setText(styles[i]);
-            time.setText(times[i] + "hr");
-            price.setText("$" + prices[i]);
+            styleName.setText(offers[i].style);
+            time.setText("" + offers[i].duration + "hrs");
+            price.setText("$" + offers[i].price);
             //todo: add image
 
             //FINALLY, USE INSERT POINT TO ADD INFLATED VIEW.
             insertPoint.addView(newView);
         }
-
 
     }
     public void styleButtonOnClick(View v) {
