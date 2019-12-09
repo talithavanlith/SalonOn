@@ -99,7 +99,20 @@ public class SearchResultsActivity extends AppCompatActivity {
             name.setText(profiles[i].first + " " + profiles[i].last);
             infoA.setText("Stylist");
             infoB.setText(Math.round(profiles[i].distance)+" miles away");
-            image.setBackgroundResource(R.drawable.blankprofilepic);
+            if(profiles[i].first == "Andrew"){
+                image.setBackgroundResource(R.drawable.man2);
+            }else if (profiles[i].first == "Jeff"){
+                image.setBackgroundResource(R.drawable.jeff);
+
+            }else if (profiles[i].first == "KMMMMP"){
+                image.setBackgroundResource(R.drawable.man3);
+
+            }else if (profiles[i].first == "Susie"){
+                image.setBackgroundResource(R.drawable.woman1);
+            }else {
+                image.setBackgroundResource(R.drawable.blankprofilepic);
+
+            }
             v.setTag(profiles[i].email);
             //todo: add image
 
