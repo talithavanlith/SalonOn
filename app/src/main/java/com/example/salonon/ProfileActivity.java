@@ -96,6 +96,12 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
     public void styleButtonOnClick(View v) {
-        Toast.makeText(this, "", Toast.LENGTH_LONG).show();
+
+        // Create activity_profile Intent;
+        Intent styleInfoIntent = new Intent(ProfileActivity.this, StyleInfoActivity.class);
+        // todo: below get the name of the style that is clicked (and maybe the stylist's email/id)
+//        styleInfoIntent.putExtra("stylist", v.getStylistEmail());
+//        styleInfoIntent.putExtra("style", v.getStyleID());
+        startActivity(styleInfoIntent);
     }
 }
