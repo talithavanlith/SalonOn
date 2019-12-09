@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ProfileActivity extends AppCompatActivity {
     private API api;
+    private Profile stylist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +29,13 @@ public class ProfileActivity extends AppCompatActivity {
         api = new API();
 
         Offer[] offers = api.getStylistOffers(email);
-        Profile stylist = api.getClientProfile(email);
+        stylist = api.getClientProfile(email);
         Log.v("offerLength", "" +offers.length);
 
-        loadProfile(stylist, offers);
+        loadProfile(offers);
     }
 
-    private void loadProfile(Profile stylist, Offer[] offers){
+    private void loadProfile(Offer[] offers){
         //ACCESS THE ELEMENTS IN THE INFLATED VIEW (THIS IS WHERE WE EDIT THEM)
         ImageView image = this.findViewById(R.id.imgProfile);
         TextView name = this.findViewById(R.id.txtStylistName);
@@ -83,11 +84,13 @@ public class ProfileActivity extends AppCompatActivity {
             TextView time = newView.findViewById(R.id.txtTime);
             TextView price = newView.findViewById(R.id.txtPrice);
             ImageView styleImage = newView.findViewById(R.id.imgStyle);
+//            name.setTag(offers[i].email);
 
             // set the details
             styleName.setText(offers[i].style);
-            time.setText("" + offers[i].duration + "hrs");
+            time.setText("" + offers[i].duration + " hrs");
             price.setText("$" + offers[i].price);
+            newView.setTag(offers[i]);
             //todo: add image
 
             //FINALLY, USE INSERT POINT TO ADD INFLATED VIEW.
@@ -100,8 +103,14 @@ public class ProfileActivity extends AppCompatActivity {
         // Create activity_profile Intent;
         Intent styleInfoIntent = new Intent(ProfileActivity.this, StyleInfoActivity.class);
         // todo: below get the name of the style that is clicked (and maybe the stylist's email/id)
-//        styleInfoIntent.putExtra("stylist", v.getStylistEmail());
-//        styleInfoIntent.putExtra("style", v.getStyleID());
+        styleInfoIntent.putExtra("stylist", stylist.email);
+//        // Create activity_profile Intent;
+        Offer offer = (Offer)(v.getTag());
+        styleInfoIntent.putExtra("style", offer.style);
+        styleInfoIntent.putExtra("duration", offer.duration);
+        styleInfoIntent.putExtra("price", offer.price);
+        styleInfoIntent.putExtra("offerID", offer.offerID);
+
         startActivity(styleInfoIntent);
     }
 }

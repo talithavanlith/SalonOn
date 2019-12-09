@@ -214,9 +214,8 @@ public class SearchActivity extends AppCompatActivity {
             infoA.setText("Stylist");
             infoB.setText(profiles[i].distance+" miles away");
             image.setBackgroundResource(R.drawable.blankprofilepic);
-            name.setTag(profiles[i].email);
-            View parent = (View) name.getParent();
-            //parent.setTag(""+profiles[i].email);
+            v.setTag(profiles[i].email);
+
 //            Bitmap bitmap = api.getProfilePic(profiles[i].email);
 //            if(bitmap == null){
 //                image.setBackgroundResource(R.drawable.blankprofilepic);
