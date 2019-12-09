@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ProfileActivity extends AppCompatActivity {
     private API api;
+    private Profile stylist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
         api = new API();
 
         Offer[] offers = api.getStylistOffers(email);
-        Profile stylist = api.getClientProfile(email);
+        stylist = api.getClientProfile(email);
         Log.v("offerLength", "" +offers.length);
 
         loadProfile(stylist, offers);
@@ -83,6 +84,7 @@ public class ProfileActivity extends AppCompatActivity {
             TextView time = newView.findViewById(R.id.txtTime);
             TextView price = newView.findViewById(R.id.txtPrice);
             ImageView styleImage = newView.findViewById(R.id.imgStyle);
+//            name.setTag(offers[i].email);
 
             // set the details
             styleName.setText(offers[i].style);
@@ -103,5 +105,11 @@ public class ProfileActivity extends AppCompatActivity {
 //        styleInfoIntent.putExtra("stylist", v.getStylistEmail());
 //        styleInfoIntent.putExtra("style", v.getStyleID());
         startActivity(styleInfoIntent);
+//        // Create activity_profile Intent;
+//        String stylistID = (String) v.getTag();
+//        Log.v("stylistID", stylistID);
+//        Intent stylistProfileIntent = new Intent(SearchActivity.this, ProfileActivity.class);
+//        stylistProfileIntent.putExtra("id", stylistID);
+//        startActivity(stylistProfileIntent);
     }
 }
