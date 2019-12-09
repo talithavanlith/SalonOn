@@ -81,8 +81,6 @@ public class SearchActivity extends AppCompatActivity {
             LatLng chapelHill = new LatLng(35.913200, -79.055847);
             processLocation(chapelHill);
         }
-        double[] aves = api.getAverageRatings("andrew@gmail.com");
-        Log.v("ratings", ""+aves[1]);
     }
 
 
