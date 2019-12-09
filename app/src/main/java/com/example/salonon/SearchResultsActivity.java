@@ -2,7 +2,6 @@ package com.example.salonon;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -60,6 +59,7 @@ public class SearchResultsActivity extends AppCompatActivity {
 
             if (arrayOfStylists[0] != null) {
                 fillSearchActivityWithData(arrayOfStylists);
+                Toast.makeText(SearchResultsActivity.this, "Stylist 1 is: \n" + arrayOfStylists[0].first, Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Failed to get stylists by location", Toast.LENGTH_LONG).show();
             }
@@ -97,10 +97,8 @@ public class SearchResultsActivity extends AppCompatActivity {
 
             // set the details
             name.setText(profiles[i].first + " " + profiles[i].last);
-            infoA.setText("Stylist");
-            infoB.setText(Math.round(profiles[i].distance)+" miles away");
-            image.setBackgroundResource(R.drawable.blankprofilepic);
-            v.setTag(profiles[i].email);
+            infoA.setText(profiles[i].stylistBio);
+            infoB.setText("for now we'll say hello");
             //todo: add image
 
             //FINALLY, USE INSERT POINT TO ADD INFLATED VIEW.
@@ -116,12 +114,7 @@ public class SearchResultsActivity extends AppCompatActivity {
 
     public void stylistProfileOnClick(View v) {
         // Create activity_profile Intent;
-        String stylistID = (String)v.getTag();
-        Log.v("stylistID", stylistID);
-        // Create activity_profile Intent;
         Intent stylistProfileIntent = new Intent(SearchResultsActivity.this, ProfileActivity.class);
-        stylistProfileIntent.putExtra("email", userProfile.email);
-        stylistProfileIntent.putExtra("id", stylistID);
         startActivity(stylistProfileIntent);
     }
 }
