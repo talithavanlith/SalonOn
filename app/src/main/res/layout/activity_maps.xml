@@ -90,7 +90,7 @@
         android:layout_height="43dp"
         android:layout_margin="30dp"
         android:gravity="center"
-        android:text="adjust location perimeter"
+        android:text="adjust location perimeter - 0 Mi"
         android:textColor="#F7F7F2"
         android:textSize="14sp"
         app:fontFamily="sans-serif-condensed"

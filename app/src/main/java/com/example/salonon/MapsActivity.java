@@ -17,6 +17,8 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -36,6 +38,8 @@ import com.google.android.gms.tasks.Task;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+
+import static java.lang.Math.exp;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -58,6 +62,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private String state;
     private String postalCode;
     private String radius;
+    private LatLng latlngGlobal = null;
+    private int seekProgress = 600;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +130,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //initialise the map
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(MapsActivity.this);
+        SeekBar seekbar = findViewById(R.id.seekBar);
+        seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                mMap.clear();
+                drawCircle(latlngGlobal, mMap, progress*6);
+                seekProgress = progress;
+
+                int miles = (int) ((progress*6) /1609.3440057765);
+                TextView radiusText = findViewById(R.id.txtAdjust);
+                radiusText.setText("adjust location perimeter - "+miles+" Mi");
+
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     @Override
@@ -146,12 +177,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
+                latlngGlobal = latLng;
                 mMap.clear();
                 MarkerOptions marker = new MarkerOptions().position(latLng).title("You chose here");
                 mMap.addMarker(marker);
                 moveCamera(latLng, DEFAULT_ZOOM);
                 // Drawing circle on the map
-                drawCircle(latLng, mMap);
+                drawCircle(latLng, mMap, seekProgress);
 
                 convertToAddress(latLng);
             }
@@ -159,6 +191,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Sets the map type to be "hybrid"
 //        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
     }
+
+
+
+
 
     private void getDeviceLocation(){
         //getting devices current location
@@ -198,7 +234,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
     }
 
-    private void drawCircle(LatLng point, GoogleMap mMap){
+    private void drawCircle(LatLng point, GoogleMap mMap, int radius){
 
         // Instantiating CircleOptions to draw a circle around the marker
         CircleOptions circleOptions = new CircleOptions();
@@ -207,7 +243,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         circleOptions.center(point);
 
         // Radius of the circle
-        circleOptions.radius(600);
+        circleOptions.radius(radius);
 
         // Border color of the circle
         circleOptions.strokeColor(Color.GRAY);
