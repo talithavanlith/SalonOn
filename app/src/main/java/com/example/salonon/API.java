@@ -277,6 +277,7 @@ public class API {
 
     }
 
+
     //ADD LOCATION TO ACCOUNT IN DB
     public Boolean addLocation(String id, String address, String city, String state, String zip){
         HttpRequest request = new HttpRequest("post",  "add-location");
