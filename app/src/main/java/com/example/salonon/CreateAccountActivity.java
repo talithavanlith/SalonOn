@@ -41,11 +41,11 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
 
         //CHECK IS USER ALREADY EXISTS
-//        if (new API().getClientProfile(email) != null){
-//            Toast.makeText(this, "Email already exists", Toast.LENGTH_LONG).show();
-//            return;
-//
-//        }
+        if (new API().getClientProfile(email) != null){
+            Toast.makeText(this, "Email already exists", Toast.LENGTH_LONG).show();
+            return;
+
+        }
 
         // CHECK MATCHING PASSWORDS
         if (password.compareTo(confirmPassword) != 0) {
