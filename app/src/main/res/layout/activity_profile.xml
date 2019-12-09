@@ -39,7 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/img_borders"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/stylist1" />
 
     <TextView
         android:id="@+id/txtStylistName"
