@@ -27,12 +27,7 @@ public class BookingsActivity extends AppCompatActivity {
         API api = new API();
 
         ImageView profileImage = this.findViewById(R.id.imgProfile);
-
-        if (clientID.equals("jeffy@gmail.com")){
-            profileImage.setBackgroundResource(R.drawable.jeff);
-        }else {
-            profileImage.setBackgroundResource(R.drawable.me);
-        }
+        profileImage.setBackgroundResource(R.drawable.blankprofilepic);
 
         //BOOKING OBJECTS TO FILL XML WITH
         Booking[] bookings = api.getClientBookings(clientID);
