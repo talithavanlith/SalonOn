@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/img_borders"
-        android:src="@drawable/woman4" />
+        android:src="@drawable/me" />
 
     <TextView
         android:id="@+id/txtBookings"
