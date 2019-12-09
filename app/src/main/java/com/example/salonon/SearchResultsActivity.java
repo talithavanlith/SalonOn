@@ -60,7 +60,6 @@ public class SearchResultsActivity extends AppCompatActivity {
 
             if (arrayOfStylists[0] != null) {
                 fillSearchActivityWithData(arrayOfStylists);
-                Toast.makeText(SearchResultsActivity.this, "Stylist 1 is: \n" + arrayOfStylists[0].first, Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Failed to get stylists by location", Toast.LENGTH_LONG).show();
             }
