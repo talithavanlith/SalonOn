@@ -1,8 +1,8 @@
 <LinearLayout android:layout_width="match_parent"
-    android:layout_height="180dp"
+    android:layout_height="150dp"
     android:orientation="vertical"
-    android:layout_margin="10dp"
-    android:background="@drawable/component_borders"
+    android:layout_margin="5dp"
+    android:background="#322E2D"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_marginLeft="20dp"
     android:gravity="center">
@@ -12,7 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="HairStyle"
-        android:layout_margin="10dp"
         android:textColor="#f7f7f4"
         android:textSize="24sp"
         android:fontFamily="sans-serif-black">
@@ -31,7 +30,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Salon Name"
-        android:layout_marginBottom="10dp"
         android:textColor="#f7f7f4"
         android:textSize="15sp"
         android:fontFamily="sans-serif-black">
@@ -42,8 +40,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:text="Pending"
-        android:layout_marginBottom="10dp"
-        android:background="#ECDD59">
+        android:background="@color/green">
 
     </Button>
 

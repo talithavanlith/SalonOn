@@ -90,7 +90,7 @@
 
             <HorizontalScrollView
                 android:id="@+id/scrollImages"
-                android:layout_width="wrap_content"
+                android:layout_width="412dp"
                 android:layout_height="232dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="4dp"
@@ -106,27 +106,31 @@
 
                     <ImageView
                         android:id="@+id/imgStyle1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="340dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/hair1" />
+                        android:layout_weight="1"
+                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
                     <ImageView
                         android:id="@+id/imgStyle2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="340dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/hair2" />
+                        android:layout_weight="1"
+                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
                     <ImageView
                         android:id="@+id/imgStyle3"
-                        android:layout_width="wrap_content"
+                        android:layout_width="340dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/hair3" />
+                        android:layout_weight="1"
+                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
                     <ImageView
                         android:id="@+id/imgStyle4"
-                        android:layout_width="wrap_content"
+                        android:layout_width="340dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/hair4" />
+                        android:layout_weight="1"
+                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
                 </LinearLayout>
             </HorizontalScrollView>
