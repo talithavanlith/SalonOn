@@ -81,6 +81,14 @@ public class SearchActivity extends AppCompatActivity {
             LatLng chapelHill = new LatLng(35.913200, -79.055847);
             processLocation(chapelHill);
         }
+
+        boolean test = api.createBooking("ethan@gmail.com", 1, "10/23/2020", "12:00pm");
+        if (test){
+            Log.v("Create Booking","worked" );
+        } else {
+            Log.v("Create Booking","not worked" );
+        }
+
     }
 
 

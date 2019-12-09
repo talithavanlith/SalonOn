@@ -3,6 +3,7 @@ package com.example.salonon;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
+import android.util.JsonReader;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -467,8 +468,19 @@ public class API {
             return null;
         }
     }
-    public boolean createBooking(Booking booking){
-        return false;
+    public boolean createBooking(String client, int offerID, String date, String time){
+        HttpRequest request = new HttpRequest("post", "create-booking");
+        request.queryValues.put("client", client);
+        request.queryValues.put("offer", Integer.toString(offerID));
+        request.queryValues.put("date", date);
+        request.queryValues.put("time", time);
+        String response = request.send();
+        try {
+            return new JSONObject(response).getBoolean("status");
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
 
