@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -249,6 +250,7 @@ public class SearchActivity extends AppCompatActivity {
         Log.v("stylistID", stylistID);
         Intent stylistProfileIntent = new Intent(SearchActivity.this, ProfileActivity.class);
         stylistProfileIntent.putExtra("id", stylistID);
+        stylistProfileIntent.putExtra("email", userProfile.email);
         startActivity(stylistProfileIntent);
     }
 

@@ -18,6 +18,7 @@ public class StyleInfoActivity extends AppCompatActivity {
     private String style;
     private Double time;
     private Double price;
+    private Profile userProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +28,23 @@ public class StyleInfoActivity extends AppCompatActivity {
         // get extras from passed intent:
         Intent currentIntent = getIntent();
         Bundle bundle = currentIntent.getExtras();
-        String email = bundle.getString("stylist");
+        String stylistID = bundle.getString("stylist");
         offerID = bundle.getInt("offerID");
         style = bundle.getString("style");
         time = bundle.getDouble("duration");
         price = bundle.getDouble("price");
 
+        String email = bundle.getString("email");
+
+
         api = new API();
 
-        stylist = api.getClientProfile(email);
+        stylist = api.getClientProfile(stylistID);
+        userProfile = api.getClientProfile(email);
+
+        if(userProfile == null) {
+            Toast.makeText(this, "Failed to re-fetch profile", Toast.LENGTH_LONG).show();
+        }
 
         loadStyle(style, time, price);
 
@@ -77,6 +86,7 @@ public class StyleInfoActivity extends AppCompatActivity {
         styleInfoIntent.putExtra("price", price);
         styleInfoIntent.putExtra("offerID", offerID);
 
+        styleInfoIntent.putExtra("email", userProfile.email);
         startActivity(styleInfoIntent);
 
     }

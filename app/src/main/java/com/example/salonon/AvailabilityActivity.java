@@ -21,6 +21,7 @@ public class AvailabilityActivity extends AppCompatActivity {
     private String requestedDate;
     private String requestedTime;
     private String comments;
+    private Profile userProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +31,21 @@ public class AvailabilityActivity extends AppCompatActivity {
         // get extras from passed intent:
         Intent currentIntent = getIntent();
         Bundle bundle = currentIntent.getExtras();
-        String email = bundle.getString("stylist");
+        String stylistID = bundle.getString("stylist");
         offerID = bundle.getInt("offerID");
         style = bundle.getString("style");
         time = bundle.getDouble("duration");
         price = bundle.getDouble("price");
+        String email = bundle.getString("email");
 
         api = new API();
-        stylist = api.getClientProfile(email);
+        userProfile = api.getClientProfile(email);
+
+        if(userProfile == null) {
+            Toast.makeText(this, "Failed to re-fetch profile", Toast.LENGTH_LONG).show();
+        }
+
+        stylist = api.getClientProfile(stylistID);
 
         loadInfo();
     }
@@ -103,16 +111,12 @@ public class AvailabilityActivity extends AppCompatActivity {
 
         comments = commentIN;
 
-        //todo: create booking on clientID
+        api.createBooking(userProfile.email, offerID, requestedDate, requestedTime);
         //start account type intent
         Intent bookingIntent = new Intent(AvailabilityActivity.this, BookingsActivity.class);
-        bookingIntent.putExtra("stylist", stylist.email);
-        bookingIntent.putExtra("time", requestedTime);
-        bookingIntent.putExtra("date", requestedDate);
-        bookingIntent.putExtra("comment", comments);
-        bookingIntent.putExtra("offerID", offerID);
+        bookingIntent.putExtra("email", userProfile.email);
         startActivity(bookingIntent);
-
+        finish();
     }
 
     private String checkDate(String dateToCheck){
