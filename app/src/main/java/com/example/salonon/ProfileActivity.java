@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ProfileActivity extends AppCompatActivity {
     private API api;
     private Profile stylist;
-    private Profile userProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,20 +24,13 @@ public class ProfileActivity extends AppCompatActivity {
 
         Intent currentIntent = getIntent();
         Bundle bundle = currentIntent.getExtras();
-        String stylistID = bundle.getString("id");
-        String email = bundle.getString("email");
+        String email = bundle.getString("id");
 
-        //get user profile
         api = new API();
-        userProfile = api.getClientProfile(email);
 
-        if(userProfile == null) {
-            Toast.makeText(this, "Failed to re-fetch profile", Toast.LENGTH_LONG).show();
-        }
-
-        Offer[] offers = api.getStylistOffers(stylistID);
-        stylist = api.getClientProfile(stylistID);
-        Log.v("offerLength", "" + offers.length);
+        Offer[] offers = api.getStylistOffers(email);
+        stylist = api.getClientProfile(email);
+        Log.v("offerLength", "" +offers.length);
 
         loadProfile(offers);
     }
@@ -67,14 +59,10 @@ public class ProfileActivity extends AppCompatActivity {
         bio.setText(stylist.stylistBio);
 
         //todo: access stylist's ratings and comments
-        double[] ratings = api.getAverageRatings(stylist.email);
-        if(ratings != null){
-            rateClean.setRating((float)ratings[0]);
-            rateAccess.setRating((float)ratings[3]);
-            rateFriend.setRating((float)ratings[1]);
-            rateProfes.setRating((float)ratings[2]);
-
-        }
+//        rateClean.setRating(stylist.getCleanRating);
+//        rateAccess.setRating(stylist.getAccessRating);
+//        rateFriend.setRating(stylist.getFriendRating);
+//        rateProfes.setRating(stylist.getProfesRating);
 
 //        comment1.setText(stylist.getComment);
 //        comment2.setText(stylist.getComment2);
@@ -114,7 +102,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Create activity_profile Intent;
         Intent styleInfoIntent = new Intent(ProfileActivity.this, StyleInfoActivity.class);
-        styleInfoIntent.putExtra("email", userProfile.email);
+        // todo: below get the name of the style that is clicked (and maybe the stylist's email/id)
         styleInfoIntent.putExtra("stylist", stylist.email);
 //        // Create activity_profile Intent;
         Offer offer = (Offer)(v.getTag());

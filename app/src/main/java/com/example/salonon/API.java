@@ -147,9 +147,12 @@ public class API {
             HttpRequest request = new HttpRequest("post",  "client-by-id");
             request.queryValues.put("id", clientID);
             String response = request.send();
-
-            JSONObject profile = new JSONObject(response);
-            return jsonToProfile(profile);
+            JSONObject json = new JSONObject(response);
+            if (json.getBoolean("status")){
+                return jsonToProfile(json.getJSONObject("results"));
+            } else{
+                return null;
+            }
         } catch (Exception e) {
             Log.v("API error", "Failed to get profile from id "+e);
             return null;
