@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -25,6 +26,14 @@ public class BookingsActivity extends AppCompatActivity {
         clientID = bundle.getString("email");
         API api = new API();
 
+        ImageView profileImage = this.findViewById(R.id.imgProfile);
+
+        if (clientID.equals("jeffy@gmail.com")){
+            profileImage.setBackgroundResource(R.drawable.jeff);
+        }else {
+            profileImage.setBackgroundResource(R.drawable.me);
+        }
+
         //BOOKING OBJECTS TO FILL XML WITH
         Booking[] bookings = api.getClientBookings(clientID);
         LinearLayout insertPoint = (LinearLayout) findViewById(R.id.bookingslist);
@@ -42,6 +51,8 @@ public class BookingsActivity extends AppCompatActivity {
             stylistName.setText("Stylist: "+bookings[i].stylist.first);
             salonName.setText("Salon: MySalon");
             insertPoint.addView(v);
+
+
         }
     }
 
