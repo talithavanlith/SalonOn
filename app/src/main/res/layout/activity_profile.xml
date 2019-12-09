@@ -29,7 +29,7 @@
         android:id="@+id/imgProfile"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="160dp"
         android:layout_marginRight="160dp"
         android:layout_marginBottom="8dp"
@@ -37,9 +37,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/stylist1"
         android:background="@drawable/img_borders"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/stylist1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtStylistName"

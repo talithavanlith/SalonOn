@@ -103,6 +103,7 @@ public class AvailabilityActivity extends AppCompatActivity {
 
         comments = commentIN;
 
+        //todo: create booking on clientID
         //start account type intent
         Intent bookingIntent = new Intent(AvailabilityActivity.this, BookingsActivity.class);
         bookingIntent.putExtra("stylist", stylist.email);
