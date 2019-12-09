@@ -384,6 +384,29 @@ public class API {
         }
     }
 
+    public double[] getAverageRatings(String stylistID){
+        HttpRequest request = new HttpRequest("post", "get-rating");
+        request.queryValues.put("id", stylistID);
+        String response = request.send();
+        try {
+            JSONObject json = new JSONObject(response);
+            if(json.getBoolean("status")){
+                JSONObject averages = json.getJSONObject("results");
+                double[] aves = new double[4];
+                aves[0] = averages.getDouble("clean");
+                aves[1] = averages.getDouble("friend");
+                aves[2] = averages.getDouble("pro");
+                aves[3] = averages.getDouble("access");
+                return aves;
+            } else {
+                return null;
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return  null;
+        }
+    }
+
 
     public Booking jsonToBooking(JSONObject json){
         String client, stylist, salon, styleName, category, bookDate, bookTime = null;
