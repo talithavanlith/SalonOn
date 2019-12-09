@@ -220,7 +220,7 @@ public class SearchActivity extends AppCompatActivity {
             // set the details
             name.setText(profiles[i].first + " " + profiles[i].last);
             infoA.setText("Stylist");
-            infoB.setText(profiles[i].distance+" miles away");
+            infoB.setText(Math.round(profiles[i].distance)+" miles away");
             image.setBackgroundResource(R.drawable.blankprofilepic);
             v.setTag(profiles[i].email);
 

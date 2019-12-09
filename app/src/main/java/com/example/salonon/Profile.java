@@ -26,8 +26,8 @@ public class Profile {
         this.isStylist = isStylist;
         this.isSalon = isSalon;
         this.salonRate = salonRate;
-        this.salonBio = "none";
-        this.stylistBio = "none";
+        this.salonBio = salonBio;
+        this.stylistBio = stylistBio;
 
     }
 }
