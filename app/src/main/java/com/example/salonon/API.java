@@ -383,10 +383,11 @@ public class API {
         }
     }
 
+
     public Booking jsonToBooking(JSONObject json){
         String client, stylist, salon, styleName, category, bookDate, bookTime = null;
         double price, duration;
-        boolean clientConfirm, stylistConfirm, salonConfirm;
+        boolean clientConfirm = false, stylistConfirm = false, salonConfirm = false;
         try {
             client = json.getString("client");
             stylist = json.getString("stylist");
@@ -397,9 +398,18 @@ public class API {
             bookTime = json.getString("bookTime");
             price = json.getDouble("price");
             duration = json.getDouble("duration");
-            clientConfirm = json.getBoolean("clientConfirm");
-            stylistConfirm = json.getBoolean("stylistConfirm");
-            salonConfirm = json.getBoolean("salonConfirm");
+            int clientConfirmInt = json.getInt("clientConfirm");
+            if(clientConfirmInt == 1){
+                clientConfirm = true;
+            }
+            int stylistConfirmInt = json.getInt("stylistConfirm");
+            if(stylistConfirmInt == 1){
+                stylistConfirm = true;
+            }
+            int salonConfirmInt = json.getInt("salonConfirm");
+            if(salonConfirmInt == 1){
+                salonConfirm = true;
+            }
             int bid = json.getInt("bid");
 
 
