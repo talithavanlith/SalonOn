@@ -83,13 +83,6 @@ public class SearchActivity extends AppCompatActivity {
             processLocation(chapelHill);
         }
 
-        boolean test = api.createBooking("ethan@gmail.com", 1, "10/23/2020", "12:00pm");
-        if (test){
-            Log.v("Create Booking","worked" );
-        } else {
-            Log.v("Create Booking","not worked" );
-        }
-
     }
 
 

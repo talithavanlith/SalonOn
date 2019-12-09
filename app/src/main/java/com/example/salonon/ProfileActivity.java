@@ -63,8 +63,8 @@ public class ProfileActivity extends AppCompatActivity {
         //todo: add image
         name.setText(stylist.first + " " + stylist.last);
         //todo: get miles away data from SearchActivity.java (maybe by creating a hash map)
-        details.setText("5 miles away");
-        bio.setText(stylist.stylistBio);
+        details.setText("2 years experience - 0 miles away");
+        bio.setText("Closure is the best programming language ever!");
 
         //todo: access stylist's ratings and comments
         double[] ratings = api.getAverageRatings(stylist.email);

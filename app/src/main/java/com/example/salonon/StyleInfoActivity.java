@@ -66,7 +66,7 @@ public class StyleInfoActivity extends AppCompatActivity {
         // set the details
         //todo: add image
         name.setText(stylist.first + " " + stylist.last);
-        details.setText("10 years experience - 5 miles away");
+        details.setText("2 years experience - 0 miles away");
 
         styleView.setText(style);
 
