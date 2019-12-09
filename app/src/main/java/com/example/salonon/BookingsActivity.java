@@ -38,8 +38,9 @@ public class BookingsActivity extends AppCompatActivity {
             Button bookingButton = v.findViewById(R.id.bookingstatus);
             bookingButton.setTag(bookings[i].bookingID);
             styleName.setText(bookings[i].style);
+            Log.v("style", bookings[i].style);
             stylistName.setText("Stylist: "+bookings[i].stylist.first);
-            salonName.setText("Salon: "+bookings[i].salon.first);
+            salonName.setText("Salon: MySalon");
             insertPoint.addView(v);
         }
     }
