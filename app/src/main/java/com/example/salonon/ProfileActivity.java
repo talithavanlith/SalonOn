@@ -68,10 +68,13 @@ public class ProfileActivity extends AppCompatActivity {
 
         //todo: access stylist's ratings and comments
         double[] ratings = api.getAverageRatings(stylist.email);
-        rateClean.setRating((float)ratings[0]);
-        rateAccess.setRating((float)ratings[3]);
-        rateFriend.setRating((float)ratings[1]);
-        rateProfes.setRating((float)ratings[2]);
+        if(ratings != null){
+            rateClean.setRating((float)ratings[0]);
+            rateAccess.setRating((float)ratings[3]);
+            rateFriend.setRating((float)ratings[1]);
+            rateProfes.setRating((float)ratings[2]);
+            
+        }
 
 //        comment1.setText(stylist.getComment);
 //        comment2.setText(stylist.getComment2);
