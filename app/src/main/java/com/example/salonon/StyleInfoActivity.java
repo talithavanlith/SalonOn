@@ -14,7 +14,7 @@ public class StyleInfoActivity extends AppCompatActivity {
 
     private API api;
     private Profile stylist;
-    private String offerID;
+    private int offerID;
     private String style;
     private Double time;
     private Double price;
@@ -28,7 +28,7 @@ public class StyleInfoActivity extends AppCompatActivity {
         Intent currentIntent = getIntent();
         Bundle bundle = currentIntent.getExtras();
         String email = bundle.getString("stylist");
-        offerID = bundle.getString("offerID");
+        offerID = bundle.getInt("offerID");
         style = bundle.getString("style");
         time = bundle.getDouble("duration");
         price = bundle.getDouble("price");
@@ -70,7 +70,6 @@ public class StyleInfoActivity extends AppCompatActivity {
 
         // Create activity_profile Intent;
         Intent styleInfoIntent = new Intent(StyleInfoActivity.this, AvailabilityActivity.class);
-        // todo: below get the name of the style that is clicked (and maybe the stylist's email/id)
         styleInfoIntent.putExtra("stylist", stylist.email);
 //        // Create activity_profile Intent;
         styleInfoIntent.putExtra("style", style);
