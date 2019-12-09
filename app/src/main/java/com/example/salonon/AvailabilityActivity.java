@@ -116,7 +116,7 @@ public class AvailabilityActivity extends AppCompatActivity {
         Intent bookingIntent = new Intent(AvailabilityActivity.this, BookingsActivity.class);
         bookingIntent.putExtra("email", userProfile.email);
         startActivity(bookingIntent);
-
+        finish();
     }
 
     private String checkDate(String dateToCheck){
