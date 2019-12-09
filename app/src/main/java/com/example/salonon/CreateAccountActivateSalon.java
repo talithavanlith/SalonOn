@@ -142,6 +142,7 @@ public class CreateAccountActivateSalon extends AppCompatActivity {
                 checked.add((Integer) options.get(i).getTag());
             }
         }
+
         int[] amenities = new int[checked.size()];
         for (int i=0; i< amenities.length; i++){
             amenities[i] =  checked.get(i);

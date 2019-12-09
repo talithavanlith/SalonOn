@@ -40,15 +40,15 @@
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="416dp"
-        android:layout_height="533dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:background="#272423"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDetails"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/txtBookings"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@+id/navbar">
         <LinearLayout
             android:orientation="vertical"
             android:id="@+id/bookingslist"
@@ -60,6 +60,7 @@
 
     </ScrollView>
     <LinearLayout
+        android:id="@+id/navbar"
         app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="horizontal"
         android:layout_width="match_parent"
